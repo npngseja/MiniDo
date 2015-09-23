@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MDViewController.h
 //  MiniDo
 //
 //  Created by npngseja on 23/09/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface MDViewController : UIViewController
 
 @end
-

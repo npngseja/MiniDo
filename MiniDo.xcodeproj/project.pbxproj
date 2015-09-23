@@ -9,13 +9,16 @@
 /* Begin PBXBuildFile section */
 		B001C0671BB2D7F300421F81 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C0661BB2D7F300421F81 /* main.m */; };
 		B001C06A1BB2D7F300421F81 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C0691BB2D7F300421F81 /* AppDelegate.m */; };
-		B001C06D1BB2D7F300421F81 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C06C1BB2D7F300421F81 /* ViewController.m */; };
-		B001C0701BB2D7F300421F81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B001C06E1BB2D7F300421F81 /* Main.storyboard */; };
 		B001C0731BB2D7F300421F81 /* MiniDo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B001C0711BB2D7F300421F81 /* MiniDo.xcdatamodeld */; };
 		B001C0751BB2D7F300421F81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B001C0741BB2D7F300421F81 /* Assets.xcassets */; };
 		B001C0781BB2D7F300421F81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B001C0761BB2D7F300421F81 /* LaunchScreen.storyboard */; };
 		B001C0831BB2D7F300421F81 /* MiniDoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C0821BB2D7F300421F81 /* MiniDoTests.m */; };
 		B001C08E1BB2D7F300421F81 /* MiniDoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C08D1BB2D7F300421F81 /* MiniDoUITests.m */; };
+		B001C0A01BB2E5F200421F81 /* MDDataIO.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C09F1BB2E5F200421F81 /* MDDataIO.m */; settings = {ASSET_TAGS = (); }; };
+		B001C0A11BB2E5F200421F81 /* MDDataIO.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C09F1BB2E5F200421F81 /* MDDataIO.m */; settings = {ASSET_TAGS = (); }; };
+		B001C0A51BB2E64000421F81 /* MDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C0A41BB2E64000421F81 /* MDViewController.m */; settings = {ASSET_TAGS = (); }; };
+		B001C0A61BB2E64000421F81 /* MDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C0A41BB2E64000421F81 /* MDViewController.m */; settings = {ASSET_TAGS = (); }; };
+		B001C0A71BB2E64000421F81 /* MDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C0A41BB2E64000421F81 /* MDViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,9 +43,6 @@
 		B001C0661BB2D7F300421F81 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B001C0681BB2D7F300421F81 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B001C0691BB2D7F300421F81 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B001C06B1BB2D7F300421F81 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		B001C06C1BB2D7F300421F81 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		B001C06F1BB2D7F300421F81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B001C0721BB2D7F300421F81 /* MiniDo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MiniDo.xcdatamodel; sourceTree = "<group>"; };
 		B001C0741BB2D7F300421F81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B001C0771BB2D7F300421F81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -53,6 +53,10 @@
 		B001C0891BB2D7F300421F81 /* MiniDoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniDoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B001C08D1BB2D7F300421F81 /* MiniDoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniDoUITests.m; sourceTree = "<group>"; };
 		B001C08F1BB2D7F300421F81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B001C09E1BB2E5F200421F81 /* MDDataIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDDataIO.h; path = DataIO/MDDataIO.h; sourceTree = "<group>"; };
+		B001C09F1BB2E5F200421F81 /* MDDataIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDDataIO.m; path = DataIO/MDDataIO.m; sourceTree = "<group>"; };
+		B001C0A31BB2E64000421F81 /* MDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDViewController.h; path = UI/MDViewController.h; sourceTree = "<group>"; };
+		B001C0A41BB2E64000421F81 /* MDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDViewController.m; path = UI/MDViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,13 +109,9 @@
 			children = (
 				B001C0681BB2D7F300421F81 /* AppDelegate.h */,
 				B001C0691BB2D7F300421F81 /* AppDelegate.m */,
-				B001C06B1BB2D7F300421F81 /* ViewController.h */,
-				B001C06C1BB2D7F300421F81 /* ViewController.m */,
-				B001C06E1BB2D7F300421F81 /* Main.storyboard */,
-				B001C0741BB2D7F300421F81 /* Assets.xcassets */,
-				B001C0761BB2D7F300421F81 /* LaunchScreen.storyboard */,
-				B001C0791BB2D7F300421F81 /* Info.plist */,
-				B001C0711BB2D7F300421F81 /* MiniDo.xcdatamodeld */,
+				B001C09D1BB2D83200421F81 /* Managers */,
+				B001C09C1BB2D82D00421F81 /* UI */,
+				B001C09B1BB2D81C00421F81 /* DataIO */,
 				B001C0651BB2D7F300421F81 /* Supporting Files */,
 			);
 			path = MiniDo;
@@ -120,6 +120,9 @@
 		B001C0651BB2D7F300421F81 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B001C0741BB2D7F300421F81 /* Assets.xcassets */,
+				B001C0761BB2D7F300421F81 /* LaunchScreen.storyboard */,
+				B001C0791BB2D7F300421F81 /* Info.plist */,
 				B001C0661BB2D7F300421F81 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -141,6 +144,40 @@
 				B001C08F1BB2D7F300421F81 /* Info.plist */,
 			);
 			path = MiniDoUITests;
+			sourceTree = "<group>";
+		};
+		B001C09B1BB2D81C00421F81 /* DataIO */ = {
+			isa = PBXGroup;
+			children = (
+				B001C0711BB2D7F300421F81 /* MiniDo.xcdatamodeld */,
+				B001C09E1BB2E5F200421F81 /* MDDataIO.h */,
+				B001C09F1BB2E5F200421F81 /* MDDataIO.m */,
+			);
+			name = DataIO;
+			sourceTree = "<group>";
+		};
+		B001C09C1BB2D82D00421F81 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				B001C0A21BB2E61200421F81 /* Base */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		B001C09D1BB2D83200421F81 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		B001C0A21BB2E61200421F81 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B001C0A31BB2E64000421F81 /* MDViewController.h */,
+				B001C0A41BB2E64000421F81 /* MDViewController.m */,
+			);
+			name = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,7 +285,6 @@
 			files = (
 				B001C0781BB2D7F300421F81 /* LaunchScreen.storyboard in Resources */,
 				B001C0751BB2D7F300421F81 /* Assets.xcassets in Resources */,
-				B001C0701BB2D7F300421F81 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,7 +309,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B001C06D1BB2D7F300421F81 /* ViewController.m in Sources */,
+				B001C0A51BB2E64000421F81 /* MDViewController.m in Sources */,
+				B001C0A01BB2E5F200421F81 /* MDDataIO.m in Sources */,
 				B001C06A1BB2D7F300421F81 /* AppDelegate.m in Sources */,
 				B001C0671BB2D7F300421F81 /* main.m in Sources */,
 				B001C0731BB2D7F300421F81 /* MiniDo.xcdatamodeld in Sources */,
@@ -284,6 +321,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B001C0A11BB2E5F200421F81 /* MDDataIO.m in Sources */,
+				B001C0A61BB2E64000421F81 /* MDViewController.m in Sources */,
 				B001C0831BB2D7F300421F81 /* MiniDoTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B001C08E1BB2D7F300421F81 /* MiniDoUITests.m in Sources */,
+				B001C0A71BB2E64000421F81 /* MDViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,14 +352,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B001C06E1BB2D7F300421F81 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B001C06F1BB2D7F300421F81 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B001C0761BB2D7F300421F81 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -502,6 +534,7 @@
 				B001C0941BB2D7F300421F81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B001C0951BB2D7F300421F81 /* Build configuration list for PBXNativeTarget "MiniDoTests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +543,7 @@
 				B001C0971BB2D7F300421F81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B001C0981BB2D7F300421F81 /* Build configuration list for PBXNativeTarget "MiniDoUITests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +552,7 @@
 				B001C09A1BB2D7F300421F81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
