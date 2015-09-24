@@ -28,10 +28,10 @@
 -(void)__configureView
 {
     // initial layout is the state when ToDo list is visible
-    self.todoHeader = [[UILabel alloc] initWithFrame:CGRectMake(px2p(221), 0, px2p(800), px2p(250))];
+    self.todoHeader = [[UILabel alloc] initWithFrame:CGRectMake(px2p(196), 0, px2p(850), px2p(250))];
     self.todoHeader.textAlignment = NSTextAlignmentCenter;
-    NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"You can do it!", nil) attributes:@{NSFontAttributeName: [UIFont fontWithName:DEFAULT_FONT_BOLD size:hdfs2fs(170)], NSForegroundColorAttributeName: DEFAULT_TEXT_COLOR}];
-    [s addAttributes:@{NSForegroundColorAttributeName: DEFAULT_KEY_COLOR} range:[s.string rangeOfString:NSLocalizedString(@"can", nil)]];
+    NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"YOU CAN DO IT!", nil) attributes:@{NSFontAttributeName: [UIFont fontWithName:DEFAULT_FONT_BOLD size:hdfs2fs(130)], NSForegroundColorAttributeName: DEFAULT_TEXT_COLOR}];
+    [s addAttributes:@{NSForegroundColorAttributeName: DEFAULT_KEY_COLOR} range:[s.string rangeOfString:NSLocalizedString(@"CAN", nil)]];
     self.todoHeader.attributedText = s;
     UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedToDoHeader:)];
     [self.todoHeader addGestureRecognizer:gr];
@@ -40,7 +40,7 @@
     
     self.doneHeader = [[UILabel alloc] initWithFrame:CGRectMake(px2p(1010), 0, px2p(500), px2p(250))];
     self.doneHeader.textAlignment = NSTextAlignmentCenter;
-    s = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"Done", nil) attributes:@{NSFontAttributeName: [UIFont fontWithName:DEFAULT_FONT_BOLD size:hdfs2fs(170)], NSForegroundColorAttributeName: DEFAULT_TEXT_COLOR}];
+    s = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"DONE", nil) attributes:@{NSFontAttributeName: [UIFont fontWithName:DEFAULT_FONT_BOLD size:hdfs2fs(130)], NSForegroundColorAttributeName: DEFAULT_KEY_COLOR}];
     self.doneHeader.attributedText = s;
     self.doneHeader.alpha = 0.3;
     gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedDoneHeader:)];
@@ -71,7 +71,7 @@
     
     // transition of todo header
     CGFloat toDoHeaderCenterXWithMinProgress = CGRectGetWidth(self.bounds)/2;
-    CGFloat toDoHeaderCenterXWithMaxProgress = -px2p(140);
+    CGFloat toDoHeaderCenterXWithMaxProgress = -px2p(205);
     CGFloat toDoHeaderAlphaWithMinProgress = 1.0;
     CGFloat toDoHeaderAlphaWithMaxProgress = 0.3;
     

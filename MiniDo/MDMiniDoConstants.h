@@ -14,10 +14,11 @@
 
 #define DEFAULT_KEY_COLOR [UIColor colorWithRed:255/255.0 green:47/255.0 blue:146/255.0 alpha:1.0]
 #define DEFAULT_BG_COLOR [UIColor whiteColor]
-#define DEFAULT_TEXT_COLOR DEFAULT_COLOR_BLACK
+#define DEFAULT_TEXT_COLOR DEFAULT_COLOR_WHITE
 
-#define DEFAULT_FONT_REGULAR @"AmaticSC-Regular"
-#define DEFAULT_FONT_BOLD @"AmaticSC-Bold"
+#define DEFAULT_FONT_REGULAR @"Dosis-Book"
+#define DEFAULT_FONT_BOLD @"Dosis-Medium"
+#define DEFAULT_FONT_LIGHT @"Dosis-ExtraLight"
 
 typedef NS_ENUM(NSInteger, MDActiveListType) {
     MDActiveListTypeToDo,

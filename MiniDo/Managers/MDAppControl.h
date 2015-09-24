@@ -39,4 +39,9 @@
                  animated:(BOOL)animated
           completionBlock:(nullable void (^)())completionBlock;
 
+/**
+ insert a new ToDo Item into the todoList. The Item has no data, and will be ready to get user's input
+ */
+- (void)insertNewToDoItemOnToDoList;
+
 @end

@@ -24,8 +24,9 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>AmaticSC-Bold.ttf</string>
-		<string>AmaticSC-Regular.ttf</string>
+		<string>Dosis-Book.ttf</string>
+		<string>Dosis-Medium.ttf</string>
+		<string>Dosis-ExtraLight.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

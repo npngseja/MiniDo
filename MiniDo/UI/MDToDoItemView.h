@@ -7,7 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MDToDoObject.h"
+@interface MDToDoItemView : UIView <UITextFieldDelegate>
 
-@interface MDToDoItemView : UIView
+
+@property (nullable, nonatomic, strong) UIButton *doneBtn;
+
+/**
+ contains body text
+ */
+@property (nullable, nonatomic, strong) UITextField *textField;
+
+/**
+ set this property will change the view's content
+ */
+@property (nullable, nonatomic, strong) MDToDoObject *todo;
 
 @end

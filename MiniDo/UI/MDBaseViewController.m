@@ -28,8 +28,22 @@
     // set application background
     self.view.backgroundColor = DEFAULT_BG_COLOR;
     
+    // set background image
+    CALayer *bg_layer = [CALayer layer];
+    bg_layer.frame = self.view.bounds;
+    bg_layer.contentsGravity = kCAGravityResizeAspectFill;
+    [self.view.layer addSublayer:bg_layer];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSString *bgImgPath = [[NSBundle mainBundle] pathForResource:@"Background" ofType:@"jpg"];
+        UIImage *bgImg = [UIImage imageWithContentsOfFile:bgImgPath];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            bg_layer.contents = (id)bgImg.CGImage;
+        });
+    });
+    
     // base scroller
-    self.scroller = [[UIScrollView alloc] initWithFrame:CGRectMake(0, px2p(410), CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - px2p(410))];
+    self.scroller = [[UIScrollView alloc] initWithFrame:CGRectMake(0, px2p(370), CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - px2p(370))];
     self.scroller.showsHorizontalScrollIndicator = NO;
     self.scroller.showsVerticalScrollIndicator = NO;
     self.scroller.pagingEnabled = YES;
@@ -46,7 +60,6 @@
     // done list view controller
     self.doneListViewController = [[MDToDoListViewController alloc] init];
     self.doneListViewController.view.frame = CGRectMake(CGRectGetWidth(self.scroller.bounds), 0, CGRectGetWidth(self.scroller.bounds), CGRectGetHeight(self.scroller.bounds));
-    self.doneListViewController.tableView.backgroundColor = DEFAULT_KEY_COLOR;
     [self.scroller addSubview:self.doneListViewController.view];
     
     // add button
@@ -64,13 +77,13 @@
                                                           relatedBy:NSLayoutRelationEqual
                                                              toItem:self.view
                                                           attribute:NSLayoutAttributeBottom
-                                                         multiplier:1.0 constant:-px2p(57)],
+                                                         multiplier:1.0 constant:-px2p(64)],
                                 [NSLayoutConstraint constraintWithItem:self.addBtn
-                                                             attribute:NSLayoutAttributeCenterX
+                                                             attribute:NSLayoutAttributeRight
                                                              relatedBy:NSLayoutRelationEqual
                                                                 toItem:self.view
-                                                             attribute:NSLayoutAttributeCenterX
-                                                            multiplier:1.0 constant:0],
+                                                             attribute:NSLayoutAttributeRight
+                                                            multiplier:1.0 constant:-px2p(64)],
                                 ]];
     // header
     self.headerView = [[MDBaseHeaderView alloc] initWithFrame:CGRectMake(0, 20+px2p(34), CGRectGetWidth(self.view.bounds), px2p(250))];
@@ -100,7 +113,7 @@
 -(void)pressedAddBtn:(MDPopButton*)btn
 {
     [[MDAppControl sharedInstance] setActiveListType:MDActiveListTypeToDo animated:YES completionBlock:^{
-        
+        [[MDAppControl sharedInstance] insertNewToDoItemOnToDoList];
     }];
 }
 

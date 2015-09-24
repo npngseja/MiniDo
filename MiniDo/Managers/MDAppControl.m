@@ -73,6 +73,16 @@
     // header view is linked with the scroller via -(void)scrollViewDidScroll:, so we do not need to control here.
     CGFloat newContentOffsetX = (activeListType == MDActiveListTypeToDo) ? 0 : CGRectGetWidth(_baseVc.scroller.bounds);
     [_baseVc.scroller setContentOffset:CGPointMake(newContentOffsetX, 0) animated:animated];
+    
+    if (completionBlock) {
+        completionBlock();
+    }
+}
+
+#pragma mark - ToDo Item Management -
+-(void)insertNewToDoItemOnToDoList
+{
+    [self.baseVc.todoListViewController insertNewToDoCellAnimated:YES];
 }
 
 @end
