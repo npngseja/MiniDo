@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "MDDataIO.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    // start to configre app screens
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor blackColor];
+    self.baseVc = [[MDBaseViewController alloc] init];
+    self.navCtrl = [[UINavigationController alloc] initWithRootViewController:self.baseVc];
+    [self.navCtrl setNavigationBarHidden:YES];
+    
+    [self.window setRootViewController:self.navCtrl];
+    [self.window makeKeyAndVisible];
+
     return YES;
 }
 
@@ -41,7 +53,10 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
-    [self saveContext];
+    
+    [[MDDataIO sharedInstance] saveInBackgroundWithCompletionBlock:^(BOOL succeed) {
+        
+    }];
 }
 
 @end

@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="15A279b" minimumToolsVersion="Automatic">
+    <entity name="MDDataObject" representedClassName="MDDataObject" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="isDirty" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="uniqueId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
+    <entity name="MDToDoObject" representedClassName="MDToDoObject" parentEntity="MDDataObject" syncable="YES">
+        <attribute name="completionDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="isCompleted" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MDUserObject" inverseName="todoList" inverseEntity="MDUserObject" syncable="YES"/>
+    </entity>
+    <entity name="MDUserObject" representedClassName="MDUserObject" parentEntity="MDDataObject" syncable="YES">
+        <relationship name="todoList" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="MDToDoObject" inverseName="owner" inverseEntity="MDToDoObject" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="MDDataObject" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="MDToDoObject" positionX="-54" positionY="18" width="128" height="105"/>
+        <element name="MDUserObject" positionX="-36" positionY="45" width="128" height="60"/>
+    </elements>
 </model>

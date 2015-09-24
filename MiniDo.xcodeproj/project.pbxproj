@@ -19,6 +19,49 @@
 		B001C0A51BB2E64000421F81 /* MDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C0A41BB2E64000421F81 /* MDViewController.m */; settings = {ASSET_TAGS = (); }; };
 		B001C0A61BB2E64000421F81 /* MDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C0A41BB2E64000421F81 /* MDViewController.m */; settings = {ASSET_TAGS = (); }; };
 		B001C0A71BB2E64000421F81 /* MDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C0A41BB2E64000421F81 /* MDViewController.m */; settings = {ASSET_TAGS = (); }; };
+		B001C0AB1BB2EBC500421F81 /* MDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C0AA1BB2EBC500421F81 /* MDBaseViewController.m */; settings = {ASSET_TAGS = (); }; };
+		B001C0AC1BB2EBC500421F81 /* MDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C0AA1BB2EBC500421F81 /* MDBaseViewController.m */; settings = {ASSET_TAGS = (); }; };
+		B001C0AD1BB2EBC500421F81 /* MDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C0AA1BB2EBC500421F81 /* MDBaseViewController.m */; settings = {ASSET_TAGS = (); }; };
+		B03680D21BB468FB00A8DA96 /* MDToDoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680D11BB468FB00A8DA96 /* MDToDoListTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		B03680D31BB468FB00A8DA96 /* MDToDoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680D11BB468FB00A8DA96 /* MDToDoListTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		B03680D41BB468FB00A8DA96 /* MDToDoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680D11BB468FB00A8DA96 /* MDToDoListTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		B03680D71BB4691700A8DA96 /* MDToDoItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680D61BB4691700A8DA96 /* MDToDoItemView.m */; settings = {ASSET_TAGS = (); }; };
+		B03680D81BB4691700A8DA96 /* MDToDoItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680D61BB4691700A8DA96 /* MDToDoItemView.m */; settings = {ASSET_TAGS = (); }; };
+		B03680D91BB4691700A8DA96 /* MDToDoItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680D61BB4691700A8DA96 /* MDToDoItemView.m */; settings = {ASSET_TAGS = (); }; };
+		B03680E11BB46A5D00A8DA96 /* MDToDoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680E01BB46A5D00A8DA96 /* MDToDoListViewController.m */; settings = {ASSET_TAGS = (); }; };
+		B03680E21BB46A5D00A8DA96 /* MDToDoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680E01BB46A5D00A8DA96 /* MDToDoListViewController.m */; settings = {ASSET_TAGS = (); }; };
+		B03680E31BB46A5D00A8DA96 /* MDToDoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680E01BB46A5D00A8DA96 /* MDToDoListViewController.m */; settings = {ASSET_TAGS = (); }; };
+		B0788F7D1BB2F9A60021FC89 /* MDToDoObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F721BB2F9A60021FC89 /* MDToDoObject+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		B0788F7E1BB2F9A60021FC89 /* MDToDoObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F721BB2F9A60021FC89 /* MDToDoObject+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		B0788F7F1BB2F9A60021FC89 /* MDToDoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F741BB2F9A60021FC89 /* MDToDoObject.m */; settings = {ASSET_TAGS = (); }; };
+		B0788F801BB2F9A60021FC89 /* MDToDoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F741BB2F9A60021FC89 /* MDToDoObject.m */; settings = {ASSET_TAGS = (); }; };
+		B0788F811BB2F9A60021FC89 /* MDUserObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F761BB2F9A60021FC89 /* MDUserObject+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		B0788F821BB2F9A60021FC89 /* MDUserObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F761BB2F9A60021FC89 /* MDUserObject+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		B0788F831BB2F9A60021FC89 /* MDUserObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F781BB2F9A60021FC89 /* MDUserObject.m */; settings = {ASSET_TAGS = (); }; };
+		B0788F841BB2F9A60021FC89 /* MDUserObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F781BB2F9A60021FC89 /* MDUserObject.m */; settings = {ASSET_TAGS = (); }; };
+		B0788F851BB2F9A60021FC89 /* MDDataObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F7A1BB2F9A60021FC89 /* MDDataObject+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		B0788F861BB2F9A60021FC89 /* MDDataObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F7A1BB2F9A60021FC89 /* MDDataObject+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		B0788F871BB2F9A60021FC89 /* MDDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F7C1BB2F9A60021FC89 /* MDDataObject.m */; settings = {ASSET_TAGS = (); }; };
+		B0788F881BB2F9A60021FC89 /* MDDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F7C1BB2F9A60021FC89 /* MDDataObject.m */; settings = {ASSET_TAGS = (); }; };
+		B0788F8D1BB335870021FC89 /* AmaticSC-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0788F8B1BB335870021FC89 /* AmaticSC-Bold.ttf */; settings = {ASSET_TAGS = (); }; };
+		B0788F8E1BB335870021FC89 /* AmaticSC-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0788F8B1BB335870021FC89 /* AmaticSC-Bold.ttf */; settings = {ASSET_TAGS = (); }; };
+		B0788F8F1BB335870021FC89 /* AmaticSC-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0788F8C1BB335870021FC89 /* AmaticSC-Regular.ttf */; settings = {ASSET_TAGS = (); }; };
+		B0788F901BB335870021FC89 /* AmaticSC-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0788F8C1BB335870021FC89 /* AmaticSC-Regular.ttf */; settings = {ASSET_TAGS = (); }; };
+		B0788F931BB3466A0021FC89 /* MDMiniDoUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F921BB3466A0021FC89 /* MDMiniDoUtils.m */; settings = {ASSET_TAGS = (); }; };
+		B0788F941BB3466A0021FC89 /* MDMiniDoUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F921BB3466A0021FC89 /* MDMiniDoUtils.m */; settings = {ASSET_TAGS = (); }; };
+		B0788F951BB3466A0021FC89 /* MDMiniDoUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F921BB3466A0021FC89 /* MDMiniDoUtils.m */; settings = {ASSET_TAGS = (); }; };
+		B0788F9A1BB34BE40021FC89 /* MDPopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F991BB34BE40021FC89 /* MDPopButton.m */; settings = {ASSET_TAGS = (); }; };
+		B0788F9B1BB34BE40021FC89 /* MDPopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F991BB34BE40021FC89 /* MDPopButton.m */; settings = {ASSET_TAGS = (); }; };
+		B0788F9C1BB34BE40021FC89 /* MDPopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F991BB34BE40021FC89 /* MDPopButton.m */; settings = {ASSET_TAGS = (); }; };
+		B0788FA01BB354380021FC89 /* MDAppControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F9F1BB354380021FC89 /* MDAppControl.m */; settings = {ASSET_TAGS = (); }; };
+		B0788FA11BB354380021FC89 /* MDAppControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F9F1BB354380021FC89 /* MDAppControl.m */; settings = {ASSET_TAGS = (); }; };
+		B0788FA21BB354380021FC89 /* MDAppControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F9F1BB354380021FC89 /* MDAppControl.m */; settings = {ASSET_TAGS = (); }; };
+		B0788FA51BB3594B0021FC89 /* MDBaseHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788FA41BB3594B0021FC89 /* MDBaseHeaderView.m */; settings = {ASSET_TAGS = (); }; };
+		B0788FA61BB3594B0021FC89 /* MDBaseHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788FA41BB3594B0021FC89 /* MDBaseHeaderView.m */; settings = {ASSET_TAGS = (); }; };
+		B0788FA71BB3594B0021FC89 /* MDBaseHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788FA41BB3594B0021FC89 /* MDBaseHeaderView.m */; settings = {ASSET_TAGS = (); }; };
+		B0788FAC1BB367D40021FC89 /* MDUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788FAB1BB367D40021FC89 /* MDUserManager.m */; settings = {ASSET_TAGS = (); }; };
+		B0788FAD1BB367D40021FC89 /* MDUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788FAB1BB367D40021FC89 /* MDUserManager.m */; settings = {ASSET_TAGS = (); }; };
+		B0788FAE1BB367D40021FC89 /* MDUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788FAB1BB367D40021FC89 /* MDUserManager.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +100,40 @@
 		B001C09F1BB2E5F200421F81 /* MDDataIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDDataIO.m; path = DataIO/MDDataIO.m; sourceTree = "<group>"; };
 		B001C0A31BB2E64000421F81 /* MDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDViewController.h; path = UI/MDViewController.h; sourceTree = "<group>"; };
 		B001C0A41BB2E64000421F81 /* MDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDViewController.m; path = UI/MDViewController.m; sourceTree = "<group>"; };
+		B001C0A91BB2EBC500421F81 /* MDBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDBaseViewController.h; path = UI/MDBaseViewController.h; sourceTree = "<group>"; };
+		B001C0AA1BB2EBC500421F81 /* MDBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDBaseViewController.m; path = UI/MDBaseViewController.m; sourceTree = "<group>"; };
+		B001C0AE1BB2ECB300421F81 /* MDMiniDoConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDMiniDoConstants.h; sourceTree = "<group>"; };
+		B03680D01BB468FB00A8DA96 /* MDToDoListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDToDoListTableViewCell.h; path = UI/MDToDoListTableViewCell.h; sourceTree = "<group>"; };
+		B03680D11BB468FB00A8DA96 /* MDToDoListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDToDoListTableViewCell.m; path = UI/MDToDoListTableViewCell.m; sourceTree = "<group>"; };
+		B03680D51BB4691700A8DA96 /* MDToDoItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDToDoItemView.h; path = UI/MDToDoItemView.h; sourceTree = "<group>"; };
+		B03680D61BB4691700A8DA96 /* MDToDoItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDToDoItemView.m; path = UI/MDToDoItemView.m; sourceTree = "<group>"; };
+		B03680DF1BB46A5D00A8DA96 /* MDToDoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDToDoListViewController.h; path = UI/MDToDoListViewController.h; sourceTree = "<group>"; };
+		B03680E01BB46A5D00A8DA96 /* MDToDoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDToDoListViewController.m; path = UI/MDToDoListViewController.m; sourceTree = "<group>"; };
+		B0788F711BB2F9A60021FC89 /* MDToDoObject+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MDToDoObject+CoreDataProperties.h"; path = "DataIO/DataModels/MDToDoObject+CoreDataProperties.h"; sourceTree = "<group>"; };
+		B0788F721BB2F9A60021FC89 /* MDToDoObject+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MDToDoObject+CoreDataProperties.m"; path = "DataIO/DataModels/MDToDoObject+CoreDataProperties.m"; sourceTree = "<group>"; };
+		B0788F731BB2F9A60021FC89 /* MDToDoObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDToDoObject.h; path = DataIO/DataModels/MDToDoObject.h; sourceTree = "<group>"; };
+		B0788F741BB2F9A60021FC89 /* MDToDoObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDToDoObject.m; path = DataIO/DataModels/MDToDoObject.m; sourceTree = "<group>"; };
+		B0788F751BB2F9A60021FC89 /* MDUserObject+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MDUserObject+CoreDataProperties.h"; path = "DataIO/DataModels/MDUserObject+CoreDataProperties.h"; sourceTree = "<group>"; };
+		B0788F761BB2F9A60021FC89 /* MDUserObject+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MDUserObject+CoreDataProperties.m"; path = "DataIO/DataModels/MDUserObject+CoreDataProperties.m"; sourceTree = "<group>"; };
+		B0788F771BB2F9A60021FC89 /* MDUserObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDUserObject.h; path = DataIO/DataModels/MDUserObject.h; sourceTree = "<group>"; };
+		B0788F781BB2F9A60021FC89 /* MDUserObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDUserObject.m; path = DataIO/DataModels/MDUserObject.m; sourceTree = "<group>"; };
+		B0788F791BB2F9A60021FC89 /* MDDataObject+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MDDataObject+CoreDataProperties.h"; path = "DataIO/DataModels/MDDataObject+CoreDataProperties.h"; sourceTree = "<group>"; };
+		B0788F7A1BB2F9A60021FC89 /* MDDataObject+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MDDataObject+CoreDataProperties.m"; path = "DataIO/DataModels/MDDataObject+CoreDataProperties.m"; sourceTree = "<group>"; };
+		B0788F7B1BB2F9A60021FC89 /* MDDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDDataObject.h; path = DataIO/DataModels/MDDataObject.h; sourceTree = "<group>"; };
+		B0788F7C1BB2F9A60021FC89 /* MDDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDDataObject.m; path = DataIO/DataModels/MDDataObject.m; sourceTree = "<group>"; };
+		B0788F8B1BB335870021FC89 /* AmaticSC-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "AmaticSC-Bold.ttf"; path = "Resources/Fonts/AmaticSC-Bold.ttf"; sourceTree = "<group>"; };
+		B0788F8C1BB335870021FC89 /* AmaticSC-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "AmaticSC-Regular.ttf"; path = "Resources/Fonts/AmaticSC-Regular.ttf"; sourceTree = "<group>"; };
+		B0788F911BB335CD0021FC89 /* Licenses */ = {isa = PBXFileReference; lastKnownFileType = text; path = Licenses; sourceTree = "<group>"; };
+		B0788F921BB3466A0021FC89 /* MDMiniDoUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMiniDoUtils.m; sourceTree = "<group>"; };
+		B0788F961BB347AF0021FC89 /* MDMiniDoUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDMiniDoUtils.h; sourceTree = "<group>"; };
+		B0788F981BB34BE40021FC89 /* MDPopButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDPopButton.h; path = UI/MDPopButton.h; sourceTree = "<group>"; };
+		B0788F991BB34BE40021FC89 /* MDPopButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDPopButton.m; path = UI/MDPopButton.m; sourceTree = "<group>"; };
+		B0788F9E1BB354380021FC89 /* MDAppControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDAppControl.h; path = Managers/MDAppControl.h; sourceTree = "<group>"; };
+		B0788F9F1BB354380021FC89 /* MDAppControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDAppControl.m; path = Managers/MDAppControl.m; sourceTree = "<group>"; };
+		B0788FA31BB3594B0021FC89 /* MDBaseHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDBaseHeaderView.h; path = UI/MDBaseHeaderView.h; sourceTree = "<group>"; };
+		B0788FA41BB3594B0021FC89 /* MDBaseHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDBaseHeaderView.m; path = UI/MDBaseHeaderView.m; sourceTree = "<group>"; };
+		B0788FAA1BB367D40021FC89 /* MDUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDUserManager.h; path = Managers/MDUserManager.h; sourceTree = "<group>"; };
+		B0788FAB1BB367D40021FC89 /* MDUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDUserManager.m; path = Managers/MDUserManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +164,7 @@
 		B001C0591BB2D7F200421F81 = {
 			isa = PBXGroup;
 			children = (
+				B0788F911BB335CD0021FC89 /* Licenses */,
 				B001C0641BB2D7F300421F81 /* MiniDo */,
 				B001C0811BB2D7F300421F81 /* MiniDoTests */,
 				B001C08C1BB2D7F300421F81 /* MiniDoUITests */,
@@ -109,9 +187,13 @@
 			children = (
 				B001C0681BB2D7F300421F81 /* AppDelegate.h */,
 				B001C0691BB2D7F300421F81 /* AppDelegate.m */,
+				B001C0791BB2D7F300421F81 /* Info.plist */,
+				B001C0741BB2D7F300421F81 /* Assets.xcassets */,
 				B001C09D1BB2D83200421F81 /* Managers */,
 				B001C09C1BB2D82D00421F81 /* UI */,
 				B001C09B1BB2D81C00421F81 /* DataIO */,
+				B0788F891BB335690021FC89 /* Resources */,
+				B0788F971BB348000021FC89 /* Utils&Constants */,
 				B001C0651BB2D7F300421F81 /* Supporting Files */,
 			);
 			path = MiniDo;
@@ -120,9 +202,7 @@
 		B001C0651BB2D7F300421F81 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B001C0741BB2D7F300421F81 /* Assets.xcassets */,
 				B001C0761BB2D7F300421F81 /* LaunchScreen.storyboard */,
-				B001C0791BB2D7F300421F81 /* Info.plist */,
 				B001C0661BB2D7F300421F81 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -152,6 +232,7 @@
 				B001C0711BB2D7F300421F81 /* MiniDo.xcdatamodeld */,
 				B001C09E1BB2E5F200421F81 /* MDDataIO.h */,
 				B001C09F1BB2E5F200421F81 /* MDDataIO.m */,
+				B0788F701BB2F9150021FC89 /* Models */,
 			);
 			name = DataIO;
 			sourceTree = "<group>";
@@ -159,7 +240,10 @@
 		B001C09C1BB2D82D00421F81 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				B001C0A21BB2E61200421F81 /* Base */,
+				B0788FA81BB364B50021FC89 /* ToDo List */,
+				B001C0A81BB2EB9B00421F81 /* Base */,
+				B0788F9D1BB34BF50021FC89 /* Custom */,
+				B001C0A21BB2E61200421F81 /* UIKit Subclasses */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -167,17 +251,100 @@
 		B001C09D1BB2D83200421F81 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				B0788F9E1BB354380021FC89 /* MDAppControl.h */,
+				B0788F9F1BB354380021FC89 /* MDAppControl.m */,
+				B0788FAA1BB367D40021FC89 /* MDUserManager.h */,
+				B0788FAB1BB367D40021FC89 /* MDUserManager.m */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
 		};
-		B001C0A21BB2E61200421F81 /* Base */ = {
+		B001C0A21BB2E61200421F81 /* UIKit Subclasses */ = {
 			isa = PBXGroup;
 			children = (
 				B001C0A31BB2E64000421F81 /* MDViewController.h */,
 				B001C0A41BB2E64000421F81 /* MDViewController.m */,
 			);
+			name = "UIKit Subclasses";
+			sourceTree = "<group>";
+		};
+		B001C0A81BB2EB9B00421F81 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B001C0A91BB2EBC500421F81 /* MDBaseViewController.h */,
+				B001C0AA1BB2EBC500421F81 /* MDBaseViewController.m */,
+				B0788FA31BB3594B0021FC89 /* MDBaseHeaderView.h */,
+				B0788FA41BB3594B0021FC89 /* MDBaseHeaderView.m */,
+			);
 			name = Base;
+			sourceTree = "<group>";
+		};
+		B0788F701BB2F9150021FC89 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B0788F711BB2F9A60021FC89 /* MDToDoObject+CoreDataProperties.h */,
+				B0788F721BB2F9A60021FC89 /* MDToDoObject+CoreDataProperties.m */,
+				B0788F731BB2F9A60021FC89 /* MDToDoObject.h */,
+				B0788F741BB2F9A60021FC89 /* MDToDoObject.m */,
+				B0788F751BB2F9A60021FC89 /* MDUserObject+CoreDataProperties.h */,
+				B0788F761BB2F9A60021FC89 /* MDUserObject+CoreDataProperties.m */,
+				B0788F771BB2F9A60021FC89 /* MDUserObject.h */,
+				B0788F781BB2F9A60021FC89 /* MDUserObject.m */,
+				B0788F791BB2F9A60021FC89 /* MDDataObject+CoreDataProperties.h */,
+				B0788F7A1BB2F9A60021FC89 /* MDDataObject+CoreDataProperties.m */,
+				B0788F7B1BB2F9A60021FC89 /* MDDataObject.h */,
+				B0788F7C1BB2F9A60021FC89 /* MDDataObject.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		B0788F891BB335690021FC89 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B0788F8A1BB335740021FC89 /* Fonts */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		B0788F8A1BB335740021FC89 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B0788F8B1BB335870021FC89 /* AmaticSC-Bold.ttf */,
+				B0788F8C1BB335870021FC89 /* AmaticSC-Regular.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		B0788F971BB348000021FC89 /* Utils&Constants */ = {
+			isa = PBXGroup;
+			children = (
+				B001C0AE1BB2ECB300421F81 /* MDMiniDoConstants.h */,
+				B0788F961BB347AF0021FC89 /* MDMiniDoUtils.h */,
+				B0788F921BB3466A0021FC89 /* MDMiniDoUtils.m */,
+			);
+			name = "Utils&Constants";
+			sourceTree = "<group>";
+		};
+		B0788F9D1BB34BF50021FC89 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				B0788F981BB34BE40021FC89 /* MDPopButton.h */,
+				B0788F991BB34BE40021FC89 /* MDPopButton.m */,
+			);
+			name = Custom;
+			sourceTree = "<group>";
+		};
+		B0788FA81BB364B50021FC89 /* ToDo List */ = {
+			isa = PBXGroup;
+			children = (
+				B03680DF1BB46A5D00A8DA96 /* MDToDoListViewController.h */,
+				B03680E01BB46A5D00A8DA96 /* MDToDoListViewController.m */,
+				B03680D01BB468FB00A8DA96 /* MDToDoListTableViewCell.h */,
+				B03680D11BB468FB00A8DA96 /* MDToDoListTableViewCell.m */,
+				B03680D51BB4691700A8DA96 /* MDToDoItemView.h */,
+				B03680D61BB4691700A8DA96 /* MDToDoItemView.m */,
+			);
+			name = "ToDo List";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,7 +450,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0788F8F1BB335870021FC89 /* AmaticSC-Regular.ttf in Resources */,
 				B001C0781BB2D7F300421F81 /* LaunchScreen.storyboard in Resources */,
+				B0788F8D1BB335870021FC89 /* AmaticSC-Bold.ttf in Resources */,
 				B001C0751BB2D7F300421F81 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,6 +468,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0788F901BB335870021FC89 /* AmaticSC-Regular.ttf in Resources */,
+				B0788F8E1BB335870021FC89 /* AmaticSC-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,11 +480,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0788F831BB2F9A60021FC89 /* MDUserObject.m in Sources */,
 				B001C0A51BB2E64000421F81 /* MDViewController.m in Sources */,
 				B001C0A01BB2E5F200421F81 /* MDDataIO.m in Sources */,
 				B001C06A1BB2D7F300421F81 /* AppDelegate.m in Sources */,
+				B0788FAC1BB367D40021FC89 /* MDUserManager.m in Sources */,
+				B03680D21BB468FB00A8DA96 /* MDToDoListTableViewCell.m in Sources */,
+				B0788F9A1BB34BE40021FC89 /* MDPopButton.m in Sources */,
+				B0788F7D1BB2F9A60021FC89 /* MDToDoObject+CoreDataProperties.m in Sources */,
+				B0788F851BB2F9A60021FC89 /* MDDataObject+CoreDataProperties.m in Sources */,
+				B0788FA01BB354380021FC89 /* MDAppControl.m in Sources */,
+				B0788F931BB3466A0021FC89 /* MDMiniDoUtils.m in Sources */,
+				B03680E11BB46A5D00A8DA96 /* MDToDoListViewController.m in Sources */,
 				B001C0671BB2D7F300421F81 /* main.m in Sources */,
+				B001C0AB1BB2EBC500421F81 /* MDBaseViewController.m in Sources */,
 				B001C0731BB2D7F300421F81 /* MiniDo.xcdatamodeld in Sources */,
+				B0788F811BB2F9A60021FC89 /* MDUserObject+CoreDataProperties.m in Sources */,
+				B03680D71BB4691700A8DA96 /* MDToDoItemView.m in Sources */,
+				B0788FA51BB3594B0021FC89 /* MDBaseHeaderView.m in Sources */,
+				B0788F7F1BB2F9A60021FC89 /* MDToDoObject.m in Sources */,
+				B0788F871BB2F9A60021FC89 /* MDDataObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,9 +507,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0788F841BB2F9A60021FC89 /* MDUserObject.m in Sources */,
+				B001C0AC1BB2EBC500421F81 /* MDBaseViewController.m in Sources */,
+				B0788F801BB2F9A60021FC89 /* MDToDoObject.m in Sources */,
+				B0788FA61BB3594B0021FC89 /* MDBaseHeaderView.m in Sources */,
 				B001C0A11BB2E5F200421F81 /* MDDataIO.m in Sources */,
+				B03680E21BB46A5D00A8DA96 /* MDToDoListViewController.m in Sources */,
+				B0788F9B1BB34BE40021FC89 /* MDPopButton.m in Sources */,
+				B03680D81BB4691700A8DA96 /* MDToDoItemView.m in Sources */,
+				B0788FAD1BB367D40021FC89 /* MDUserManager.m in Sources */,
 				B001C0A61BB2E64000421F81 /* MDViewController.m in Sources */,
+				B03680D31BB468FB00A8DA96 /* MDToDoListTableViewCell.m in Sources */,
+				B0788FA11BB354380021FC89 /* MDAppControl.m in Sources */,
+				B0788F881BB2F9A60021FC89 /* MDDataObject.m in Sources */,
+				B0788F821BB2F9A60021FC89 /* MDUserObject+CoreDataProperties.m in Sources */,
 				B001C0831BB2D7F300421F81 /* MiniDoTests.m in Sources */,
+				B0788F941BB3466A0021FC89 /* MDMiniDoUtils.m in Sources */,
+				B0788F7E1BB2F9A60021FC89 /* MDToDoObject+CoreDataProperties.m in Sources */,
+				B0788F861BB2F9A60021FC89 /* MDDataObject+CoreDataProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,7 +532,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0788F951BB3466A0021FC89 /* MDMiniDoUtils.m in Sources */,
+				B03680D41BB468FB00A8DA96 /* MDToDoListTableViewCell.m in Sources */,
 				B001C08E1BB2D7F300421F81 /* MiniDoUITests.m in Sources */,
+				B03680E31BB46A5D00A8DA96 /* MDToDoListViewController.m in Sources */,
+				B001C0AD1BB2EBC500421F81 /* MDBaseViewController.m in Sources */,
+				B0788FA71BB3594B0021FC89 /* MDBaseHeaderView.m in Sources */,
+				B0788F9C1BB34BE40021FC89 /* MDPopButton.m in Sources */,
+				B0788FAE1BB367D40021FC89 /* MDUserManager.m in Sources */,
+				B03680D91BB4691700A8DA96 /* MDToDoItemView.m in Sources */,
+				B0788FA21BB354380021FC89 /* MDAppControl.m in Sources */,
 				B001C0A71BB2E64000421F81 /* MDViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -453,6 +663,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MD.MiniDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -464,6 +675,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MD.MiniDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -10,6 +10,34 @@
 
 @implementation MDDataIO
 
++ (instancetype)sharedInstance
+{
+    static MDDataIO *_instance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _instance = [[self alloc] init];
+        
+    });
+    
+    return _instance;
+}
+
+- (void)saveInBackgroundWithCompletionBlock:(void (^)(BOOL))completionBlock {
+    NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
+    if (managedObjectContext != nil) {
+        NSError *error = nil;
+        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
+            // Replace this implementation with code to handle the error appropriately.
+            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            
+        }
+        
+        if (completionBlock) {
+            completionBlock(error == nil ? YES : NO);
+        }
+    }
+}
 
 
 #pragma mark - Core Data stack
@@ -77,19 +105,5 @@
     return _managedObjectContext;
 }
 
-#pragma mark - Core Data Saving support
-
-- (void)saveContext {
-    NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
-    if (managedObjectContext != nil) {
-        NSError *error = nil;
-        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-            // Replace this implementation with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        }
-    }
-}
 
 @end

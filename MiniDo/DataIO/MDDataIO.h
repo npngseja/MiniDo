@@ -11,6 +11,12 @@
 
 @interface MDDataIO : NSObject
 
+/**
+ return singleton instance
+ 
+ @return shared instance
+ */
++ (instancetype)sharedInstance;
 
 #pragma mark - CoreData Stack -
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
