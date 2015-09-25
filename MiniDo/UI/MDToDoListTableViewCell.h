@@ -21,4 +21,9 @@
  */
 -(void)updateToDoObject:(nonnull MDToDoObject*)todo;
 
+/**
+ if text is empty then we show keyboard
+ */
+-(void)startToDoTextEdit;
+
 @end

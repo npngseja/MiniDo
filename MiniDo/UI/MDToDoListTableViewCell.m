@@ -7,6 +7,8 @@
 //
 
 #import "MDToDoListTableViewCell.h"
+#import "MDMiniDoConstants.h"
+#import "MDMiniDoUtils.h"
 
 @implementation MDToDoListTableViewCell
 
@@ -25,13 +27,7 @@
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    self.contentView.frame = self.bounds;
-    if (self.todoItemView == nil) {
-        // we create item view here after we know cell's actual size.
-        // this method is called frequently, so the 'nil' check is super important. 
-        self.todoItemView = [[MDToDoItemView alloc] initWithFrame:self.contentView.bounds];
-        [self.contentView addSubview:self.todoItemView];
-    }
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -43,7 +39,18 @@
 #pragma mark - ToDo Item View Related -
 -(void)updateToDoObject:(MDToDoObject *)todo
 {
+    if (self.todoItemView == nil) {
+        self.todoItemView = [[MDToDoItemView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.contentView.bounds), TODO_CELL_HEIGHT)];
+        [self.contentView addSubview:self.todoItemView];
+    }
     
+    [self.todoItemView setTodo:todo];
 }
 
+-(void)startToDoTextEdit
+{
+    if (self.todoItemView.todo.text.length == 0) {
+        [self.todoItemView.textField becomeFirstResponder];
+    }
+}
 @end

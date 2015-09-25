@@ -9,8 +9,13 @@
 #import "MDAppControl.h"
 #import "MDBaseViewController.h"
 #import "AppDelegate.h"
+#import "MDUserManager.h"
+#import "MDDataIO.h"
 
 @implementation MDAppControl
+{
+    MDToDoObject *__currentFocusToDo;
+}
 @synthesize activeListType = _activeListType;
 
 + (nonnull instancetype)sharedInstance;
@@ -42,14 +47,60 @@
 #pragma mark - App Launch Sequence -
 - (void)doAppLaunchSequenceWithCompletionBlock:(nullable void (^)())completionBlock
 {
-    // set active list to ToDo List
-    [self setActiveListType:MDActiveListTypeToDo animated:NO completionBlock:^{
+    /*
+     In order to make the app super super simple, I make following Assumptions:
+     - We do not have username/password. We do not have login UI. User sees immediately todo list without logging in.
+     - User object is created with UUID and stored on local DB. The User object will be stored on cloud. Since we do not have real server, we skip sign up process. We assume the the User object is already stored on server.
+     */
+    
+    __weak typeof(self) weakSelf = self;
+    
+    // 1. get last user. if it does not exist, we create new one.
+    [[MDUserManager sharedInstance] loginWithLastLoginUserWithCompletionBlock:^(BOOL succeed, MDUserObject * _Nullable user) {
+        
+        if (succeed == YES) {
+            // user logged in
+            
+            // set active list to ToDo List
+            
+            [self setActiveListType:MDActiveListTypeToDo animated:NO completionBlock:^{
+                
+                // load both table views with todos from DB
+                [weakSelf.baseVc.todoListViewController updateListViewWithCurrentTodo];
+                [weakSelf.baseVc.doneListViewController updateListViewWithCurrentTodo];
+                
+                // DEBUG
+                [[MDUserManager sharedInstance] fetchTodosForListType:MDActiveListTypeToDo completionBlock:^(BOOL succeed, NSArray<MDToDoObject *> * _Nullable results) {
+                    for (MDToDoObject *t in results) {
+                        NSLog(@"%@ - %@",t.order, t.text);
+                    }
+                    
+                    [[MDUserManager sharedInstance] fetchTodosForListType:MDActiveListTypeDone completionBlock:^(BOOL succeed, NSArray<MDToDoObject *> * _Nullable results) {
+                        for (MDToDoObject *t in results) {
+                            NSLog(@"%@ X %@",t.order, t.text);
+                        }
+                    }];
+                }];
+                //
+            }];
+            
+        } else {
+            // login failed
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Error", nil) message:NSLocalizedString(@"Something went wrong. Restart might fix the problem. Sorry!", nil) preferredStyle:UIAlertControllerStyleAlert];
+            
+            [self.baseVc presentViewController:alert animated:YES completion:nil];
+            
+        }
+        
+        if (completionBlock) {
+            completionBlock();
+        }
         
     }];
     
-    if (completionBlock) {
-        completionBlock();
-    }
+    
+    
+    
 }
 
 #pragma - Active List Type Change -
@@ -82,7 +133,59 @@
 #pragma mark - ToDo Item Management -
 -(void)insertNewToDoItemOnToDoList
 {
-    [self.baseVc.todoListViewController insertNewToDoCellAnimated:YES];
+    [[MDUserManager sharedInstance] createNewToDoForUserWithCompletionBlock:^(BOOL succeed, MDToDoObject * _Nullable todo) {
+        
+        if (succeed == NO) {
+            // failed. we do not notify this error to user. user might try to tap the add button again.
+            // it would be fine. This situation happens very very seldom.
+        } else {
+            // new empty todo is added
+            [self.baseVc.todoListViewController insertNewToDoCellWithToDoObject:todo animated:YES];
+            
+        }
+
+        
+    }];
+    
+    
+}
+
+-(void)removeToDoItemWithToDo:(MDToDoObject *)todo
+{
+    MDToDoListViewController *targetVc = nil;
+    if (todo.isCompleted.boolValue == NO) {
+        // this item (cell) is in todolist
+        targetVc = self.baseVc.todoListViewController;
+    } else {
+        // in done list
+        targetVc = self.baseVc.doneListViewController;
+    }
+    
+    [targetVc removeToDoCellWithToDoObject:todo animated:YES completionBlock:^{
+        // we removed cell. Next is destroying todo object. be careful reordering here!
+        [[MDUserManager sharedInstance] destroyToDo:todo completionBlock:^(BOOL succeed) {
+            
+        }];
+    }];
+
+}
+
+-(void)focusOnToDo:(MDToDoObject *)todo completionBlock:(void (^)())completionBlock
+{
+    __currentFocusToDo = todo;
+    NSLog(@"[MDAppControl] focus on todo: %@", todo.text);
+    
+    if (completionBlock) {
+        completionBlock();
+    }
+}
+
+-(void)dismissCurrentFocusToDoWithCompletionBlock:(void (^)())completionBlock
+{
+    __currentFocusToDo = nil;
+    if (completionBlock) {
+        completionBlock();
+    }
 }
 
 @end

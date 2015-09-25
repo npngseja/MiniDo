@@ -39,6 +39,55 @@
     }
 }
 
+-(void)fetchObjectWithClassName:(nonnull NSString*)className
+                      predicate:(nullable NSPredicate*)p
+                sortDescriptors:(nullable NSArray<NSSortDescriptor*>*)s
+                completionBlock:(nonnull void (^)(NSArray<MDDataObject*> * _Nullable results, NSError * _Nullable error))completionBlock
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:className];
+    request.predicate = p;
+    if (s.count > 0) {
+        request.sortDescriptors = s;
+    }
+    NSError *error = nil;
+    NSArray *r = [self.managedObjectContext executeFetchRequest:request error:&error];
+    
+    if (completionBlock) {
+        completionBlock(r, error);
+    }
+
+}
+
+-(void)createObjectWithClassName:(NSString *)className
+                 completionBlock:(void (^)(BOOL, MDDataObject * _Nullable))completionBlock
+{
+    // all data objects are subclasses of MDDataObject. So this cast is safe.
+    MDDataObject *o = (MDDataObject*)[NSEntityDescription
+                                      insertNewObjectForEntityForName:className
+                                      inManagedObjectContext:self.managedObjectContext];
+    
+    // set default value
+    o.uniqueId = [NSUUID UUID].UUIDString;
+    o.isDirty = @NO;
+    o.createdAt = [NSDate date];
+    o.updatedAt = [NSDate date];
+    
+    if (completionBlock) {
+        completionBlock(o != nil ? YES : NO, o);
+    }
+    
+    
+}
+
+-(void)deleteObject:(MDDataObject *)o completionBlock:(void (^)())completionBlock
+{
+    [self.managedObjectContext deleteObject:o];
+    
+    if (completionBlock) {
+        completionBlock();
+    }
+}
+
 
 #pragma mark - Core Data stack
 

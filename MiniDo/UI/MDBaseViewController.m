@@ -55,11 +55,13 @@
     // todo list view controller
     self.todoListViewController = [[MDToDoListViewController alloc] init];
     self.todoListViewController.view.frame = self.scroller.bounds;
+    self.todoListViewController.listType = MDActiveListTypeToDo;
     [self.scroller addSubview:self.todoListViewController.view];
     
     // done list view controller
     self.doneListViewController = [[MDToDoListViewController alloc] init];
     self.doneListViewController.view.frame = CGRectMake(CGRectGetWidth(self.scroller.bounds), 0, CGRectGetWidth(self.scroller.bounds), CGRectGetHeight(self.scroller.bounds));
+    self.doneListViewController.listType = MDActiveListTypeDone;
     [self.scroller addSubview:self.doneListViewController.view];
     
     // add button
@@ -70,6 +72,9 @@
     [self.addBtn setBackgroundImage:btnImage forState:UIControlStateHighlighted];
     [self.addBtn addTarget:self action:@selector(pressedAddBtn:) forControlEvents:UIControlEventTouchUpInside];
     self.addBtn.tintColor = DEFAULT_KEY_COLOR;
+    self.addBtn.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3];
+    self.addBtn.layer.cornerRadius = btnImage.size.width/2;
+    self.addBtn.clipsToBounds = YES;
     [self.view addSubview:self.addBtn];
     [self.view addConstraints:@[
                                 [NSLayoutConstraint constraintWithItem:self.addBtn
@@ -79,11 +84,11 @@
                                                           attribute:NSLayoutAttributeBottom
                                                          multiplier:1.0 constant:-px2p(64)],
                                 [NSLayoutConstraint constraintWithItem:self.addBtn
-                                                             attribute:NSLayoutAttributeRight
+                                                             attribute:NSLayoutAttributeCenterX
                                                              relatedBy:NSLayoutRelationEqual
                                                                 toItem:self.view
-                                                             attribute:NSLayoutAttributeRight
-                                                            multiplier:1.0 constant:-px2p(64)],
+                                                             attribute:NSLayoutAttributeCenterX
+                                                            multiplier:1.0 constant:0],
                                 ]];
     // header
     self.headerView = [[MDBaseHeaderView alloc] initWithFrame:CGRectMake(0, 20+px2p(34), CGRectGetWidth(self.view.bounds), px2p(250))];

@@ -8,14 +8,27 @@
 
 #import <UIKit/UIKit.h>
 #import "MDToDoObject.h"
+#import "MDMiniDoConstants.h"
 
 @interface MDToDoListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonnull, nonatomic, strong) UITableView *tableView;
+@property MDActiveListType listType;
+
+-(void)updateListViewWithCurrentTodo;
 
 /**
  insert a new ToDo Cell
  */
--(void)insertNewToDoCellAnimated:(BOOL)animated;
+-(void)insertNewToDoCellWithToDoObject:(MDToDoObject * _Nonnull)todo
+                              animated:(BOOL)animated;
+
+/**
+ remove todo cell
+ */
+-(void)removeToDoCellWithToDoObject:(MDToDoObject * _Nonnull)todo
+                           animated:(BOOL)animated
+                    completionBlock:(nullable void (^)())completionBlock;
+
 
 @end

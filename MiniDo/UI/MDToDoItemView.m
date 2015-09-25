@@ -9,6 +9,8 @@
 #import "MDToDoItemView.h"
 #import "MDMiniDoConstants.h"
 #import "MDMiniDoUtils.h"
+#import "MDDataIO.h"
+#import "MDAppControl.h"
 
 @implementation MDToDoItemView
 @synthesize todo = _todo;
@@ -54,14 +56,22 @@
     self.textField.textColor = DEFAULT_TEXT_COLOR;
     self.textField.delegate = self;
     self.textField.returnKeyType = UIReturnKeyDone;
-    //self.textField.text = @"This is Dummy!";
+    // Below view makes a tap-to-dismiss area on top of the keyboard.
+    // It is simple and handy, but it blocks tap to move cursor on the textfield.
+    // In order to keep the app simple, I stick with approach.
+    UIView *keyboardDismissBtn = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    keyboardDismissBtn.backgroundColor = [UIColor clearColor];
+    UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeKeyboard:)];
+    [keyboardDismissBtn addGestureRecognizer:gr];
+    keyboardDismissBtn.userInteractionEnabled = YES;
+    self.textField.inputAccessoryView = keyboardDismissBtn;
     NSAttributedString *atrPlaceHolder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Type in...", nil) attributes:@{NSFontAttributeName: self.textField.font, NSForegroundColorAttributeName: [UIColor colorWithWhite:1.0 alpha:0.5]}];
     self.textField.attributedPlaceholder = atrPlaceHolder;
     [self addSubview:self.textField];
     
 }
 
-#pragma mark - Button Actions -
+#pragma mark - Actions -
 -(void)pressedDoneBtn:(UIButton*)btn
 {
     // change button appearance
@@ -71,12 +81,22 @@
     // update todo data
     self.todo.isCompleted = @(isCompleted);
     
+    [[MDDataIO sharedInstance] saveInBackgroundWithCompletionBlock:^(BOOL succeed) {
+        
+    }];
+    
     // change textfield appearance
     if (isCompleted) {
         self.textField.alpha = 0.5;
     } else {
         self.textField.alpha = 1.0;
     }
+    
+}
+
+-(void)closeKeyboard:(UITapGestureRecognizer*)gr
+{
+    [self.textField resignFirstResponder];
 }
 
 #pragma mark - Content Management -
@@ -93,7 +113,14 @@
 
 -(void)__updateContentWithCurrentToDoObject
 {
-    
+    self.textField.text = _todo.text;
+    if (_todo.isCompleted.boolValue == YES) {
+        self.doneBtn.selected = YES;
+        self.textField.alpha = 0.5;
+    } else {
+        self.doneBtn.selected = NO;
+        self.textField.alpha = 1.0;
+    }
 }
 
 #pragma mark - UITextField Delegate -
@@ -104,9 +131,29 @@
         return YES;
     } else {
         // once we set text, we do not allow text edit. Text can be edited in detail mode text view
+        [[MDAppControl sharedInstance] focusOnToDo:self.todo completionBlock:^{
+            
+        }];
         return NO;
     }
     
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if (textField.text.length == 0) {
+        // no todo body. we should destroy the cell
+        [[MDAppControl sharedInstance] removeToDoItemWithToDo:self.todo];
+        
+    } else {
+        // save this item as todo
+        self.todo.text = textField.text;
+        self.todo.creationDate = [NSDate date];
+        self.todo.updatedAt = [NSDate date];
+        [[MDDataIO sharedInstance] saveInBackgroundWithCompletionBlock:^(BOOL succeed) {
+            
+        }];
+    }
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField

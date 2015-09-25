@@ -2,7 +2,7 @@
 //  MDUserObject+CoreDataProperties.m
 //  MiniDo
 //
-//  Created by npngseja on 23/09/15.
+//  Created by npngseja on 25/09/15.
 //  Copyright © 2015 Taehun Kim. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -13,6 +13,8 @@
 
 @implementation MDUserObject (CoreDataProperties)
 
-@dynamic todoList;
+@dynamic todoCount;
+@dynamic doneCount;
+@dynamic todos;
 
 @end

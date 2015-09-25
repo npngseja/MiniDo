@@ -6,6 +6,11 @@
 //  Copyright © 2015 Taehun Kim. All rights reserved.
 //
 
+/*
+ - add new todo: when new todo is added, user's todoCount and count of fetched todos should be same user's todos should have one more todo object.
+ - remove a todo: todo should be removed. be careful of todoCount!
+ */
+
 #import <XCTest/XCTest.h>
 
 @interface MiniDoTests : XCTestCase
@@ -24,9 +29,8 @@
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+- (void)testAddNewToDo {
+   
 }
 
 - (void)testPerformanceExample {

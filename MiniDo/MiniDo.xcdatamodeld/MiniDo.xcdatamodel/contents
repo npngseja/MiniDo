@@ -8,16 +8,20 @@
     </entity>
     <entity name="MDToDoObject" representedClassName="MDToDoObject" parentEntity="MDDataObject" syncable="YES">
         <attribute name="completionDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="creationDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="isCompleted" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MDUserObject" inverseName="todoList" inverseEntity="MDUserObject" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MDUserObject" inverseName="todos" inverseEntity="MDUserObject" syncable="YES"/>
     </entity>
     <entity name="MDUserObject" representedClassName="MDUserObject" parentEntity="MDDataObject" syncable="YES">
-        <relationship name="todoList" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="MDToDoObject" inverseName="owner" inverseEntity="MDToDoObject" syncable="YES"/>
+        <attribute name="doneCount" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="todoCount" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="todos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MDToDoObject" inverseName="owner" inverseEntity="MDToDoObject" syncable="YES"/>
     </entity>
     <elements>
         <element name="MDDataObject" positionX="-63" positionY="-18" width="128" height="105"/>
-        <element name="MDToDoObject" positionX="-54" positionY="18" width="128" height="105"/>
-        <element name="MDUserObject" positionX="-36" positionY="45" width="128" height="60"/>
+        <element name="MDToDoObject" positionX="-54" positionY="18" width="128" height="135"/>
+        <element name="MDUserObject" positionX="-36" positionY="45" width="128" height="90"/>
     </elements>
 </model>

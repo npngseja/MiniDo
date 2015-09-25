@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MDMiniDoConstants.h"
+#import "MDToDoObject.h"
 
 @class MDBaseViewController;
 
@@ -43,5 +44,19 @@
  insert a new ToDo Item into the todoList. The Item has no data, and will be ready to get user's input
  */
 - (void)insertNewToDoItemOnToDoList;
+
+/**
+ remove a todo item from a list
+ */
+- (void)removeToDoItemWithToDo:(nonnull MDToDoObject*)todo;
+
+/**
+ focus on todo item
+ */
+- (void)focusOnToDo:(nonnull MDToDoObject*)todo completionBlock:(nullable void (^)())completionBlock;
+/**
+ dismiss focussing todo
+ */
+-(void)dismissCurrentFocusToDoWithCompletionBlock:(nullable void (^)())completionBlock;
 
 @end
