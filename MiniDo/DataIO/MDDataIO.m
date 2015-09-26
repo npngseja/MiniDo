@@ -82,7 +82,9 @@
 -(void)deleteObject:(MDDataObject *)o completionBlock:(void (^)())completionBlock
 {
     [self.managedObjectContext deleteObject:o];
-    
+    [self saveInBackgroundWithCompletionBlock:^(BOOL succeed) {
+        
+    }];
     if (completionBlock) {
         completionBlock();
     }

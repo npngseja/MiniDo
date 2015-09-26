@@ -132,7 +132,7 @@
              completionBlock:(nonnull void (^)(BOOL succeed, NSArray<MDToDoObject*> * _Nullable results))completionBlock;
 {
     BOOL isCompleted = listType == MDActiveListTypeToDo ? NO : YES;
-    NSPredicate *p = [NSPredicate predicateWithFormat:@"(%K == %@)", @"isCompleted", @(isCompleted)];
+    NSPredicate *p = [NSPredicate predicateWithFormat:@"(%K == %@) AND (%K == %@)", @"isCompleted", @(isCompleted), @"owner", self.currentUser];
     NSSortDescriptor *s = [NSSortDescriptor sortDescriptorWithKey:@"order" ascending:NO];
     [[MDDataIO sharedInstance] fetchObjectWithClassName:NSStringFromClass([MDToDoObject class])
                                               predicate:p

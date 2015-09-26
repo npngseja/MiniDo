@@ -13,5 +13,10 @@ FOUNDATION_EXPORT CGFloat px2p(CGFloat px) {
 }
 
 FOUNDATION_EXPORT CGFloat hdfs2fs(CGFloat fs) {
-    return round(fs/((1242.0/([UIScreen mainScreen].bounds.size.width > 375 ? [UIScreen mainScreen].bounds.size.width : [UIScreen mainScreen].bounds.size.width+20))));
+    return ((((fs)/1242.0)*[UIScreen mainScreen].bounds.size.width));
+    //return round(fs/((1242.0/([UIScreen mainScreen].bounds.size.width > 375 ? [UIScreen mainScreen].bounds.size.width : [UIScreen mainScreen].bounds.size.width+20))));
+}
+
+FOUNDATION_EXPORT CGFloat deg2rad(CGFloat deg) {
+    return  (deg*M_PI/180.0);
 }

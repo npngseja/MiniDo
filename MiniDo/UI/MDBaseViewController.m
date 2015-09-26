@@ -10,10 +10,13 @@
 #import "MDMiniDoConstants.h"
 #import "MDMiniDoUtils.h"
 #import "MDAppControl.h"
+#import "MDToDoItemView.h"
 
 @interface MDBaseViewController ()
 {
     BOOL __isFirstLoad;
+    UIView *__contentView;  // contains scroller, header and add button
+    UIView *__layerInvisibleDismissFocusedToDo; // tap on it will dismiss focused todo.
 }
 @end
 
@@ -42,15 +45,20 @@
         });
     });
     
+    __contentView = [[UIView alloc] initWithFrame:self.view.bounds];
+    __contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    __contentView.userInteractionEnabled = YES;
+    [self.view addSubview:__contentView];
+    
     // base scroller
-    self.scroller = [[UIScrollView alloc] initWithFrame:CGRectMake(0, px2p(370), CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - px2p(370))];
+    self.scroller = [[UIScrollView alloc] initWithFrame:CGRectMake(0, px2p(370), CGRectGetWidth(__contentView.bounds), CGRectGetHeight(__contentView.bounds) - px2p(370))];
     self.scroller.showsHorizontalScrollIndicator = NO;
     self.scroller.showsVerticalScrollIndicator = NO;
     self.scroller.pagingEnabled = YES;
     self.scroller.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     self.scroller.delegate = self;
     self.scroller.contentSize = CGSizeMake(CGRectGetWidth(self.scroller.bounds)*2, CGRectGetHeight(self.scroller.bounds));
-    [self.view addSubview:self.scroller];
+    [__contentView addSubview:self.scroller];
     
     // todo list view controller
     self.todoListViewController = [[MDToDoListViewController alloc] init];
@@ -65,18 +73,24 @@
     [self.scroller addSubview:self.doneListViewController.view];
     
     // add button
-    self.addBtn = [[MDPopButton alloc] init];
+    self.addBtn = [[MDBaseAddBtn alloc] initWithFrame:CGRectMake(0, 0, px2p(300), px2p(300))];
     self.addBtn.translatesAutoresizingMaskIntoConstraints = NO;
-    UIImage *btnImage = [[UIImage imageNamed:@"Add"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    [self.addBtn setBackgroundImage:btnImage forState:UIControlStateNormal];
-    [self.addBtn setBackgroundImage:btnImage forState:UIControlStateHighlighted];
     [self.addBtn addTarget:self action:@selector(pressedAddBtn:) forControlEvents:UIControlEventTouchUpInside];
     self.addBtn.tintColor = DEFAULT_KEY_COLOR;
     self.addBtn.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3];
-    self.addBtn.layer.cornerRadius = btnImage.size.width/2;
+    self.addBtn.layer.cornerRadius = px2p(300)/2;
     self.addBtn.clipsToBounds = YES;
     [self.view addSubview:self.addBtn];
-    [self.view addConstraints:@[
+    [self.view addConstraints:@[[NSLayoutConstraint constraintWithItem:self.addBtn
+                                                             attribute:NSLayoutAttributeWidth
+                                                             relatedBy:NSLayoutRelationEqual
+                                                                toItem:nil
+                                                             attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:px2p(300)],
+                                [NSLayoutConstraint constraintWithItem:self.addBtn
+                                                             attribute:NSLayoutAttributeHeight
+                                                             relatedBy:NSLayoutRelationEqual
+                                                                toItem:nil
+                                                             attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:px2p(300)],
                                 [NSLayoutConstraint constraintWithItem:self.addBtn
                                                           attribute:NSLayoutAttributeBottom
                                                           relatedBy:NSLayoutRelationEqual
@@ -91,8 +105,8 @@
                                                             multiplier:1.0 constant:0],
                                 ]];
     // header
-    self.headerView = [[MDBaseHeaderView alloc] initWithFrame:CGRectMake(0, 20+px2p(34), CGRectGetWidth(self.view.bounds), px2p(250))];
-    [self.view addSubview:self.headerView];
+    self.headerView = [[MDBaseHeaderView alloc] initWithFrame:CGRectMake(0, 20+px2p(34), CGRectGetWidth(__contentView.bounds), px2p(250))];
+    [__contentView addSubview:self.headerView];
     
     
 }
@@ -117,8 +131,23 @@
 #pragma mark - Action -
 -(void)pressedAddBtn:(MDPopButton*)btn
 {
-    [[MDAppControl sharedInstance] setActiveListType:MDActiveListTypeToDo animated:YES completionBlock:^{
-        [[MDAppControl sharedInstance] insertNewToDoItemOnToDoList];
+    if ([MDAppControl sharedInstance].isFocusMode == YES) {
+        // focus mode. dismiss focus mode
+        [[MDAppControl sharedInstance] dismissCurrentFocusToDoWithCompletionBlock:^{
+            
+        }];
+    } else {
+        // normal mode. add new item
+        [[MDAppControl sharedInstance] setActiveListType:MDActiveListTypeToDo animated:YES completionBlock:^{
+            [[MDAppControl sharedInstance] insertNewToDoItemOnToDoList];
+        }];
+    }
+}
+
+-(void)tappedOnDismissFocusedToDoLayer:(UITapGestureRecognizer*)gr
+{
+    [[MDAppControl sharedInstance] dismissCurrentFocusToDoWithCompletionBlock:^{
+        
     }];
 }
 
@@ -134,6 +163,205 @@
     CGFloat transitionProgress = scrollView.contentOffset.x / CGRectGetWidth(scrollView.bounds);
     [self.headerView layoutWithTransitionProgress:transitionProgress];
     
+}
+
+#pragma mark - Focus on/off
+-(void)__makeContentViewFarAway
+{
+    __contentView.alpha = 0.1;
+    // for the simplicity, we user view-based animation and simulate depth of the view by scale control.
+    // better would be controling CATransform3D.z
+    __contentView.transform = CGAffineTransformMakeScale(0.9, 0.9);
+}
+
+-(void)__makeContentViewNormal
+{
+    __contentView.alpha = 1.0;
+    // to simplicity, we user view-based animation and simulate depth of the view by scale control.
+    // better would be controling CATransform3D.z
+    __contentView.transform = CGAffineTransformMakeScale(1.0, 1.0);
+
+}
+
+-(void)focusOnToDo:(MDToDoObject *)todo completionBlock:(void (^)(BOOL succceed))completionBlock
+{
+    MDToDoListViewController *targetVc = todo.isCompleted.boolValue == YES ? self.doneListViewController : self.todoListViewController;
+    
+    MDToDoItemView *itemView = [targetVc todoItemViewForToDoObject:todo];
+    if (itemView == nil) {
+        NSLog(@"[MDBaseViewController] item view for the given todo is not found!");
+        if (completionBlock) {
+            completionBlock(NO);
+        }
+        return;
+    }
+    
+    // mark this item view as fouces
+    itemView.isFocused = YES;
+    
+    
+    // show invisible layer to dismiss focusing todo
+    if (__layerInvisibleDismissFocusedToDo == nil) {
+        __layerInvisibleDismissFocusedToDo = [[UIView alloc] initWithFrame:self.view.bounds];
+        __layerInvisibleDismissFocusedToDo.userInteractionEnabled = YES;
+        __layerInvisibleDismissFocusedToDo.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+        __layerInvisibleDismissFocusedToDo.alpha = 0.0;
+        UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedOnDismissFocusedToDoLayer:)];
+        [__layerInvisibleDismissFocusedToDo addGestureRecognizer:gr];
+    }
+    [self.view insertSubview:__layerInvisibleDismissFocusedToDo belowSubview:self.addBtn];
+    
+    // take the view out of the cell and put on top of other view
+    CGPoint centerOnBaseVc = [itemView convertPoint:CGPointMake(CGRectGetWidth(itemView.bounds)/2, CGRectGetHeight(itemView.bounds)/2) toView:self.view];
+    itemView.center = centerOnBaseVc;
+    [self.view addSubview:itemView];
+    
+    //
+    // animation!
+    //
+    [UIView animateWithDuration:0.3 delay:0.0 usingSpringWithDamping:0.8 initialSpringVelocity:1.0 options: UIViewAnimationOptionCurveEaseInOut animations:^{
+        itemView.center = CGPointMake(CGRectGetWidth(self.view.bounds)/2, px2p(772));
+        [self __makeContentViewFarAway];
+        __layerInvisibleDismissFocusedToDo.alpha = 1.0;
+        
+        // change add button's bg color
+        self.addBtn.backgroundColor = [UIColor clearColor];
+    } completion:^(BOOL finished) {
+        if (completionBlock) {
+            completionBlock(YES);
+        }
+    }];
+    
+    // make add button arrow
+    [self.addBtn makeArrow];
+    
+}
+
+-(void)dismissToDoFocus:(nonnull MDToDoObject*)todo
+        completionBlock:(nullable void (^)(BOOL succeed))completionBlock
+{
+    MDToDoListViewController *targetVc = todo.isCompleted.boolValue == YES ? self.doneListViewController : self.todoListViewController;
+    
+    MDToDoItemView *itemView = [targetVc todoItemViewForToDoObject:todo];
+    if (itemView == nil) {
+        NSLog(@"[MDBaseViewController] item view for the given todo is not found!");
+        if (completionBlock) {
+            completionBlock(NO);
+        }
+        return;
+    }
+   
+    // calc destination of itemview concerning its parent cell
+    NSValue *destinationOnListView = [targetVc putBackDestinationCenterOfTodoItemViewOnTableView:itemView];
+    if (destinationOnListView == nil) {
+        NSLog(@"[MDBaseViewController] item view is probably not found in target list view!");
+        if (completionBlock) {
+            completionBlock(NO);
+        }
+        return;
+    }
+    
+    // we do not use here -(CGPoint)convertPoint:toView: method, because __contentView is scaled, so that the conversion has influence of that scaling. We need to know the cell's position when the list is NOT scaled. To achieve that we calculate destination center on screen manually.
+    CGPoint destinationOnScreen = CGPointMake(destinationOnListView.CGPointValue.x, destinationOnListView.CGPointValue.y+self.scroller.frame.origin.y);
+    // mark the itemview not focused
+    itemView.isFocused = NO;
+    
+    // animation!
+    [UIView animateWithDuration:0.3 delay:0.0 usingSpringWithDamping:0.8 initialSpringVelocity:1.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        itemView.center = destinationOnScreen;
+        __layerInvisibleDismissFocusedToDo.alpha = 0.0;
+        [self __makeContentViewNormal];
+        
+        // make add button bg color normal
+        self.addBtn.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3];
+    } completion:^(BOOL finished) {
+        [__layerInvisibleDismissFocusedToDo removeFromSuperview];
+        __layerInvisibleDismissFocusedToDo = nil;
+        
+        // put back the itemView into its parent cell.
+        [targetVc putBackItemViewIntoParentCell:itemView];
+    }];
+    
+    // make add button +
+    [self.addBtn makePlus];
+}
+
+-(void)forceToDismissFocusModeWithCompletionBlock:(void (^)())completionBlock
+{
+    // dismiss ui elements used for todo focus.
+    [UIView animateWithDuration:0.3 delay:0.0 usingSpringWithDamping:0.8 initialSpringVelocity:1.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        __layerInvisibleDismissFocusedToDo.alpha = 0.0;
+        [self __makeContentViewNormal];
+        
+        // make add button bg color normal
+        self.addBtn.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3];
+    } completion:^(BOOL finished) {
+        [__layerInvisibleDismissFocusedToDo removeFromSuperview];
+        __layerInvisibleDismissFocusedToDo = nil;
+    }];
+    
+    // make add button +
+    [self.addBtn makePlus];
+
+}
+
+-(void)moveToDo:(MDToDoObject *)todo sourceListType:(MDActiveListType)sourceListType targetListType:(MDActiveListType)targetListType completionBlock:(void (^)())completionBlock
+{
+    MDToDoListViewController *sourceView = sourceListType == MDActiveListTypeToDo ? self.todoListViewController : self.doneListViewController;
+    MDToDoListViewController *targetView = targetListType == MDActiveListTypeToDo ? self.todoListViewController : self.doneListViewController;
+    
+    // 1. take itemView out of sourceListView, and put it on transition layer (self.view)
+    __block MDToDoItemView *itemView = [sourceView todoItemViewForToDoObject:todo];
+    if (itemView == nil) {
+        NSLog(@"[MDBaseViewController] could not find itemView from sourceView.");
+        return;
+    }
+    CGPoint centerOnScreen = [itemView convertPoint:CGPointMake(CGRectGetWidth(itemView.bounds)/2, CGRectGetHeight(itemView.bounds)/2) toView:self.view];
+    itemView.center = centerOnScreen;
+    [self.view addSubview:itemView];
+    
+    // 2. disconnect link to the parent cell. the itemview is now really free!
+    [sourceView makeItemViewFreeFromParentCell:itemView];
+    
+    // 3. remove parent cell. this call will try to reset cell's itemView, but it is ok here, because the cell does not have one!
+    
+        // 4. calc destination position
+        CGFloat destCenterX = targetListType == MDActiveListTypeDone ? CGRectGetWidth(self.view.bounds)*1.5 : -CGRectGetWidth(self.view.bounds)*0.5;
+        CGPoint destCenterOnScreen = CGPointMake(destCenterX , centerOnScreen.y-px2p(100));
+        
+        // 5. do animation. At the same time, create new cell on targetlist view with the todo data.
+        [targetView insertNewToDoCellWithToDoObject:todo animated:YES];
+        [[MDAppControl sharedInstance] blockEntireUI];
+        [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            // make __contentView smaller
+            [self __makeContentViewFarAway];
+            // push back
+            itemView.center = CGPointMake(centerOnScreen.x, centerOnScreen.y+px2p(100));
+        } completion:^(BOOL finished) {
+            
+                // throw out
+                [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+                    itemView.center = destCenterOnScreen;
+                } completion:^(BOOL finished) {
+                    [UIView animateWithDuration:0.2 delay:0.0 usingSpringWithDamping:0.8 initialSpringVelocity:1.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                        // make __contentView normal
+                        [self __makeContentViewNormal];
+                    } completion:^(BOOL finished) {
+                        // 6. remove cell from source view
+                        [sourceView removeToDoCellWithToDoObject:todo animated:YES completionBlock:^{
+                            
+                        }];
+                        // 7. we created new itemView. old itemView we can throw away
+                        [itemView removeFromSuperview];
+                        itemView = nil;
+                        [[MDAppControl sharedInstance] unblockEntireUI];
+                    }];
+                    
+                }];
+            
+        }];
+    
+
 }
 
 

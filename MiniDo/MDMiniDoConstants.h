@@ -20,6 +20,7 @@
 #define DEFAULT_FONT_BOLD @"Dosis-Medium"
 #define DEFAULT_FONT_LIGHT @"Dosis-ExtraLight"
 
+#define TODO_CELL_WIDTH  CGRectGetWidth([UIScreen mainScreen].bounds)
 #define TODO_CELL_HEIGHT px2p(300)
 
 typedef NS_ENUM(NSInteger, MDActiveListType) {

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MDToDoObject.h"
-@interface MDToDoItemView : UIView <UITextFieldDelegate>
+@interface MDToDoItemView : UIView <UITextFieldDelegate, UITextViewDelegate>
 
 
 @property (nullable, nonatomic, strong) UIButton *doneBtn;
@@ -18,9 +18,17 @@
  */
 @property (nullable, nonatomic, strong) UITextField *textField;
 
+
 /**
  set this property will change the view's content
  */
 @property (nullable, nonatomic, strong) MDToDoObject *todo;
+
+/**
+ whether this item view is focused (out of the table view) ot not (inside its parent cell)
+ this will expand/collapse details
+ */
+@property BOOL isFocused;
+
 
 @end

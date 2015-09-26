@@ -40,7 +40,7 @@
 -(void)updateToDoObject:(MDToDoObject *)todo
 {
     if (self.todoItemView == nil) {
-        self.todoItemView = [[MDToDoItemView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.contentView.bounds), TODO_CELL_HEIGHT)];
+        self.todoItemView = [[MDToDoItemView alloc] initWithFrame:CGRectMake(0, 0, TODO_CELL_WIDTH, TODO_CELL_HEIGHT)];
         [self.contentView addSubview:self.todoItemView];
     }
     

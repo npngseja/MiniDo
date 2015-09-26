@@ -39,9 +39,21 @@
         
         // initial list type is ToDo List
         _activeListType = MDActiveListTypeToDo;
+        _isFocusMode = NO;
     }
     
     return self;
+}
+
+#pragma mark - UI Control -
+-(void)blockEntireUI
+{
+    self.baseVc.view.userInteractionEnabled = NO;
+}
+
+-(void)unblockEntireUI
+{
+    self.baseVc.view.userInteractionEnabled = YES;
 }
 
 #pragma mark - App Launch Sequence -
@@ -147,7 +159,6 @@
         
     }];
     
-    
 }
 
 -(void)removeToDoItemWithToDo:(MDToDoObject *)todo
@@ -170,22 +181,55 @@
 
 }
 
+-(void)moveToDo:(MDToDoObject *)todo sourceListType:(MDActiveListType)sourceListType targetListType:(MDActiveListType)targetListType completionBlock:(void (^)())completionBlock
+{
+    [self.baseVc moveToDo:todo sourceListType:sourceListType targetListType:targetListType completionBlock:^{
+        if (completionBlock) {
+            completionBlock();
+        }
+    }];
+}
+
 -(void)focusOnToDo:(MDToDoObject *)todo completionBlock:(void (^)())completionBlock
 {
     __currentFocusToDo = todo;
+    _isFocusMode = YES;
     NSLog(@"[MDAppControl] focus on todo: %@", todo.text);
+    [self.baseVc focusOnToDo:todo completionBlock:^(BOOL succeed) {
+        if (completionBlock) {
+            completionBlock();
+        }
+    }];
     
-    if (completionBlock) {
-        completionBlock();
-    }
+    
 }
 
 -(void)dismissCurrentFocusToDoWithCompletionBlock:(void (^)())completionBlock
 {
-    __currentFocusToDo = nil;
-    if (completionBlock) {
-        completionBlock();
+    if (__currentFocusToDo == nil) {
+        // we do not have any focussed todo
+        return;
     }
+    
+    MDToDoObject *todo = __currentFocusToDo;
+    __currentFocusToDo = nil;
+    _isFocusMode = NO;
+    [self.baseVc dismissToDoFocus:todo completionBlock:^(BOOL succeed) {
+        if (completionBlock) {
+            completionBlock();
+        }
+    }];
+    
+}
+
+-(void)forceToDismissFocusModeWithCompletionBlock:(void (^)())completionBlock
+{
+    _isFocusMode = NO;
+    [self.baseVc forceToDismissFocusModeWithCompletionBlock:^{
+        if (completionBlock) {
+            completionBlock();
+        }
+    }];
 }
 
 @end

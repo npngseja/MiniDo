@@ -20,8 +20,10 @@
 {
     
     NSMutableArray *__todos;
+    UILabel *__msgForEmptyList;
 
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -39,32 +41,74 @@
     
 }
 
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
--(void)updateListViewWithCurrentTodo
+- (void)__showMsgForEmptyListIfNecessary
 {
-   [[MDUserManager sharedInstance] fetchTodosForListType:self.listType completionBlock:^(BOOL succeed, NSArray<MDToDoObject *> * _Nullable results) {
-       __todos = [results mutableCopy];
-       
-       [self.tableView reloadData];
-   }];
+    if (__todos.count == 0) {
+        if (__msgForEmptyList == nil) {
+            __msgForEmptyList = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds)*0.7)];
+            __msgForEmptyList.textAlignment = NSTextAlignmentCenter;
+            __msgForEmptyList.numberOfLines = 10;
+            if (self.listType == MDActiveListTypeToDo) {
+                NSMutableAttributedString *atr = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"TAP\n+\nTO CREATE A TASK", nil) attributes:@{NSFontAttributeName: [UIFont fontWithName:DEFAULT_FONT_LIGHT size:hdfs2fs(70)], NSForegroundColorAttributeName: DEFAULT_TEXT_COLOR}];
+                [atr addAttributes:@{NSForegroundColorAttributeName: DEFAULT_KEY_COLOR, NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:hdfs2fs(100)]} range:[atr.string rangeOfString:@"+"]];
+                __msgForEmptyList.attributedText = atr;
+            } else {
+                NSMutableAttributedString *atr = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"HERE YOU FIND\n\nWHAT YOU'VE DONE", nil) attributes:@{NSFontAttributeName: [UIFont fontWithName:DEFAULT_FONT_LIGHT size:hdfs2fs(70)], NSForegroundColorAttributeName: DEFAULT_TEXT_COLOR}];
+                [atr addAttributes:@{NSForegroundColorAttributeName: DEFAULT_KEY_COLOR, NSFontAttributeName: [UIFont fontWithName:DEFAULT_FONT_BOLD size:hdfs2fs(70)]} range:[atr.string rangeOfString:@"DONE"]];
+                __msgForEmptyList.attributedText = atr;
+
+            }
+            [self.view addSubview:__msgForEmptyList];
+        }
+    }
 }
 
-#pragma mark - ToDo Cell Management -
+- (void)__removeMsgForEmptyList
+{
+    if (__msgForEmptyList != nil) {
+        [__msgForEmptyList removeFromSuperview];
+        __msgForEmptyList = nil;
+    }
+}
+
+#pragma mark - ToDo List Management -
+-(void)updateListViewWithCurrentTodo
+{
+    [[MDUserManager sharedInstance] fetchTodosForListType:self.listType completionBlock:^(BOOL succeed, NSArray<MDToDoObject *> * _Nullable results) {
+        if (succeed == YES) {
+            [__todos removeAllObjects];
+            [__todos addObjectsFromArray:results];
+        }
+        
+        // reload table view
+        [self.tableView reloadData];
+        
+        // show msg if we have no todos.
+        [self __showMsgForEmptyListIfNecessary];
+        
+    }];
+}
+
 -(void)insertNewToDoCellWithToDoObject:(MDToDoObject * _Nonnull)todo
                               animated:(BOOL)animated;
 {
     // we insert new todo on head.
     [__todos insertObject:todo atIndex:0];
     
+    [self __removeMsgForEmptyList];
+    
     [CATransaction begin];
     [self.tableView beginUpdates];
     [CATransaction setCompletionBlock:^{
-        MDToDoListTableViewCell *firstCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+        MDToDoListTableViewCell *firstCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
         [firstCell startToDoTextEdit];
+        
         
     }];
     
@@ -82,18 +126,93 @@
     NSInteger index = [__todos indexOfObject:todo];
     NSAssert(index >= 0 && index < __todos.count, @"todo object is not found from list data source!");
     
+    // reset todoItemView before remove its parent cell.
+    // this is necessary to re-use the cell for other content presentation.
+    // when a todo is removed, todoItemView is out of the screen. we need to have it back.
+    MDToDoListTableViewCell *parentCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+    MDToDoItemView *itemView = parentCell.todoItemView;
+    itemView.isFocused = NO;
+    itemView.transform = CGAffineTransformIdentity;
+    itemView.frame = CGRectMake(0, 0, TODO_CELL_WIDTH, TODO_CELL_HEIGHT);
+    itemView.hidden = YES;
+    [parentCell.contentView addSubview:itemView];
+    
+    // begin with cell remove
     [CATransaction begin];
     [self.tableView beginUpdates];
     [CATransaction setCompletionBlock:^{
-        
+        [self __showMsgForEmptyListIfNecessary];
+        if (completionBlock) {
+            completionBlock();
+        }
     }];
-    [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]] withRowAnimation:animated ? UITableViewRowAnimationAutomatic : UITableViewRowAnimationNone];
+    [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:animated ? UITableViewRowAnimationAutomatic : UITableViewRowAnimationNone];
     [__todos removeObject:todo];
     [self.tableView endUpdates];
     [CATransaction commit];
 }
 
+-(MDToDoItemView*)todoItemViewForToDoObject:(MDToDoObject *)todo
+{
+    NSInteger index = [__todos indexOfObject:todo];
+    if (index < 0 || index >= __todos.count) {
+        NSLog(@"[MDToDoListViewController] todo is not found in the data source!: %@", todo.text);
+        return nil;
+    }
+    
+    MDToDoListTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+    
+    return cell.todoItemView;
+}
 
+-(nullable NSValue*)putBackDestinationCenterOfTodoItemViewOnTableView:(nonnull MDToDoItemView*)itemView
+{
+    // find parent cell
+    MDToDoObject *todo = itemView.todo;
+    NSInteger index = [__todos indexOfObject:todo];
+    if (index < 0 || index >= __todos.count) {
+        NSLog(@"[MDToDoListViewController] todo is not found in the data source!: %@", todo.text);
+        return nil;
+    }
+    
+    // calc destination of the itemview
+    MDToDoListTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+    CGPoint destinationOnTableView = cell.center;
+    
+    return [NSValue valueWithCGPoint:destinationOnTableView];
+    
+}
+
+-(void)putBackItemViewIntoParentCell:(MDToDoItemView *)itemView
+{
+    // find parent cell
+    MDToDoObject *todo = itemView.todo;
+    NSInteger index = [__todos indexOfObject:todo];
+    if (index < 0 || index >= __todos.count) {
+        NSLog(@"[MDToDoListViewController] todo is not found in the data source!: %@", todo.text);
+        return;
+    }
+    
+    MDToDoListTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+
+    itemView.center = CGPointMake(CGRectGetWidth(itemView.bounds)/2, CGRectGetHeight(itemView.bounds)/2);
+    [cell.contentView addSubview:itemView];
+    
+}
+
+-(void)makeItemViewFreeFromParentCell:(MDToDoItemView *)itemView
+{
+    // find parent cell
+    MDToDoObject *todo = itemView.todo;
+    NSInteger index = [__todos indexOfObject:todo];
+    if (index < 0 || index >= __todos.count) {
+        NSLog(@"[MDToDoListViewController] todo is not found in the data source!: %@", todo.text);
+        return;
+    }
+    
+    MDToDoListTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+    cell.todoItemView = nil;
+}
 
 #pragma mark - TableView Datasource & Delegate -
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -109,14 +228,13 @@
     if (cell == nil) {
         // init cell
         cell = [[MDToDoListTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellReuseId];
-        
-        cell.showsReorderControl = YES;
-        
     }
     
     // update cell's content with data
     MDToDoObject *todo = __todos[indexPath.row];
     [cell updateToDoObject:todo];
+    // while remove action, sometimes itemView is hidden. here we should make it visible.
+    cell.todoItemView.hidden = NO;
     
     return cell;
 }
@@ -128,12 +246,18 @@
 
 -(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return YES;
+    if (self.listType == MDActiveListTypeToDo) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 -(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
-    
+    id object = [__todos objectAtIndex:sourceIndexPath.row];
+    [__todos removeObjectAtIndex:sourceIndexPath.row];
+    [__todos insertObject:object atIndex:destinationIndexPath.row];
 }
 
 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
