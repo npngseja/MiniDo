@@ -81,7 +81,7 @@
                 [weakSelf.baseVc.todoListViewController updateListViewWithCurrentTodo];
                 [weakSelf.baseVc.doneListViewController updateListViewWithCurrentTodo];
                 
-                // DEBUG
+                /* DEBUG
                 [[MDUserManager sharedInstance] fetchTodosForListType:MDActiveListTypeToDo completionBlock:^(BOOL succeed, NSArray<MDToDoObject *> * _Nullable results) {
                     for (MDToDoObject *t in results) {
                         NSLog(@"%@ - %@",t.priority, t.text);
@@ -93,7 +93,7 @@
                         }
                     }];
                 }];
-                //
+                */
             }];
             
         } else {

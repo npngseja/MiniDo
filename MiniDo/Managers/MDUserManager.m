@@ -45,7 +45,7 @@
                     MDUserObject *user = (MDUserObject*)object;
                     NSLog(@"[MDUserManager] created a user: %@", user.uniqueId);
                     
-                    [[MDDataIO sharedInstance] saveInBackgroundWithCompletionBlock:nil];
+                    [[MDDataIO sharedInstance] saveLocalDBWithCompletionBlock:nil];
                     
                     self.currentUser = user;
                     
@@ -203,7 +203,7 @@
         }
         todo.isDirty = @(YES);
         
-        [[MDDataIO sharedInstance] saveInBackgroundWithCompletionBlock:^(BOOL succeed) {
+        [[MDDataIO sharedInstance] saveLocalDBWithCompletionBlock:^(BOOL succeed) {
             if (completionBlock) {
                 completionBlock(succeed);
             }
@@ -244,7 +244,7 @@
     todo.priority = @(newPrio);
     todo.isDirty = @(YES);
     
-    [[MDDataIO sharedInstance] saveInBackgroundWithCompletionBlock:^(BOOL succeed) {
+    [[MDDataIO sharedInstance] saveLocalDBWithCompletionBlock:^(BOOL succeed) {
         if (completionBlock) {
             completionBlock(succeed);
         }

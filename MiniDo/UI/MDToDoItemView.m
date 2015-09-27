@@ -352,7 +352,7 @@
         self.todo.creationDate = [NSDate date];
         self.todo.updatedAt = [NSDate date];
         self.todo.isDirty = @(YES);
-        [[MDDataIO sharedInstance] saveInBackgroundWithCompletionBlock:^(BOOL succeed) {
+        [[MDDataIO sharedInstance] saveLocalDBWithCompletionBlock:^(BOOL succeed) {
             
         }];
     }
@@ -374,7 +374,7 @@
     
     self.textField.text = self.todo.text;
     
-    [[MDDataIO sharedInstance] saveInBackgroundWithCompletionBlock:^(BOOL succeed) {
+    [[MDDataIO sharedInstance] saveLocalDBWithCompletionBlock:^(BOOL succeed) {
         
     }];
     

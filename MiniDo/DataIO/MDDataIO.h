@@ -1,5 +1,5 @@
 //
-//  MDDataIO.h
+//  MDDataLocalIO.h
 //  MiniDo
 //
 //  Created by npngseja on 23/09/15.
@@ -18,11 +18,6 @@
  @return shared instance
  */
 + (nonnull instancetype)sharedInstance;
-
-#pragma mark - CoreData Stack -
-@property (readonly, strong, nonatomic, nonnull) NSManagedObjectContext *managedObjectContext;
-@property (readonly, strong, nonatomic, nonnull) NSManagedObjectModel *managedObjectModel;
-@property (readonly, strong, nonatomic, nonnull) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 /**
  fetch objects with class and predicate
@@ -51,8 +46,26 @@
     completionBlock:(nullable void (^)())completionBlock;
 
 /**
+ sync over cloud. this will fetch all dirty todos and store them on cloud. after sync those todos will be set as clean
+ */
+-(void)storeCurrentStateOnCloudWithComplectionBlock:(nullable void (^)(BOOL succeed))completionBlock;
+
+/**
+ sync from cloud. get all todos for the user and update local DB. merging cloud and local DBs will be done after API response in MDDataCloudAPI.
+ */
+-(void)retrieveLastStateFromCloudWithCompletionBlock:(nullable void (^)(BOOL succeed))completionBlock;
+
+/**
  save moc into the persistant store
  */
--(void)saveInBackgroundWithCompletionBlock:(nullable void (^)(BOOL succeed))completionBlock;
+-(void)saveLocalDBWithCompletionBlock:(nullable void (^)(BOOL succeed))completionBlock;
+
+#pragma mark - CoreData Stack -
+/**
+ this context is not readonly, in order to unit test code is able to inject in-memory-store-based-context
+ */
+@property (strong, nonatomic, nonnull) NSManagedObjectContext *managedObjectContext;
+@property (readonly, strong, nonatomic, nonnull) NSManagedObjectModel *managedObjectModel;
+@property (readonly, strong, nonatomic, nonnull) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 @end

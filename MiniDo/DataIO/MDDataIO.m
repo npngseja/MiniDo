@@ -7,6 +7,7 @@
 //
 
 #import "MDDataIO.h"
+#import "MDDataCloudAPI.h"
 
 @implementation MDDataIO
 
@@ -16,13 +17,14 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _instance = [[self alloc] init];
-        
+       
     });
     
     return _instance;
 }
 
-- (void)saveInBackgroundWithCompletionBlock:(void (^)(BOOL))completionBlock {
+
+- (void)saveLocalDBWithCompletionBlock:(void (^)(BOOL))completionBlock {
     NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
     if (managedObjectContext != nil) {
         NSError *error = nil;
@@ -82,12 +84,50 @@
 -(void)deleteObject:(MDDataObject *)o completionBlock:(void (^)())completionBlock
 {
     [self.managedObjectContext deleteObject:o];
-    [self saveInBackgroundWithCompletionBlock:^(BOOL succeed) {
+    [self saveLocalDBWithCompletionBlock:^(BOOL succeed) {
         
     }];
     if (completionBlock) {
         completionBlock();
     }
+}
+
+-(void)storeCurrentStateOnCloudWithComplectionBlock:(void (^)(BOOL))completionBlock
+{
+    // fetch all dirty data
+    NSPredicate *p = [NSPredicate predicateWithFormat:@"(%K == %@)", @"isDirty", @YES];
+    [self fetchObjectWithClassName:NSStringFromClass([MDDataObject class]) predicate:p
+                   sortDescriptors:nil
+                   completionBlock:^(NSArray<MDDataObject *> * _Nullable results, NSError * _Nullable error) {
+                       
+                       // post dirty data
+                       [[MDDataCloudAPI sharedInstance] postDataArray:results
+                                        ontoServerWithCompletionBlock:^(BOOL succeed, NSError * _Nullable error) {
+                                        
+                                            if (completionBlock) {
+                                                completionBlock(succeed);
+                                            }
+                                        
+                                        }];
+                   
+                   }];
+                       
+                   
+}
+
+-(void)retrieveLastStateFromCloudWithCompletionBlock:(void (^)(BOOL))completionBlock
+{
+    // this call will handle conflicts between cloud and local DBs.
+    [[MDDataCloudAPI sharedInstance] getAllToDosFromServerWithComplectionBlock:^(BOOL succeed, NSError * _Nullable error) {
+        
+        if (error != nil) {
+            NSLog(@"[MDDataIO] retrieve last state from cloud server is failed with error: %@", error);
+        }
+        
+        if (completionBlock) {
+            completionBlock(succeed);
+        }
+    }];
 }
 
 

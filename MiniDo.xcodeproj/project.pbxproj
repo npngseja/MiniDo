@@ -14,67 +14,77 @@
 		B001C0781BB2D7F300421F81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B001C0761BB2D7F300421F81 /* LaunchScreen.storyboard */; };
 		B001C0831BB2D7F300421F81 /* MiniDoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C0821BB2D7F300421F81 /* MiniDoTests.m */; };
 		B001C08E1BB2D7F300421F81 /* MiniDoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C08D1BB2D7F300421F81 /* MiniDoUITests.m */; };
-		B001C0A01BB2E5F200421F81 /* MDDataIO.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C09F1BB2E5F200421F81 /* MDDataIO.m */; settings = {ASSET_TAGS = (); }; };
-		B001C0A11BB2E5F200421F81 /* MDDataIO.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C09F1BB2E5F200421F81 /* MDDataIO.m */; settings = {ASSET_TAGS = (); }; };
-		B001C0A51BB2E64000421F81 /* MDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C0A41BB2E64000421F81 /* MDViewController.m */; settings = {ASSET_TAGS = (); }; };
-		B001C0A61BB2E64000421F81 /* MDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C0A41BB2E64000421F81 /* MDViewController.m */; settings = {ASSET_TAGS = (); }; };
-		B001C0A71BB2E64000421F81 /* MDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C0A41BB2E64000421F81 /* MDViewController.m */; settings = {ASSET_TAGS = (); }; };
-		B001C0AB1BB2EBC500421F81 /* MDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C0AA1BB2EBC500421F81 /* MDBaseViewController.m */; settings = {ASSET_TAGS = (); }; };
-		B001C0AC1BB2EBC500421F81 /* MDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C0AA1BB2EBC500421F81 /* MDBaseViewController.m */; settings = {ASSET_TAGS = (); }; };
-		B001C0AD1BB2EBC500421F81 /* MDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C0AA1BB2EBC500421F81 /* MDBaseViewController.m */; settings = {ASSET_TAGS = (); }; };
-		B03680D21BB468FB00A8DA96 /* MDToDoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680D11BB468FB00A8DA96 /* MDToDoListTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		B03680D31BB468FB00A8DA96 /* MDToDoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680D11BB468FB00A8DA96 /* MDToDoListTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		B03680D41BB468FB00A8DA96 /* MDToDoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680D11BB468FB00A8DA96 /* MDToDoListTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		B03680D71BB4691700A8DA96 /* MDToDoItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680D61BB4691700A8DA96 /* MDToDoItemView.m */; settings = {ASSET_TAGS = (); }; };
-		B03680D81BB4691700A8DA96 /* MDToDoItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680D61BB4691700A8DA96 /* MDToDoItemView.m */; settings = {ASSET_TAGS = (); }; };
-		B03680D91BB4691700A8DA96 /* MDToDoItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680D61BB4691700A8DA96 /* MDToDoItemView.m */; settings = {ASSET_TAGS = (); }; };
-		B03680E11BB46A5D00A8DA96 /* MDToDoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680E01BB46A5D00A8DA96 /* MDToDoListViewController.m */; settings = {ASSET_TAGS = (); }; };
-		B03680E21BB46A5D00A8DA96 /* MDToDoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680E01BB46A5D00A8DA96 /* MDToDoListViewController.m */; settings = {ASSET_TAGS = (); }; };
-		B03680E31BB46A5D00A8DA96 /* MDToDoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680E01BB46A5D00A8DA96 /* MDToDoListViewController.m */; settings = {ASSET_TAGS = (); }; };
-		B03680E61BB4926D00A8DA96 /* Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B03680E51BB4926D00A8DA96 /* Background.jpg */; settings = {ASSET_TAGS = (); }; };
-		B03680E71BB4927200A8DA96 /* Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B03680E51BB4926D00A8DA96 /* Background.jpg */; settings = {ASSET_TAGS = (); }; };
-		B03680EB1BB4958900A8DA96 /* Dosis-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B03680E81BB4958900A8DA96 /* Dosis-Book.ttf */; settings = {ASSET_TAGS = (); }; };
-		B03680EC1BB4958900A8DA96 /* Dosis-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B03680E81BB4958900A8DA96 /* Dosis-Book.ttf */; settings = {ASSET_TAGS = (); }; };
-		B03680ED1BB4958900A8DA96 /* Dosis-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B03680E91BB4958900A8DA96 /* Dosis-ExtraLight.ttf */; settings = {ASSET_TAGS = (); }; };
-		B03680EE1BB4958900A8DA96 /* Dosis-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B03680E91BB4958900A8DA96 /* Dosis-ExtraLight.ttf */; settings = {ASSET_TAGS = (); }; };
-		B03680EF1BB4958900A8DA96 /* Dosis-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B03680EA1BB4958900A8DA96 /* Dosis-Medium.ttf */; settings = {ASSET_TAGS = (); }; };
-		B03680F01BB4958900A8DA96 /* Dosis-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B03680EA1BB4958900A8DA96 /* Dosis-Medium.ttf */; settings = {ASSET_TAGS = (); }; };
-		B06951271BB7226600D2577E /* MDBaseAddBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = B06951261BB7226600D2577E /* MDBaseAddBtn.m */; settings = {ASSET_TAGS = (); }; };
-		B06951281BB7226600D2577E /* MDBaseAddBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = B06951261BB7226600D2577E /* MDBaseAddBtn.m */; settings = {ASSET_TAGS = (); }; };
-		B06951291BB7226600D2577E /* MDBaseAddBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = B06951261BB7226600D2577E /* MDBaseAddBtn.m */; settings = {ASSET_TAGS = (); }; };
-		B0730F5D1BB7EEF300033FD2 /* MDDataObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F521BB7EEF300033FD2 /* MDDataObject+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		B0730F5E1BB7EEF300033FD2 /* MDDataObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F521BB7EEF300033FD2 /* MDDataObject+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		B0730F5F1BB7EEF300033FD2 /* MDDataObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F521BB7EEF300033FD2 /* MDDataObject+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		B0730F601BB7EEF300033FD2 /* MDDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F541BB7EEF300033FD2 /* MDDataObject.m */; settings = {ASSET_TAGS = (); }; };
-		B0730F611BB7EEF300033FD2 /* MDDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F541BB7EEF300033FD2 /* MDDataObject.m */; settings = {ASSET_TAGS = (); }; };
-		B0730F621BB7EEF300033FD2 /* MDDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F541BB7EEF300033FD2 /* MDDataObject.m */; settings = {ASSET_TAGS = (); }; };
-		B0730F631BB7EEF300033FD2 /* MDToDoObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F561BB7EEF300033FD2 /* MDToDoObject+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		B0730F641BB7EEF300033FD2 /* MDToDoObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F561BB7EEF300033FD2 /* MDToDoObject+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		B0730F651BB7EEF300033FD2 /* MDToDoObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F561BB7EEF300033FD2 /* MDToDoObject+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		B0730F661BB7EEF300033FD2 /* MDToDoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F581BB7EEF300033FD2 /* MDToDoObject.m */; settings = {ASSET_TAGS = (); }; };
-		B0730F671BB7EEF300033FD2 /* MDToDoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F581BB7EEF300033FD2 /* MDToDoObject.m */; settings = {ASSET_TAGS = (); }; };
-		B0730F681BB7EEF300033FD2 /* MDToDoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F581BB7EEF300033FD2 /* MDToDoObject.m */; settings = {ASSET_TAGS = (); }; };
-		B0730F691BB7EEF300033FD2 /* MDUserObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F5A1BB7EEF300033FD2 /* MDUserObject+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		B0730F6A1BB7EEF300033FD2 /* MDUserObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F5A1BB7EEF300033FD2 /* MDUserObject+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		B0730F6B1BB7EEF300033FD2 /* MDUserObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F5A1BB7EEF300033FD2 /* MDUserObject+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		B0730F6C1BB7EEF300033FD2 /* MDUserObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F5C1BB7EEF300033FD2 /* MDUserObject.m */; settings = {ASSET_TAGS = (); }; };
-		B0730F6D1BB7EEF300033FD2 /* MDUserObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F5C1BB7EEF300033FD2 /* MDUserObject.m */; settings = {ASSET_TAGS = (); }; };
-		B0730F6E1BB7EEF300033FD2 /* MDUserObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F5C1BB7EEF300033FD2 /* MDUserObject.m */; settings = {ASSET_TAGS = (); }; };
-		B0788F931BB3466A0021FC89 /* MDMiniDoUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F921BB3466A0021FC89 /* MDMiniDoUtils.m */; settings = {ASSET_TAGS = (); }; };
-		B0788F941BB3466A0021FC89 /* MDMiniDoUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F921BB3466A0021FC89 /* MDMiniDoUtils.m */; settings = {ASSET_TAGS = (); }; };
-		B0788F951BB3466A0021FC89 /* MDMiniDoUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F921BB3466A0021FC89 /* MDMiniDoUtils.m */; settings = {ASSET_TAGS = (); }; };
-		B0788F9A1BB34BE40021FC89 /* MDPopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F991BB34BE40021FC89 /* MDPopButton.m */; settings = {ASSET_TAGS = (); }; };
-		B0788F9B1BB34BE40021FC89 /* MDPopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F991BB34BE40021FC89 /* MDPopButton.m */; settings = {ASSET_TAGS = (); }; };
-		B0788F9C1BB34BE40021FC89 /* MDPopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F991BB34BE40021FC89 /* MDPopButton.m */; settings = {ASSET_TAGS = (); }; };
-		B0788FA01BB354380021FC89 /* MDAppControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F9F1BB354380021FC89 /* MDAppControl.m */; settings = {ASSET_TAGS = (); }; };
-		B0788FA11BB354380021FC89 /* MDAppControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F9F1BB354380021FC89 /* MDAppControl.m */; settings = {ASSET_TAGS = (); }; };
-		B0788FA21BB354380021FC89 /* MDAppControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F9F1BB354380021FC89 /* MDAppControl.m */; settings = {ASSET_TAGS = (); }; };
-		B0788FA51BB3594B0021FC89 /* MDBaseHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788FA41BB3594B0021FC89 /* MDBaseHeaderView.m */; settings = {ASSET_TAGS = (); }; };
-		B0788FA61BB3594B0021FC89 /* MDBaseHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788FA41BB3594B0021FC89 /* MDBaseHeaderView.m */; settings = {ASSET_TAGS = (); }; };
-		B0788FA71BB3594B0021FC89 /* MDBaseHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788FA41BB3594B0021FC89 /* MDBaseHeaderView.m */; settings = {ASSET_TAGS = (); }; };
-		B0788FAC1BB367D40021FC89 /* MDUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788FAB1BB367D40021FC89 /* MDUserManager.m */; settings = {ASSET_TAGS = (); }; };
-		B0788FAD1BB367D40021FC89 /* MDUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788FAB1BB367D40021FC89 /* MDUserManager.m */; settings = {ASSET_TAGS = (); }; };
-		B0788FAE1BB367D40021FC89 /* MDUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788FAB1BB367D40021FC89 /* MDUserManager.m */; settings = {ASSET_TAGS = (); }; };
+		B001C0A01BB2E5F200421F81 /* MDDataIO.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C09F1BB2E5F200421F81 /* MDDataIO.m */; };
+		B001C0A11BB2E5F200421F81 /* MDDataIO.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C09F1BB2E5F200421F81 /* MDDataIO.m */; };
+		B001C0A51BB2E64000421F81 /* MDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C0A41BB2E64000421F81 /* MDViewController.m */; };
+		B001C0A61BB2E64000421F81 /* MDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C0A41BB2E64000421F81 /* MDViewController.m */; };
+		B001C0A71BB2E64000421F81 /* MDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C0A41BB2E64000421F81 /* MDViewController.m */; };
+		B001C0AB1BB2EBC500421F81 /* MDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C0AA1BB2EBC500421F81 /* MDBaseViewController.m */; };
+		B001C0AC1BB2EBC500421F81 /* MDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C0AA1BB2EBC500421F81 /* MDBaseViewController.m */; };
+		B001C0AD1BB2EBC500421F81 /* MDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C0AA1BB2EBC500421F81 /* MDBaseViewController.m */; };
+		B03680D21BB468FB00A8DA96 /* MDToDoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680D11BB468FB00A8DA96 /* MDToDoListTableViewCell.m */; };
+		B03680D31BB468FB00A8DA96 /* MDToDoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680D11BB468FB00A8DA96 /* MDToDoListTableViewCell.m */; };
+		B03680D41BB468FB00A8DA96 /* MDToDoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680D11BB468FB00A8DA96 /* MDToDoListTableViewCell.m */; };
+		B03680D71BB4691700A8DA96 /* MDToDoItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680D61BB4691700A8DA96 /* MDToDoItemView.m */; };
+		B03680D81BB4691700A8DA96 /* MDToDoItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680D61BB4691700A8DA96 /* MDToDoItemView.m */; };
+		B03680D91BB4691700A8DA96 /* MDToDoItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680D61BB4691700A8DA96 /* MDToDoItemView.m */; };
+		B03680E11BB46A5D00A8DA96 /* MDToDoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680E01BB46A5D00A8DA96 /* MDToDoListViewController.m */; };
+		B03680E21BB46A5D00A8DA96 /* MDToDoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680E01BB46A5D00A8DA96 /* MDToDoListViewController.m */; };
+		B03680E31BB46A5D00A8DA96 /* MDToDoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680E01BB46A5D00A8DA96 /* MDToDoListViewController.m */; };
+		B03680E61BB4926D00A8DA96 /* Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B03680E51BB4926D00A8DA96 /* Background.jpg */; };
+		B03680E71BB4927200A8DA96 /* Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B03680E51BB4926D00A8DA96 /* Background.jpg */; };
+		B03680EB1BB4958900A8DA96 /* Dosis-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B03680E81BB4958900A8DA96 /* Dosis-Book.ttf */; };
+		B03680EC1BB4958900A8DA96 /* Dosis-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B03680E81BB4958900A8DA96 /* Dosis-Book.ttf */; };
+		B03680ED1BB4958900A8DA96 /* Dosis-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B03680E91BB4958900A8DA96 /* Dosis-ExtraLight.ttf */; };
+		B03680EE1BB4958900A8DA96 /* Dosis-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B03680E91BB4958900A8DA96 /* Dosis-ExtraLight.ttf */; };
+		B03680EF1BB4958900A8DA96 /* Dosis-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B03680EA1BB4958900A8DA96 /* Dosis-Medium.ttf */; };
+		B03680F01BB4958900A8DA96 /* Dosis-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B03680EA1BB4958900A8DA96 /* Dosis-Medium.ttf */; };
+		B06951271BB7226600D2577E /* MDBaseAddBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = B06951261BB7226600D2577E /* MDBaseAddBtn.m */; };
+		B06951281BB7226600D2577E /* MDBaseAddBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = B06951261BB7226600D2577E /* MDBaseAddBtn.m */; };
+		B06951291BB7226600D2577E /* MDBaseAddBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = B06951261BB7226600D2577E /* MDBaseAddBtn.m */; };
+		B0730F5D1BB7EEF300033FD2 /* MDDataObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F521BB7EEF300033FD2 /* MDDataObject+CoreDataProperties.m */; };
+		B0730F5E1BB7EEF300033FD2 /* MDDataObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F521BB7EEF300033FD2 /* MDDataObject+CoreDataProperties.m */; };
+		B0730F5F1BB7EEF300033FD2 /* MDDataObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F521BB7EEF300033FD2 /* MDDataObject+CoreDataProperties.m */; };
+		B0730F601BB7EEF300033FD2 /* MDDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F541BB7EEF300033FD2 /* MDDataObject.m */; };
+		B0730F611BB7EEF300033FD2 /* MDDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F541BB7EEF300033FD2 /* MDDataObject.m */; };
+		B0730F621BB7EEF300033FD2 /* MDDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F541BB7EEF300033FD2 /* MDDataObject.m */; };
+		B0730F631BB7EEF300033FD2 /* MDToDoObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F561BB7EEF300033FD2 /* MDToDoObject+CoreDataProperties.m */; };
+		B0730F641BB7EEF300033FD2 /* MDToDoObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F561BB7EEF300033FD2 /* MDToDoObject+CoreDataProperties.m */; };
+		B0730F651BB7EEF300033FD2 /* MDToDoObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F561BB7EEF300033FD2 /* MDToDoObject+CoreDataProperties.m */; };
+		B0730F661BB7EEF300033FD2 /* MDToDoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F581BB7EEF300033FD2 /* MDToDoObject.m */; };
+		B0730F671BB7EEF300033FD2 /* MDToDoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F581BB7EEF300033FD2 /* MDToDoObject.m */; };
+		B0730F681BB7EEF300033FD2 /* MDToDoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F581BB7EEF300033FD2 /* MDToDoObject.m */; };
+		B0730F691BB7EEF300033FD2 /* MDUserObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F5A1BB7EEF300033FD2 /* MDUserObject+CoreDataProperties.m */; };
+		B0730F6A1BB7EEF300033FD2 /* MDUserObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F5A1BB7EEF300033FD2 /* MDUserObject+CoreDataProperties.m */; };
+		B0730F6B1BB7EEF300033FD2 /* MDUserObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F5A1BB7EEF300033FD2 /* MDUserObject+CoreDataProperties.m */; };
+		B0730F6C1BB7EEF300033FD2 /* MDUserObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F5C1BB7EEF300033FD2 /* MDUserObject.m */; };
+		B0730F6D1BB7EEF300033FD2 /* MDUserObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F5C1BB7EEF300033FD2 /* MDUserObject.m */; };
+		B0730F6E1BB7EEF300033FD2 /* MDUserObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F5C1BB7EEF300033FD2 /* MDUserObject.m */; };
+		B0730F6F1BB818C000033FD2 /* MDDataIO.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C09F1BB2E5F200421F81 /* MDDataIO.m */; };
+		B0788F931BB3466A0021FC89 /* MDMiniDoUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F921BB3466A0021FC89 /* MDMiniDoUtils.m */; };
+		B0788F941BB3466A0021FC89 /* MDMiniDoUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F921BB3466A0021FC89 /* MDMiniDoUtils.m */; };
+		B0788F951BB3466A0021FC89 /* MDMiniDoUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F921BB3466A0021FC89 /* MDMiniDoUtils.m */; };
+		B0788F9A1BB34BE40021FC89 /* MDPopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F991BB34BE40021FC89 /* MDPopButton.m */; };
+		B0788F9B1BB34BE40021FC89 /* MDPopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F991BB34BE40021FC89 /* MDPopButton.m */; };
+		B0788F9C1BB34BE40021FC89 /* MDPopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F991BB34BE40021FC89 /* MDPopButton.m */; };
+		B0788FA01BB354380021FC89 /* MDAppControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F9F1BB354380021FC89 /* MDAppControl.m */; };
+		B0788FA11BB354380021FC89 /* MDAppControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F9F1BB354380021FC89 /* MDAppControl.m */; };
+		B0788FA21BB354380021FC89 /* MDAppControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788F9F1BB354380021FC89 /* MDAppControl.m */; };
+		B0788FA51BB3594B0021FC89 /* MDBaseHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788FA41BB3594B0021FC89 /* MDBaseHeaderView.m */; };
+		B0788FA61BB3594B0021FC89 /* MDBaseHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788FA41BB3594B0021FC89 /* MDBaseHeaderView.m */; };
+		B0788FA71BB3594B0021FC89 /* MDBaseHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788FA41BB3594B0021FC89 /* MDBaseHeaderView.m */; };
+		B0788FAC1BB367D40021FC89 /* MDUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788FAB1BB367D40021FC89 /* MDUserManager.m */; };
+		B0788FAD1BB367D40021FC89 /* MDUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788FAB1BB367D40021FC89 /* MDUserManager.m */; };
+		B0788FAE1BB367D40021FC89 /* MDUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B0788FAB1BB367D40021FC89 /* MDUserManager.m */; };
+		B0A5A8861BB86C9B00E9B479 /* MDDataCloudAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A5A8851BB86C9B00E9B479 /* MDDataCloudAPI.m */; };
+		B0A5A8871BB86C9B00E9B479 /* MDDataCloudAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A5A8851BB86C9B00E9B479 /* MDDataCloudAPI.m */; };
+		B0A5A8881BB86C9B00E9B479 /* MDDataCloudAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A5A8851BB86C9B00E9B479 /* MDDataCloudAPI.m */; };
+		B0D162911BB8743900B8B96B /* MDDataCloudNetworkRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D162901BB8743900B8B96B /* MDDataCloudNetworkRequestManager.m */; settings = {ASSET_TAGS = (); }; };
+		B0D162921BB8743E00B8B96B /* MDDataCloudNetworkRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D162901BB8743900B8B96B /* MDDataCloudNetworkRequestManager.m */; settings = {ASSET_TAGS = (); }; };
+		B0D162931BB8743E00B8B96B /* MDDataCloudNetworkRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D162901BB8743900B8B96B /* MDDataCloudNetworkRequestManager.m */; settings = {ASSET_TAGS = (); }; };
+		B0D162961BB878EA00B8B96B /* MDURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D162951BB878EA00B8B96B /* MDURLConnection.m */; settings = {ASSET_TAGS = (); }; };
+		B0D162971BB878EA00B8B96B /* MDURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D162951BB878EA00B8B96B /* MDURLConnection.m */; settings = {ASSET_TAGS = (); }; };
+		B0D162981BB878EA00B8B96B /* MDURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D162951BB878EA00B8B96B /* MDURLConnection.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +161,12 @@
 		B0788FA41BB3594B0021FC89 /* MDBaseHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDBaseHeaderView.m; path = UI/MDBaseHeaderView.m; sourceTree = "<group>"; };
 		B0788FAA1BB367D40021FC89 /* MDUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDUserManager.h; path = Managers/MDUserManager.h; sourceTree = "<group>"; };
 		B0788FAB1BB367D40021FC89 /* MDUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDUserManager.m; path = Managers/MDUserManager.m; sourceTree = "<group>"; };
+		B0A5A8841BB86C9B00E9B479 /* MDDataCloudAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDDataCloudAPI.h; path = DataIO/MDDataCloudAPI.h; sourceTree = "<group>"; };
+		B0A5A8851BB86C9B00E9B479 /* MDDataCloudAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDDataCloudAPI.m; path = DataIO/MDDataCloudAPI.m; sourceTree = "<group>"; };
+		B0D1628F1BB8743900B8B96B /* MDDataCloudNetworkRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDDataCloudNetworkRequestManager.h; path = DataIO/MDDataCloudNetworkRequestManager.h; sourceTree = "<group>"; };
+		B0D162901BB8743900B8B96B /* MDDataCloudNetworkRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDDataCloudNetworkRequestManager.m; path = DataIO/MDDataCloudNetworkRequestManager.m; sourceTree = "<group>"; };
+		B0D162941BB878EA00B8B96B /* MDURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDURLConnection.h; path = DataIO/MDURLConnection.h; sourceTree = "<group>"; };
+		B0D162951BB878EA00B8B96B /* MDURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDURLConnection.m; path = DataIO/MDURLConnection.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,8 +225,8 @@
 				B001C09D1BB2D83200421F81 /* Managers */,
 				B001C09C1BB2D82D00421F81 /* UI */,
 				B001C09B1BB2D81C00421F81 /* DataIO */,
-				B0788F891BB335690021FC89 /* Resources */,
 				B0788F971BB348000021FC89 /* Utils&Constants */,
+				B0788F891BB335690021FC89 /* Resources */,
 				B001C0651BB2D7F300421F81 /* Supporting Files */,
 			);
 			path = MiniDo;
@@ -249,6 +265,12 @@
 				B001C0711BB2D7F300421F81 /* MiniDo.xcdatamodeld */,
 				B001C09E1BB2E5F200421F81 /* MDDataIO.h */,
 				B001C09F1BB2E5F200421F81 /* MDDataIO.m */,
+				B0A5A8841BB86C9B00E9B479 /* MDDataCloudAPI.h */,
+				B0A5A8851BB86C9B00E9B479 /* MDDataCloudAPI.m */,
+				B0D1628F1BB8743900B8B96B /* MDDataCloudNetworkRequestManager.h */,
+				B0D162901BB8743900B8B96B /* MDDataCloudNetworkRequestManager.m */,
+				B0D162941BB878EA00B8B96B /* MDURLConnection.h */,
+				B0D162951BB878EA00B8B96B /* MDURLConnection.m */,
 				B0788F701BB2F9150021FC89 /* Models */,
 			);
 			name = DataIO;
@@ -529,11 +551,14 @@
 				B001C0671BB2D7F300421F81 /* main.m in Sources */,
 				B0730F5D1BB7EEF300033FD2 /* MDDataObject+CoreDataProperties.m in Sources */,
 				B0730F691BB7EEF300033FD2 /* MDUserObject+CoreDataProperties.m in Sources */,
+				B0D162961BB878EA00B8B96B /* MDURLConnection.m in Sources */,
 				B001C0AB1BB2EBC500421F81 /* MDBaseViewController.m in Sources */,
 				B001C0731BB2D7F300421F81 /* MiniDo.xcdatamodeld in Sources */,
 				B03680D71BB4691700A8DA96 /* MDToDoItemView.m in Sources */,
 				B0788FA51BB3594B0021FC89 /* MDBaseHeaderView.m in Sources */,
 				B0730F661BB7EEF300033FD2 /* MDToDoObject.m in Sources */,
+				B0D162911BB8743900B8B96B /* MDDataCloudNetworkRequestManager.m in Sources */,
+				B0A5A8861BB86C9B00E9B479 /* MDDataCloudAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,6 +570,7 @@
 				B0730F5E1BB7EEF300033FD2 /* MDDataObject+CoreDataProperties.m in Sources */,
 				B0788FA61BB3594B0021FC89 /* MDBaseHeaderView.m in Sources */,
 				B001C0A11BB2E5F200421F81 /* MDDataIO.m in Sources */,
+				B0D162971BB878EA00B8B96B /* MDURLConnection.m in Sources */,
 				B03680E21BB46A5D00A8DA96 /* MDToDoListViewController.m in Sources */,
 				B0730F611BB7EEF300033FD2 /* MDDataObject.m in Sources */,
 				B0788F9B1BB34BE40021FC89 /* MDPopButton.m in Sources */,
@@ -552,7 +578,9 @@
 				B0788FAD1BB367D40021FC89 /* MDUserManager.m in Sources */,
 				B001C0A61BB2E64000421F81 /* MDViewController.m in Sources */,
 				B03680D31BB468FB00A8DA96 /* MDToDoListTableViewCell.m in Sources */,
+				B0A5A8871BB86C9B00E9B479 /* MDDataCloudAPI.m in Sources */,
 				B06951281BB7226600D2577E /* MDBaseAddBtn.m in Sources */,
+				B0D162921BB8743E00B8B96B /* MDDataCloudNetworkRequestManager.m in Sources */,
 				B0788FA11BB354380021FC89 /* MDAppControl.m in Sources */,
 				B0730F671BB7EEF300033FD2 /* MDToDoObject.m in Sources */,
 				B001C0831BB2D7F300421F81 /* MiniDoTests.m in Sources */,
@@ -571,6 +599,7 @@
 				B03680D41BB468FB00A8DA96 /* MDToDoListTableViewCell.m in Sources */,
 				B0730F5F1BB7EEF300033FD2 /* MDDataObject+CoreDataProperties.m in Sources */,
 				B06951291BB7226600D2577E /* MDBaseAddBtn.m in Sources */,
+				B0D162981BB878EA00B8B96B /* MDURLConnection.m in Sources */,
 				B001C08E1BB2D7F300421F81 /* MiniDoUITests.m in Sources */,
 				B03680E31BB46A5D00A8DA96 /* MDToDoListViewController.m in Sources */,
 				B0730F6E1BB7EEF300033FD2 /* MDUserObject.m in Sources */,
@@ -578,10 +607,13 @@
 				B0730F681BB7EEF300033FD2 /* MDToDoObject.m in Sources */,
 				B0788FA71BB3594B0021FC89 /* MDBaseHeaderView.m in Sources */,
 				B0788F9C1BB34BE40021FC89 /* MDPopButton.m in Sources */,
+				B0A5A8881BB86C9B00E9B479 /* MDDataCloudAPI.m in Sources */,
 				B0730F6B1BB7EEF300033FD2 /* MDUserObject+CoreDataProperties.m in Sources */,
+				B0D162931BB8743E00B8B96B /* MDDataCloudNetworkRequestManager.m in Sources */,
 				B0788FAE1BB367D40021FC89 /* MDUserManager.m in Sources */,
 				B03680D91BB4691700A8DA96 /* MDToDoItemView.m in Sources */,
 				B0788FA21BB354380021FC89 /* MDAppControl.m in Sources */,
+				B0730F6F1BB818C000033FD2 /* MDDataIO.m in Sources */,
 				B001C0A71BB2E64000421F81 /* MDViewController.m in Sources */,
 				B0730F621BB7EEF300033FD2 /* MDDataObject.m in Sources */,
 				B0730F651BB7EEF300033FD2 /* MDToDoObject+CoreDataProperties.m in Sources */,
