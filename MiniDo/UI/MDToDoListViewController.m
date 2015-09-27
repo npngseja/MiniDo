@@ -55,12 +55,12 @@
             __msgForEmptyList.textAlignment = NSTextAlignmentCenter;
             __msgForEmptyList.numberOfLines = 10;
             if (self.listType == MDActiveListTypeToDo) {
-                NSMutableAttributedString *atr = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"TAP\n+\nTO CREATE A TASK", nil) attributes:@{NSFontAttributeName: [UIFont fontWithName:DEFAULT_FONT_LIGHT size:hdfs2fs(70)], NSForegroundColorAttributeName: DEFAULT_TEXT_COLOR}];
-                [atr addAttributes:@{NSForegroundColorAttributeName: DEFAULT_KEY_COLOR, NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:hdfs2fs(100)]} range:[atr.string rangeOfString:@"+"]];
+                NSMutableAttributedString *atr = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"TAP\n+\nTO CREATE A TASK", nil) attributes:@{NSFontAttributeName: [UIFont fontWithName:DEFAULT_FONT_LIGHT size:hdfs2fs(100)], NSForegroundColorAttributeName: DEFAULT_TEXT_COLOR}];
+                [atr addAttributes:@{NSForegroundColorAttributeName: DEFAULT_KEY_COLOR, NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:hdfs2fs(130)]} range:[atr.string rangeOfString:@"+"]];
                 __msgForEmptyList.attributedText = atr;
             } else {
-                NSMutableAttributedString *atr = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"HERE YOU FIND\n\nWHAT YOU'VE DONE", nil) attributes:@{NSFontAttributeName: [UIFont fontWithName:DEFAULT_FONT_LIGHT size:hdfs2fs(70)], NSForegroundColorAttributeName: DEFAULT_TEXT_COLOR}];
-                [atr addAttributes:@{NSForegroundColorAttributeName: DEFAULT_KEY_COLOR, NSFontAttributeName: [UIFont fontWithName:DEFAULT_FONT_BOLD size:hdfs2fs(70)]} range:[atr.string rangeOfString:@"DONE"]];
+                NSMutableAttributedString *atr = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"HERE YOU FIND\n\nWHAT YOU'VE DONE", nil) attributes:@{NSFontAttributeName: [UIFont fontWithName:DEFAULT_FONT_LIGHT size:hdfs2fs(100)], NSForegroundColorAttributeName: DEFAULT_TEXT_COLOR}];
+                [atr addAttributes:@{NSForegroundColorAttributeName: DEFAULT_KEY_COLOR, NSFontAttributeName: [UIFont fontWithName:DEFAULT_FONT_BOLD size:hdfs2fs(100)]} range:[atr.string rangeOfString:@"DONE"]];
                 __msgForEmptyList.attributedText = atr;
 
             }
@@ -255,9 +255,25 @@
 
 -(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
-    id object = [__todos objectAtIndex:sourceIndexPath.row];
+    // change list's data source
+    MDToDoObject *object = [__todos objectAtIndex:sourceIndexPath.row];
     [__todos removeObjectAtIndex:sourceIndexPath.row];
     [__todos insertObject:object atIndex:destinationIndexPath.row];
+    
+    // change priority
+    MDToDoObject *currentToDo = object;
+    NSInteger indexOfCurrentToDo = [__todos indexOfObject:currentToDo];
+    NSInteger indexOfPrevToDo = indexOfCurrentToDo-1;
+    NSInteger indexOfNextToDo = indexOfCurrentToDo+1;
+    MDToDoObject *prevToDo = (indexOfPrevToDo >= 0 && indexOfPrevToDo < __todos.count) ? __todos[indexOfPrevToDo] : nil;
+    MDToDoObject *nextToDo = (indexOfNextToDo >= 0 && indexOfNextToDo < __todos.count) ? __todos[indexOfNextToDo] : nil;
+    
+    // note that __todos is sorted descending!!!
+    [[MDUserManager sharedInstance] changePriorityOfToDo:currentToDo greaterThanToDo:nextToDo lessThanToDo:prevToDo completionBlock:^(BOOL succeed) {
+        if (succeed == NO) {
+            NSLog(@"[WARNING] change priority of todo in a list is failed!!!!!!!!");
+        }
+    }];
 }
 
 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath

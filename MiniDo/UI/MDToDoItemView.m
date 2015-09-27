@@ -11,6 +11,7 @@
 #import "MDMiniDoUtils.h"
 #import "MDDataIO.h"
 #import "MDAppControl.h"
+#import "MDUserManager.h"
 
 #define TEXTFIELD_ALPHA_INCOMPLETE 1.0
 #define TEXTFIELD_ALPHA_COMPLETE 0.5
@@ -89,34 +90,32 @@
     btn.selected = !btn.selected;
     BOOL isCompleted = btn.selected;
     
-    // update todo data
-    self.todo.isCompleted = @(isCompleted);
-    if (isCompleted) {
-        self.todo.completionDate = [NSDate date];
-    } else {
-        self.todo.creationDate = [NSDate date];
-    }
-    self.todo.isDirty = @(YES);
-    
-    [[MDDataIO sharedInstance] saveInBackgroundWithCompletionBlock:^(BOOL succeed) {
-        
+    [[MDUserManager sharedInstance] changeDoneStateOfToDo:self.todo shouldChangeToDone:isCompleted completionBlock:^(BOOL succeed) {
+
+        if (succeed) {
+            // change textfield appearance
+            if (isCompleted) {
+                self.textField.alpha = TEXTFIELD_ALPHA_COMPLETE;
+                __textView.alpha = TEXTFIELD_ALPHA_COMPLETE;
+            } else {
+                self.textField.alpha = TEXTFIELD_ALPHA_INCOMPLETE;
+                __textView.alpha = TEXTFIELD_ALPHA_INCOMPLETE;
+            }
+            
+            // start fly over animation!
+            MDActiveListType sourceListType = isCompleted ? MDActiveListTypeToDo : MDActiveListTypeDone;
+            MDActiveListType targetListType = isCompleted ? MDActiveListTypeDone : MDActiveListTypeToDo;
+            [[MDAppControl sharedInstance] moveToDo:self.todo sourceListType:sourceListType targetListType:targetListType completionBlock:^{
+                
+            }];
+
+            
+        } else {
+            // failed make button state back
+            btn.selected = !btn.selected;
+        }
     }];
     
-    // change textfield appearance
-    if (isCompleted) {
-        self.textField.alpha = TEXTFIELD_ALPHA_COMPLETE;
-        __textView.alpha = TEXTFIELD_ALPHA_COMPLETE;
-    } else {
-        self.textField.alpha = TEXTFIELD_ALPHA_INCOMPLETE;
-        __textView.alpha = TEXTFIELD_ALPHA_INCOMPLETE;
-    }
-    
-    // start fly over animation!
-    MDActiveListType sourceListType = isCompleted ? MDActiveListTypeToDo : MDActiveListTypeDone;
-    MDActiveListType targetListType = isCompleted ? MDActiveListTypeDone : MDActiveListTypeToDo;
-    [[MDAppControl sharedInstance] moveToDo:self.todo sourceListType:sourceListType targetListType:targetListType completionBlock:^{
-        
-    }];
     
 }
 
@@ -235,7 +234,7 @@
         __deleteBtn = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.bounds)-px2p(60)-px2p(300), __dateLabel.frame.origin.y, px2p(300), px2p(150))];
         [__deleteBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         [__deleteBtn setTitle:NSLocalizedString(@"DELETE", nil) forState:UIControlStateNormal];
-        __deleteBtn.titleLabel.font = [UIFont fontWithName:DEFAULT_FONT_LIGHT size:hdfs2fs(60)];
+        __deleteBtn.titleLabel.font = [UIFont fontWithName:DEFAULT_FONT_REGULAR size:hdfs2fs(60)];
         [__deleteBtn addTarget:self action:@selector(pressedDeleteBtn:) forControlEvents:UIControlEventTouchUpInside];
         __deleteBtn.alpha = 0.0;
         [self addSubview:__deleteBtn];

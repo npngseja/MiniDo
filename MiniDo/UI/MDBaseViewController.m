@@ -327,7 +327,7 @@
     
         // 4. calc destination position
         CGFloat destCenterX = targetListType == MDActiveListTypeDone ? CGRectGetWidth(self.view.bounds)*1.5 : -CGRectGetWidth(self.view.bounds)*0.5;
-        CGPoint destCenterOnScreen = CGPointMake(destCenterX , centerOnScreen.y-px2p(100));
+        CGPoint destCenterOnScreen = CGPointMake(destCenterX , self.todoListViewController.view.frame.origin.y+px2p(300));
         
         // 5. do animation. At the same time, create new cell on targetlist view with the todo data.
         [targetView insertNewToDoCellWithToDoObject:todo animated:YES];

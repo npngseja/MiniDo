@@ -84,12 +84,12 @@
                 // DEBUG
                 [[MDUserManager sharedInstance] fetchTodosForListType:MDActiveListTypeToDo completionBlock:^(BOOL succeed, NSArray<MDToDoObject *> * _Nullable results) {
                     for (MDToDoObject *t in results) {
-                        NSLog(@"%@ - %@",t.order, t.text);
+                        NSLog(@"%@ - %@",t.priority, t.text);
                     }
                     
                     [[MDUserManager sharedInstance] fetchTodosForListType:MDActiveListTypeDone completionBlock:^(BOOL succeed, NSArray<MDToDoObject *> * _Nullable results) {
                         for (MDToDoObject *t in results) {
-                            NSLog(@"%@ X %@",t.order, t.text);
+                            NSLog(@"%@ X %@",t.priority, t.text);
                         }
                     }];
                 }];
@@ -183,6 +183,7 @@
 
 -(void)moveToDo:(MDToDoObject *)todo sourceListType:(MDActiveListType)sourceListType targetListType:(MDActiveListType)targetListType completionBlock:(void (^)())completionBlock
 {
+    
     [self.baseVc moveToDo:todo sourceListType:sourceListType targetListType:targetListType completionBlock:^{
         if (completionBlock) {
             completionBlock();

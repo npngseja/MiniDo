@@ -2,7 +2,7 @@
 //  MDUserObject+CoreDataProperties.h
 //  MiniDo
 //
-//  Created by npngseja on 25/09/15.
+//  Created by npngseja on 27/09/15.
 //  Copyright © 2015 Taehun Kim. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,8 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MDUserObject (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSNumber *todoCount;
-@property (nullable, nonatomic, retain) NSNumber *doneCount;
 @property (nullable, nonatomic, retain) NSSet<MDToDoObject *> *todos;
 
 @end

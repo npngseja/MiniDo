@@ -33,6 +33,49 @@
    
 }
 
+- (void)testChangeToDoDoneState
+{
+    
+}
+
+- (void)testGetMostImportantToDo
+{
+    
+}
+
+- (void)testChangeToDoPriority
+{
+    
+}
+
+- (void)testCreateNewToDo
+{
+    
+}
+
+- (void)testFetchIncompletedToDos
+{
+    
+}
+
+- (void)testFetchCompletedToDos
+{
+    
+}
+
+- (void)testDeleteToDo
+{
+    
+}
+
+/**
+ DB should always have only one single user
+ */
+- (void)testGetLastUser
+{
+    
+}
+
 - (void)testPerformanceExample {
     // This is an example of a performance test case.
     [self measureBlock:^{

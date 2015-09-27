@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "MDUserObject.h"
 #import "MDToDoObject.h"
 #import "MDMiniDoConstants.h"
@@ -46,5 +47,25 @@
 -(void)fetchTodosForListType:(MDActiveListType)listType
              completionBlock:(nonnull void (^)(BOOL succeed, NSArray<MDToDoObject*> * _Nullable results))completionBlock;
 
+/**
+ return the most important todo (highest priority)
+ @param completed
+        if YES, it returns most important todo which is done (vice versa)
+ */
+-(void)mostImportantToDoForCurrentUserCompleted:(BOOL)completed completionBlock:(nullable void (^)(MDToDoObject * _Nullable o))completionBlock;
+
+/**
+ change todo's isCompleted attribute. This will change its priority on target list
+ */
+-(void)changeDoneStateOfToDo:(nonnull MDToDoObject *)todo
+          shouldChangeToDone:(BOOL)isDone
+             completionBlock:(nullable void (^)(BOOL succeed))completionBlock;
+
+/**
+ change priority of todo using information about its prev and next todos. if prevToDo is nil, then current todo should have lowest prio. if nextTodo is nil. current todo should have highest prio. if prevToDo and nextToDo are nil, it fails!
+ */
+-(void)changePriorityOfToDo:(nonnull MDToDoObject *)todo
+            greaterThanToDo:(nullable MDToDoObject *)prevToDo
+               lessThanToDo:(nullable MDToDoObject* )nextToDo completionBlock:(nullable void (^)(BOOL succeed))completionBlock;
 
 @end
