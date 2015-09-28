@@ -3,6 +3,7 @@
     <entity name="MDDataObject" representedClassName="MDDataObject" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="isDirty" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="isRemoved" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="uniqueId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
@@ -18,7 +19,7 @@
         <relationship name="todos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MDToDoObject" inverseName="owner" inverseEntity="MDToDoObject" syncable="YES"/>
     </entity>
     <elements>
-        <element name="MDDataObject" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="MDDataObject" positionX="-63" positionY="-18" width="128" height="120"/>
         <element name="MDToDoObject" positionX="-54" positionY="18" width="128" height="135"/>
         <element name="MDUserObject" positionX="-36" positionY="45" width="128" height="60"/>
     </elements>

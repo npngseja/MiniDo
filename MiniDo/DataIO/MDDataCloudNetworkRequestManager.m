@@ -34,6 +34,10 @@
 
 -(void)cancelConnection:(MDURLConnection *)connection
 {
+    if (connection == nil) {
+        return;
+    }
+    
     [connection cancel];
     
     // [NSURLConnection cancel] does not make any delegate method(!?!)

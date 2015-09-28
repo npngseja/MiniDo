@@ -25,7 +25,7 @@
 /**
  GET all todos from server. if successful, then it will also modify localDB. Your first source to get latest tods are MDDataLocalIO
  */
--(void)getAllToDosFromServerWithComplectionBlock:(nonnull void (^)(BOOL succeed, NSError * _Nullable error))completionBlock;
+-(void)getAllToDosFromServerWithComplectionBlock:(nonnull void (^)(BOOL succeed, id _Nullable response, NSError * _Nullable error))completionBlock;
 /**
  POST(store) dirty data onto server
  */

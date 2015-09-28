@@ -30,5 +30,10 @@
  */
 @property BOOL isFocused;
 
+/**
+ will prompt text should have a text. this might happen when user removed all text and want to dismiss focused mode. we should prevent it.
+ */
+-(void)promptDeletionOfCurrentToDo;
+
 
 @end

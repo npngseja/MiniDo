@@ -2,7 +2,7 @@
 //  MDDataObject+CoreDataProperties.m
 //  MiniDo
 //
-//  Created by npngseja on 27/09/15.
+//  Created by npngseja on 28/09/15.
 //  Copyright © 2015 Taehun Kim. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -17,5 +17,6 @@
 @dynamic isDirty;
 @dynamic uniqueId;
 @dynamic updatedAt;
+@dynamic isRemoved;
 
 @end

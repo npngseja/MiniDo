@@ -56,7 +56,9 @@
 
 /**
  move todo item from source list to target list. The item will be inserted on top of the target list
+ @param flyOverAnimation
+        if YES we commit fly over animation. If NO we just remove and add cells.
  */
-- (void)moveToDo:(nonnull MDToDoObject*)todo sourceListType:(MDActiveListType)sourceListType targetListType:(MDActiveListType)targetListType completionBlock:(nullable void (^)())completionBlock;
+-(void)moveToDo:(nonnull MDToDoObject *)todo sourceListType:(MDActiveListType)sourceListType targetListType:(MDActiveListType)targetListType flyOverAnimation:(BOOL)flyOverAni completionBlock:(nullable void (^)())completionBlock;
 
 @end

@@ -121,39 +121,18 @@
 
 -(void)pressedDeleteBtn:(UIButton*)btn
 {
-    // close keyboard if necessary
-    [__textView resignFirstResponder];
-    
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Delete", nil) message:NSLocalizedString(@"Are you sure?", nil) preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        
-    }];
-    
-    UIAlertAction *delete = [UIAlertAction actionWithTitle:NSLocalizedString(@"Delete", nil) style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-        NSLog(@"DELETE TODO: %@", self.todo.text);
-        [self __commitDeleteAnimationWithCompletionBlock:^{
-            // thrown out.
-            // destroy data object and its parent cell
-            [[MDAppControl sharedInstance] removeToDoItemWithToDo:self.todo];
-            [[MDAppControl sharedInstance] forceToDismissFocusModeWithCompletionBlock:^{
-                
-            }];
-        }];
-    }];
-    
-    [alert addAction:cancel];
-    [alert addAction:delete];
-    
-    UIViewController *baseVc = (UIViewController*)[MDAppControl sharedInstance].baseVc;
-    
-    [baseVc presentViewController:alert animated:YES completion:nil];
-    
+    [self __deleteCurrentToDo];
 }
 
 -(void)closeKeyboard:(UITapGestureRecognizer*)gr
 {
     [self.textField resignFirstResponder];
+}
+
+-(void)promptDeletionOfCurrentToDo
+{
+    [self __deleteCurrentToDo];
+   
 }
 
 #pragma mark - Content Management -
@@ -295,6 +274,42 @@
     return _isFocused;
 }
 
+-(void)__deleteCurrentToDo
+{
+    // close keyboard if necessary
+    [__textView resignFirstResponder];
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Delete", nil) message:NSLocalizedString(@"Do you really want to delete this task?", nil) preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    UIAlertAction *delete = [UIAlertAction actionWithTitle:NSLocalizedString(@"Delete", nil) style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        
+        NSLog(@"DELETE TODO: %@", self.todo.text);
+        [self __commitDeleteAnimationWithCompletionBlock:^{
+            // thrown out.
+            // destroy data object and its parent cell
+            [[MDAppControl sharedInstance] removeToDoItemWithToDo:self.todo];
+            [[MDAppControl sharedInstance] forceToDismissFocusModeWithCompletionBlock:^{
+                
+            }];
+        }];
+        
+
+        
+    }];
+    
+    [alert addAction:cancel];
+    [alert addAction:delete];
+    
+    UIViewController *baseVc = (UIViewController*)[MDAppControl sharedInstance].baseVc;
+    
+    [baseVc presentViewController:alert animated:YES completion:nil];
+
+   }
+
 -(void)__commitDeleteAnimationWithCompletionBlock:(nonnull void (^)())completionBlock
 {
     CGAffineTransform t = CGAffineTransformConcat(
@@ -353,14 +368,15 @@
         self.todo.updatedAt = [NSDate date];
         self.todo.isDirty = @(YES);
         [[MDDataIO sharedInstance] saveLocalDBWithCompletionBlock:^(BOOL succeed) {
-            
+            [[MDDataIO sharedInstance] storeCurrentStateOnCloudWithComplectionBlock:^(BOOL succeed) {
+                
+            }];
         }];
     }
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    //ToDo: update textview in detail mode too!
     [textField resignFirstResponder];
     return YES;
 }
@@ -375,7 +391,9 @@
     self.textField.text = self.todo.text;
     
     [[MDDataIO sharedInstance] saveLocalDBWithCompletionBlock:^(BOOL succeed) {
-        
+        [[MDDataIO sharedInstance] storeCurrentStateOnCloudWithComplectionBlock:^(BOOL succeed) {
+            
+        }];
     }];
     
 }

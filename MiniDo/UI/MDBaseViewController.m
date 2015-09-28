@@ -12,6 +12,8 @@
 #import "MDAppControl.h"
 #import "MDToDoItemView.h"
 
+#define CONTENT_VIEW_FRAME_IPAD CGRectMake(100, 68, 815, 632)
+
 @interface MDBaseViewController ()
 {
     BOOL __isFirstLoad;
@@ -50,6 +52,13 @@
     __contentView.userInteractionEnabled = YES;
     [self.view addSubview:__contentView];
     
+    CGFloat scrollerContentSizeScale = 2.0;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        // we make contentView different for iPad app, with 100p side margins
+        __contentView.frame = CONTENT_VIEW_FRAME_IPAD;
+        scrollerContentSizeScale = 1.0;
+    }
+    
     // base scroller
     self.scroller = [[UIScrollView alloc] initWithFrame:CGRectMake(0, px2p(370), CGRectGetWidth(__contentView.bounds), CGRectGetHeight(__contentView.bounds) - px2p(370))];
     self.scroller.showsHorizontalScrollIndicator = NO;
@@ -57,18 +66,24 @@
     self.scroller.pagingEnabled = YES;
     self.scroller.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     self.scroller.delegate = self;
-    self.scroller.contentSize = CGSizeMake(CGRectGetWidth(self.scroller.bounds)*2, CGRectGetHeight(self.scroller.bounds));
+    self.scroller.contentSize = CGSizeMake(CGRectGetWidth(self.scroller.bounds)*scrollerContentSizeScale, CGRectGetHeight(self.scroller.bounds));
     [__contentView addSubview:self.scroller];
+    
+    CGFloat listViewWidth = CGRectGetWidth(self.scroller.bounds);
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        // we show two list views side by side
+        listViewWidth = CGRectGetWidth(self.scroller.bounds)/2;
+    }
     
     // todo list view controller
     self.todoListViewController = [[MDToDoListViewController alloc] init];
-    self.todoListViewController.view.frame = self.scroller.bounds;
+    self.todoListViewController.view.frame = CGRectMake(0, 0, listViewWidth, CGRectGetHeight(self.scroller.bounds));
     self.todoListViewController.listType = MDActiveListTypeToDo;
     [self.scroller addSubview:self.todoListViewController.view];
     
     // done list view controller
     self.doneListViewController = [[MDToDoListViewController alloc] init];
-    self.doneListViewController.view.frame = CGRectMake(CGRectGetWidth(self.scroller.bounds), 0, CGRectGetWidth(self.scroller.bounds), CGRectGetHeight(self.scroller.bounds));
+    self.doneListViewController.view.frame = CGRectMake(listViewWidth, 0, listViewWidth, CGRectGetHeight(self.scroller.bounds));
     self.doneListViewController.listType = MDActiveListTypeDone;
     [self.scroller addSubview:self.doneListViewController.view];
     
@@ -219,8 +234,11 @@
     //
     // animation!
     //
+    CGFloat itemViewDestCenterY = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? px2p(772) : 260; // these values are found with my eyes...
+    
     [UIView animateWithDuration:0.3 delay:0.0 usingSpringWithDamping:0.8 initialSpringVelocity:1.0 options: UIViewAnimationOptionCurveEaseInOut animations:^{
-        itemView.center = CGPointMake(CGRectGetWidth(self.view.bounds)/2, px2p(772));
+        
+        itemView.center = CGPointMake(CGRectGetWidth(self.view.bounds)/2, itemViewDestCenterY);
         [self __makeContentViewFarAway];
         __layerInvisibleDismissFocusedToDo.alpha = 1.0;
         
@@ -250,6 +268,16 @@
         }
         return;
     }
+    
+    // check if todo has no text anymore
+    if (todo.text.length == 0) {
+        [itemView promptDeletionOfCurrentToDo];
+        if (completionBlock) {
+            completionBlock(NO);
+        }
+        return;
+    }
+    
    
     // calc destination of itemview concerning its parent cell
     NSValue *destinationOnListView = [targetVc putBackDestinationCenterOfTodoItemViewOnTableView:itemView];
@@ -262,7 +290,17 @@
     }
     
     // we do not use here -(CGPoint)convertPoint:toView: method, because __contentView is scaled, so that the conversion has influence of that scaling. We need to know the cell's position when the list is NOT scaled. To achieve that we calculate destination center on screen manually.
-    CGPoint destinationOnScreen = CGPointMake(destinationOnListView.CGPointValue.x, destinationOnListView.CGPointValue.y+self.scroller.frame.origin.y);
+    CGFloat targetVcOriginX = 0;
+    CGFloat contentViewOriginX = 0;
+    CGFloat contentViewOriginY = 0;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        contentViewOriginX = CONTENT_VIEW_FRAME_IPAD.origin.x;
+        contentViewOriginY = CONTENT_VIEW_FRAME_IPAD.origin.y;
+        targetVcOriginX = targetVc == self.todoListViewController ? 0 : self.scroller.bounds.size.width/2;
+    }
+    CGPoint destinationOnScreen = CGPointMake(destinationOnListView.CGPointValue.x+contentViewOriginX+targetVcOriginX, destinationOnListView.CGPointValue.y+self.scroller.frame.origin.y+contentViewOriginY);
+    
+    //CGPoint destinationOnScreen = CGPointMake(destinationOnListView.CGPointValue.x, destinationOnListView.CGPointValue.y+self.scroller.frame.origin.y);
     // mark the itemview not focused
     itemView.isFocused = NO;
     
@@ -305,10 +343,25 @@
 
 }
 
--(void)moveToDo:(MDToDoObject *)todo sourceListType:(MDActiveListType)sourceListType targetListType:(MDActiveListType)targetListType completionBlock:(void (^)())completionBlock
+-(void)moveToDo:(MDToDoObject *)todo sourceListType:(MDActiveListType)sourceListType targetListType:(MDActiveListType)targetListType flyOverAnimation:(BOOL)flyOverAni completionBlock:(void (^)())completionBlock
 {
+    
     MDToDoListViewController *sourceView = sourceListType == MDActiveListTypeToDo ? self.todoListViewController : self.doneListViewController;
     MDToDoListViewController *targetView = targetListType == MDActiveListTypeToDo ? self.todoListViewController : self.doneListViewController;
+    
+    if (flyOverAni == NO) {
+        [sourceView removeToDoCellWithToDoObject:todo animated:YES completionBlock:^{
+            [targetView insertNewToDoCellWithToDoObject:todo animated:YES];
+        }];
+        
+        if (completionBlock) {
+            completionBlock();
+        }
+        return;
+        
+    }
+    
+    // do fly over ani.
     
     // 1. take itemView out of sourceListView, and put it on transition layer (self.view)
     __block MDToDoItemView *itemView = [sourceView todoItemViewForToDoObject:todo];
@@ -323,13 +376,11 @@
     // 2. disconnect link to the parent cell. the itemview is now really free!
     [sourceView makeItemViewFreeFromParentCell:itemView];
     
-    // 3. remove parent cell. this call will try to reset cell's itemView, but it is ok here, because the cell does not have one!
-    
-        // 4. calc destination position
+        // 3. calc destination position
         CGFloat destCenterX = targetListType == MDActiveListTypeDone ? CGRectGetWidth(self.view.bounds)*1.5 : -CGRectGetWidth(self.view.bounds)*0.5;
         CGPoint destCenterOnScreen = CGPointMake(destCenterX , self.todoListViewController.view.frame.origin.y+px2p(300));
         
-        // 5. do animation. At the same time, create new cell on targetlist view with the todo data.
+        // 4. do animation. At the same time, create new cell on targetlist view with the todo data.
         [targetView insertNewToDoCellWithToDoObject:todo animated:YES];
         [[MDAppControl sharedInstance] blockEntireUI];
         [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
@@ -347,11 +398,11 @@
                         // make __contentView normal
                         [self __makeContentViewNormal];
                     } completion:^(BOOL finished) {
-                        // 6. remove cell from source view
+                        // 5. remove cell from source view
                         [sourceView removeToDoCellWithToDoObject:todo animated:YES completionBlock:^{
                             
                         }];
-                        // 7. we created new itemView. old itemView we can throw away
+                        // 6. we created new itemView. old itemView we can throw away
                         [itemView removeFromSuperview];
                         itemView = nil;
                         [[MDAppControl sharedInstance] unblockEntireUI];
@@ -363,6 +414,7 @@
     
 
 }
+
 
 
 @end

@@ -9,6 +9,9 @@
 #ifndef MDMiniDoConstants_h
 #define MDMiniDoConstants_h
 
+// we allow maximum 200 todos for a user!
+#define MAX_TODO_COUNT 200
+
 #define DEFAULT_COLOR_WHITE [UIColor whiteColor]
 #define DEFAULT_COLOR_BLACK [UIColor blackColor]
 
@@ -20,7 +23,6 @@
 #define DEFAULT_FONT_BOLD @"Dosis-Medium"
 #define DEFAULT_FONT_LIGHT @"Dosis-ExtraLight"
 
-#define TODO_CELL_WIDTH  CGRectGetWidth([UIScreen mainScreen].bounds)
 #define TODO_CELL_HEIGHT px2p(300)
 
 typedef NS_ENUM(NSInteger, MDActiveListType) {

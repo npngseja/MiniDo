@@ -19,7 +19,12 @@
     
     if (self) {
         self.userInteractionEnabled = YES;
+        
         [self __configureView];
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            
+            [self __adjustViewForPad];
+        }
     }
     
     return self;
@@ -48,6 +53,16 @@
     self.doneHeader.userInteractionEnabled = YES;
     [self addSubview:self.doneHeader];
 
+}
+
+-(void)__adjustViewForPad
+{
+    self.todoHeader.center = CGPointMake(CGRectGetWidth(self.bounds)/4, self.todoHeader.center.y);
+    self.todoHeader.alpha = 1.0;
+    self.todoHeader.userInteractionEnabled = NO;
+    self.doneHeader.center = CGPointMake(CGRectGetWidth(self.bounds)*(3/4.0), self.todoHeader.center.y);
+    self.doneHeader.alpha = 1.0;
+    self.doneHeader.userInteractionEnabled = NO;
 }
 
 #pragma mark - Action -

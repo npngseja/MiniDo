@@ -32,6 +32,13 @@
                 completionBlock:(nonnull void (^)(NSArray<MDDataObject*> * _Nullable results, NSError * _Nullable error))completionBlock;
 
 /**
+ count fetch request
+ */
+-(void)countObjectsWithClassName:(nonnull NSString*)className
+                       predicate:(nullable NSPredicate*)p
+                 completionBlock:(nonnull void (^)(BOOL succeed, NSInteger count))completionBlock;
+
+/**
  create a data object and return. the object is not persist yet!
  @param className
         class name that you want to create.
@@ -54,6 +61,12 @@
  sync from cloud. get all todos for the user and update local DB. merging cloud and local DBs will be done after API response in MDDataCloudAPI.
  */
 -(void)retrieveLastStateFromCloudWithCompletionBlock:(nullable void (^)(BOOL succeed))completionBlock;
+
+/**
+ solve conflicts between local db and server response. result will be stored in local db
+ */
+-(void)solveConflictsBetweenLocalDBAndJSONServerResponse:(nullable NSDictionary*)mapId2Data
+                                        complectionBlock:(nullable void (^)(BOOL))completionBlock;
 
 /**
  save moc into the persistant store

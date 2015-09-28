@@ -16,4 +16,5 @@ FOUNDATION_EXPORT CGFloat px2p(CGFloat rhd);
 FOUNDATION_EXPORT CGFloat hdfs2fs(CGFloat fs);
 FOUNDATION_EXPORT CGFloat deg2rad(CGFloat deg);
 
+FOUNDATION_EXPORT CGFloat todo_itemView_width();
 #endif /* MDMiniDoUtils_h */

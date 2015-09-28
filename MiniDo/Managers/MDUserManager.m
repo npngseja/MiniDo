@@ -9,6 +9,8 @@
 #import "MDUserManager.h"
 #import "MDDataIO.h"
 #import "MDUserObject.h"
+#import "MDMiniDoConstants.h"
+#import "MDAppControl.h"
 
 @implementation MDUserManager
 
@@ -22,6 +24,17 @@
     });
     
     return _instance;
+}
+
+-(instancetype)init
+{
+    self = [super init];
+    
+    if (self) {
+        self.maximumAllowedToDoCount = MAX_TODO_COUNT;
+    }
+    
+    return self;
 }
 
 -(void)loginWithLastLoginUserWithCompletionBlock:(void (^)(BOOL, MDUserObject * _Nullable))completionBlock
@@ -81,56 +94,91 @@
         }
         return;
     }
-    
     // we have user
     
-    // create a new todo item
-    [[MDDataIO sharedInstance] createObjectWithClassName:NSStringFromClass([MDToDoObject class]) completionBlock:^(BOOL succeed, MDDataObject * _Nullable object) {
+    // check if maximum count is reached
+    [self countOfAllToDosWithCompletionBlock:^(BOOL succeed, NSInteger count) {
+       
         if (succeed == NO) {
             if (completionBlock) {
                 completionBlock(NO, nil);
             }
             return;
+        }
+        
+        if (count == MAX_TODO_COUNT) {
+            // reached. do not create new todo
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:NSLocalizedString(@"You have too many todos. Please delete some!", nil) preferredStyle:UIAlertControllerStyleAlert];
             
-        } else {
-            MDToDoObject *todo = (MDToDoObject*)object;
-            
-            // get todo with the highest priority
-            [self mostImportantToDoForCurrentUserCompleted:NO completionBlock:^(MDToDoObject *o) {
-                CGFloat highestPrio = 0.0;
-                if (o != nil) {
-                    highestPrio = o.priority.floatValue;
-                }
-                
-                // if last prio is 2.0 then new one will be 3.0
-                // if last prio is 1.3 then new one will be 2.0
-                // if last prio is 1.9 then new one will be 3.0
-                CGFloat newPrio = round(highestPrio)+1;
-                
-                // set the order of this todo with current todo count of the user
-                // larger := higher priority. it starts with 1.0
-                todo.priority = @(newPrio);
-                todo.isDirty = @(YES);
-                
-                // set it user's todo
-                // it is ordered set!
-                [self.currentUser addTodosObject:todo];
-                
-                if (completionBlock) {
-                    completionBlock(YES, todo);
-                }
-                return;
+            UIAlertAction *ok = [UIAlertAction actionWithTitle:NSLocalizedString(@"Ok", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
                 
             }];
             
+            [alert addAction:ok];
+            
+            UIViewController *baseVc = (UIViewController*)[MDAppControl sharedInstance].baseVc;
+            
+            [baseVc presentViewController:alert animated:YES completion:nil];
+
+            return;
         }
         
+        
+        // we can create new todo
+        // create a new todo item
+        [[MDDataIO sharedInstance] createObjectWithClassName:NSStringFromClass([MDToDoObject class]) completionBlock:^(BOOL succeed, MDDataObject * _Nullable object) {
+            if (succeed == NO) {
+                if (completionBlock) {
+                    completionBlock(NO, nil);
+                }
+                return;
+                
+            } else {
+                MDToDoObject *todo = (MDToDoObject*)object;
+                
+                // get todo with the highest priority
+                [self mostImportantToDoForCurrentUserCompleted:NO completionBlock:^(MDToDoObject *o) {
+                    CGFloat highestPrio = 0.0;
+                    if (o != nil) {
+                        highestPrio = o.priority.floatValue;
+                    }
+                    
+                    // if last prio is 2.0 then new one will be 3.0
+                    // if last prio is 1.3 then new one will be 2.0
+                    // if last prio is 1.9 then new one will be 3.0
+                    CGFloat newPrio = round(highestPrio)+1;
+                    
+                    // set the order of this todo with current todo count of the user
+                    // larger := higher priority. it starts with 1.0
+                    todo.priority = @(newPrio);
+                    todo.isDirty = @(YES);
+                    
+                    // set it user's todo
+                    // it is ordered set!
+                    [self.currentUser addTodosObject:todo];
+                    
+                    if (completionBlock) {
+                        completionBlock(YES, todo);
+                    }
+                    return;
+                    
+                }];
+                
+            }
+            
+        }];
+        
+        
+        
+        
     }];
+    
+    
 }
 
 -(void)destroyToDo:(MDToDoObject *)todo completionBlock:(void (^)(BOOL))completionBlock
 {
-    //ToDo: consider order change of all 
+    //ToDo: consider order change of all
     [[MDDataIO sharedInstance] deleteObject:todo completionBlock:^{
         if (completionBlock) {
             completionBlock(YES);
@@ -139,11 +187,18 @@
 }
 
 -(void)fetchTodosForListType:(MDActiveListType)listType
-             completionBlock:(nonnull void (^)(BOOL succeed, NSArray<MDToDoObject*> * _Nullable results))completionBlock;
+             completionBlock:(nonnull void (^)(BOOL succeed, NSArray<MDToDoObject*> * _Nullable results))completionBlock
+{
+    [self fetchTodosForListType:listType sortedDescending:YES completionBlock:completionBlock];
+}
+
+-(void)fetchTodosForListType:(MDActiveListType)listType
+            sortedDescending:(BOOL)descending
+             completionBlock:(nonnull void (^)(BOOL succeed, NSArray<MDToDoObject*> * _Nullable results))completionBlock
 {
     BOOL isCompleted = listType == MDActiveListTypeToDo ? NO : YES;
-    NSPredicate *p = [NSPredicate predicateWithFormat:@"(%K == %@) AND (%K == %@)", @"isCompleted", @(isCompleted), @"owner", self.currentUser];
-    NSSortDescriptor *s = [NSSortDescriptor sortDescriptorWithKey:@"priority" ascending:NO];
+    NSPredicate *p = [NSPredicate predicateWithFormat:@"(%K == %@) AND (%K == %@) AND (%K == %@)", @"isCompleted", @(isCompleted), @"owner", self.currentUser, @"isRemoved", @NO];
+    NSSortDescriptor *s = [NSSortDescriptor sortDescriptorWithKey:@"priority" ascending:!descending];
     [[MDDataIO sharedInstance] fetchObjectWithClassName:NSStringFromClass([MDToDoObject class])
                                               predicate:p
                                         sortDescriptors:@[s]
@@ -153,6 +208,27 @@
                                                 completionBlock(error == nil ? YES : NO, (NSArray<MDToDoObject*>*)results);
                                             }
         
+    }];
+}
+
+-(void)countOfAllToDosWithCompletionBlock:(void (^)(BOOL, NSInteger))completionBlock
+{
+    [[MDDataIO sharedInstance] countObjectsWithClassName:NSStringFromClass([MDToDoObject class])
+                                               predicate:[NSPredicate predicateWithFormat:@"(%K == %@) AND (%K == %@)", @"owner", self.currentUser, @"isRemoved", @NO]
+                                         completionBlock:^(BOOL succeed, NSInteger count) {
+    
+                                             if (completionBlock) {
+                                                 completionBlock(succeed, count);
+                                             }
+                                         }];
+}
+
+-(void)getAndMergeLastToDoStateFromServerWithComplectionBlock:(void (^)(BOOL))completionBlock
+{
+    [[MDDataIO sharedInstance] retrieveLastStateFromCloudWithCompletionBlock:^(BOOL succeed) {
+        if (completionBlock) {
+            completionBlock(succeed);
+        }
     }];
 }
 
@@ -204,9 +280,12 @@
         todo.isDirty = @(YES);
         
         [[MDDataIO sharedInstance] saveLocalDBWithCompletionBlock:^(BOOL succeed) {
-            if (completionBlock) {
-                completionBlock(succeed);
-            }
+            [[MDDataIO sharedInstance] storeCurrentStateOnCloudWithComplectionBlock:^(BOOL succeed) {
+                if (completionBlock) {
+                    completionBlock(succeed);
+                }
+            }];
+            
         }];
         
         
@@ -245,9 +324,18 @@
     todo.isDirty = @(YES);
     
     [[MDDataIO sharedInstance] saveLocalDBWithCompletionBlock:^(BOOL succeed) {
+        
+        // store this change over cloud!
+        [[MDDataIO sharedInstance] storeCurrentStateOnCloudWithComplectionBlock:^(BOOL succeed) {
+            
+        }];
+        
+        // this completion block is out of the completionBlock of the call above,
+        // because store over cloud will happen in background.
         if (completionBlock) {
             completionBlock(succeed);
         }
+        
     }];
 }
 

@@ -15,6 +15,7 @@
 
 @property (nonnull, nonatomic, strong) UITableView *tableView;
 @property MDActiveListType listType;
+@property (nonnull, nonatomic, strong) UIRefreshControl *refreshControl;
 
 /**
  update list view with current todos. this will invoke -(void)reloadData.

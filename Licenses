@@ -5,16 +5,22 @@ Dosis Font
 # Detail View OK
 # Flying over OK
 # data model for reordering OK
-# approach for network issues
+# approach for network issues OK
 # unit testing OK
 # universal binary
 # refresh
 
-- todo edit --> remove all text --> should prompt 'will you delete it?'
-- maximum todo count --> todo: prompt 'reached max', done: remove lowest one
-- get all todos from server: when?
-- post dirty todos onto server: when?
++ sync over cloud for every data modification is ok?
++ some process has nested function calls, each of which can be failed. we need a revert functionality to cancel failed process (it can happen on Core Data Stack)
++ known issues:
+    - make todo text empty in detail view and close the app. the todo appears on todo list.
+
+- maximum todo count --> todo: prompt 'reached max'
+
 - test get all todos from server with completely new prios. how to sync them while avoiding isDirty todos messed up?
+
+
+
 
 
 

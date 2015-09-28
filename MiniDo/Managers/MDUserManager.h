@@ -14,6 +14,7 @@
 @interface MDUserManager : NSObject
 
 @property (nullable, atomic, strong) MDUserObject *currentUser;
+@property NSInteger maximumAllowedToDoCount;
 
 /**
  return singleton instance
@@ -46,7 +47,19 @@
  */
 -(void)fetchTodosForListType:(MDActiveListType)listType
              completionBlock:(nonnull void (^)(BOOL succeed, NSArray<MDToDoObject*> * _Nullable results))completionBlock;
+-(void)fetchTodosForListType:(MDActiveListType)listType
+            sortedDescending:(BOOL)descending
+             completionBlock:(nonnull void (^)(BOOL succeed, NSArray<MDToDoObject*> * _Nullable results))completionBlock;
 
+/**
+ count of all todo
+ */
+-(void)countOfAllToDosWithCompletionBlock:(nullable void (^)(BOOL succeed, NSInteger count))completionBlock;
+
+/** 
+ get last state of todos from server and merge them into local db
+ */
+-(void)getAndMergeLastToDoStateFromServerWithComplectionBlock:(nullable void (^)(BOOL succeed))completionBlock;
 /**
  return the most important todo (highest priority)
  @param completed

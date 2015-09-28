@@ -30,6 +30,7 @@
     
     __todos = [@[] mutableCopy];
     
+    // tableview
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -39,6 +40,12 @@
     self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:self.tableView];
     
+    // refreshcontrol
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.tintColor = [UIColor whiteColor];
+    [self.refreshControl addTarget:self action:@selector(refreshTodos:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
+    
 }
 
 
@@ -47,6 +54,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+#pragma mark - Messages -
 - (void)__showMsgForEmptyListIfNecessary
 {
     if (__todos.count == 0) {
@@ -64,7 +73,7 @@
                 __msgForEmptyList.attributedText = atr;
 
             }
-            [self.view addSubview:__msgForEmptyList];
+            [self.tableView addSubview:__msgForEmptyList];
         }
     }
 }
@@ -133,7 +142,7 @@
     MDToDoItemView *itemView = parentCell.todoItemView;
     itemView.isFocused = NO;
     itemView.transform = CGAffineTransformIdentity;
-    itemView.frame = CGRectMake(0, 0, TODO_CELL_WIDTH, TODO_CELL_HEIGHT);
+    itemView.frame = CGRectMake(0, 0, todo_itemView_width(), TODO_CELL_HEIGHT);
     itemView.hidden = YES;
     [parentCell.contentView addSubview:itemView];
     
@@ -212,6 +221,17 @@
     
     MDToDoListTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
     cell.todoItemView = nil;
+}
+
+-(void)refreshTodos:(UIRefreshControl*)control
+{
+    [[MDUserManager sharedInstance] getAndMergeLastToDoStateFromServerWithComplectionBlock:^(BOOL succeed) {
+        
+        [self.refreshControl endRefreshing];
+        [self updateListViewWithCurrentTodo];
+        
+    }];
+    
 }
 
 #pragma mark - TableView Datasource & Delegate -

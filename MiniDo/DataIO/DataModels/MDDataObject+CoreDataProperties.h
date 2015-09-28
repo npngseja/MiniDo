@@ -2,7 +2,7 @@
 //  MDDataObject+CoreDataProperties.h
 //  MiniDo
 //
-//  Created by npngseja on 27/09/15.
+//  Created by npngseja on 28/09/15.
 //  Copyright © 2015 Taehun Kim. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSNumber *isDirty;
 @property (nullable, nonatomic, retain) NSString *uniqueId;
 @property (nullable, nonatomic, retain) NSDate *updatedAt;
+@property (nullable, nonatomic, retain) NSNumber *isRemoved;
 
 @end
 

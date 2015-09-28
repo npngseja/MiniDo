@@ -62,7 +62,7 @@
     /*
      In order to make the app super super simple, I make following Assumptions:
      - We do not have username/password. We do not have login UI. User sees immediately todo list without logging in.
-     - User object is created with UUID and stored on local DB. The User object will be stored on cloud. Since we do not have real server, we skip sign up process. We assume the the User object is already stored on server.
+     - User object is created with UUID and stored on local DB. The User object will be stored on cloud. Since we do not have real server, we skip sign up process. We assume the the User object is already stored on server, and he is already granted to get his/her data from server.
      */
     
     __weak typeof(self) weakSelf = self;
@@ -81,19 +81,15 @@
                 [weakSelf.baseVc.todoListViewController updateListViewWithCurrentTodo];
                 [weakSelf.baseVc.doneListViewController updateListViewWithCurrentTodo];
                 
-                /* DEBUG
-                [[MDUserManager sharedInstance] fetchTodosForListType:MDActiveListTypeToDo completionBlock:^(BOOL succeed, NSArray<MDToDoObject *> * _Nullable results) {
-                    for (MDToDoObject *t in results) {
-                        NSLog(@"%@ - %@",t.priority, t.text);
+                // retrieve last todos from server
+                [[MDUserManager sharedInstance] getAndMergeLastToDoStateFromServerWithComplectionBlock:^(BOOL succeed) {
+                    if (succeed) {
+                        // update todo lists again.
+                        [weakSelf.baseVc.todoListViewController updateListViewWithCurrentTodo];
+                        [weakSelf.baseVc.doneListViewController updateListViewWithCurrentTodo];
                     }
-                    
-                    [[MDUserManager sharedInstance] fetchTodosForListType:MDActiveListTypeDone completionBlock:^(BOOL succeed, NSArray<MDToDoObject *> * _Nullable results) {
-                        for (MDToDoObject *t in results) {
-                            NSLog(@"%@ X %@",t.priority, t.text);
-                        }
-                    }];
                 }];
-                */
+                
             }];
             
         } else {
@@ -109,9 +105,6 @@
         }
         
     }];
-    
-    
-    
     
 }
 
@@ -148,8 +141,9 @@
     [[MDUserManager sharedInstance] createNewToDoForUserWithCompletionBlock:^(BOOL succeed, MDToDoObject * _Nullable todo) {
         
         if (succeed == NO) {
-            // failed. we do not notify this error to user. user might try to tap the add button again.
-            // it would be fine. This situation happens very very seldom.
+            // failed. we notify user only when maximum todo count is reached. otherwise we do not notify it, because it would happen very seldom and user will then try to tap the button again.
+            //TODO: count all todos here
+            
         } else {
             // new empty todo is added
             [self.baseVc.todoListViewController insertNewToDoCellWithToDoObject:todo animated:YES];
@@ -183,8 +177,8 @@
 
 -(void)moveToDo:(MDToDoObject *)todo sourceListType:(MDActiveListType)sourceListType targetListType:(MDActiveListType)targetListType completionBlock:(void (^)())completionBlock
 {
-    
-    [self.baseVc moveToDo:todo sourceListType:sourceListType targetListType:targetListType completionBlock:^{
+    BOOL flyOverAni = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? YES : NO;
+    [self.baseVc moveToDo:todo sourceListType:sourceListType targetListType:targetListType flyOverAnimation:flyOverAni completionBlock:^{
         if (completionBlock) {
             completionBlock();
         }
@@ -216,6 +210,12 @@
     __currentFocusToDo = nil;
     _isFocusMode = NO;
     [self.baseVc dismissToDoFocus:todo completionBlock:^(BOOL succeed) {
+        if (succeed == NO) {
+            // failed. restore last state
+            __currentFocusToDo = todo;
+            _isFocusMode = YES;
+        }
+        
         if (completionBlock) {
             completionBlock();
         }

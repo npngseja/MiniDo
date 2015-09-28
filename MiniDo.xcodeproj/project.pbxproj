@@ -22,6 +22,12 @@
 		B001C0AB1BB2EBC500421F81 /* MDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C0AA1BB2EBC500421F81 /* MDBaseViewController.m */; };
 		B001C0AC1BB2EBC500421F81 /* MDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C0AA1BB2EBC500421F81 /* MDBaseViewController.m */; };
 		B001C0AD1BB2EBC500421F81 /* MDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001C0AA1BB2EBC500421F81 /* MDBaseViewController.m */; };
+		B0268D241BB96BDD0008AC2E /* MDDataObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0268D211BB96BDD0008AC2E /* MDDataObject+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		B0268D251BB96BDD0008AC2E /* MDDataObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0268D211BB96BDD0008AC2E /* MDDataObject+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		B0268D261BB96BDD0008AC2E /* MDDataObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0268D211BB96BDD0008AC2E /* MDDataObject+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		B0268D271BB96BDD0008AC2E /* MDDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0268D231BB96BDD0008AC2E /* MDDataObject.m */; settings = {ASSET_TAGS = (); }; };
+		B0268D281BB96BDD0008AC2E /* MDDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0268D231BB96BDD0008AC2E /* MDDataObject.m */; settings = {ASSET_TAGS = (); }; };
+		B0268D291BB96BDD0008AC2E /* MDDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0268D231BB96BDD0008AC2E /* MDDataObject.m */; settings = {ASSET_TAGS = (); }; };
 		B03680D21BB468FB00A8DA96 /* MDToDoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680D11BB468FB00A8DA96 /* MDToDoListTableViewCell.m */; };
 		B03680D31BB468FB00A8DA96 /* MDToDoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680D11BB468FB00A8DA96 /* MDToDoListTableViewCell.m */; };
 		B03680D41BB468FB00A8DA96 /* MDToDoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680D11BB468FB00A8DA96 /* MDToDoListTableViewCell.m */; };
@@ -42,12 +48,6 @@
 		B06951271BB7226600D2577E /* MDBaseAddBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = B06951261BB7226600D2577E /* MDBaseAddBtn.m */; };
 		B06951281BB7226600D2577E /* MDBaseAddBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = B06951261BB7226600D2577E /* MDBaseAddBtn.m */; };
 		B06951291BB7226600D2577E /* MDBaseAddBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = B06951261BB7226600D2577E /* MDBaseAddBtn.m */; };
-		B0730F5D1BB7EEF300033FD2 /* MDDataObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F521BB7EEF300033FD2 /* MDDataObject+CoreDataProperties.m */; };
-		B0730F5E1BB7EEF300033FD2 /* MDDataObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F521BB7EEF300033FD2 /* MDDataObject+CoreDataProperties.m */; };
-		B0730F5F1BB7EEF300033FD2 /* MDDataObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F521BB7EEF300033FD2 /* MDDataObject+CoreDataProperties.m */; };
-		B0730F601BB7EEF300033FD2 /* MDDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F541BB7EEF300033FD2 /* MDDataObject.m */; };
-		B0730F611BB7EEF300033FD2 /* MDDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F541BB7EEF300033FD2 /* MDDataObject.m */; };
-		B0730F621BB7EEF300033FD2 /* MDDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F541BB7EEF300033FD2 /* MDDataObject.m */; };
 		B0730F631BB7EEF300033FD2 /* MDToDoObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F561BB7EEF300033FD2 /* MDToDoObject+CoreDataProperties.m */; };
 		B0730F641BB7EEF300033FD2 /* MDToDoObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F561BB7EEF300033FD2 /* MDToDoObject+CoreDataProperties.m */; };
 		B0730F651BB7EEF300033FD2 /* MDToDoObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B0730F561BB7EEF300033FD2 /* MDToDoObject+CoreDataProperties.m */; };
@@ -126,6 +126,10 @@
 		B001C0A91BB2EBC500421F81 /* MDBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDBaseViewController.h; path = UI/MDBaseViewController.h; sourceTree = "<group>"; };
 		B001C0AA1BB2EBC500421F81 /* MDBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDBaseViewController.m; path = UI/MDBaseViewController.m; sourceTree = "<group>"; };
 		B001C0AE1BB2ECB300421F81 /* MDMiniDoConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDMiniDoConstants.h; sourceTree = "<group>"; };
+		B0268D201BB96BDD0008AC2E /* MDDataObject+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MDDataObject+CoreDataProperties.h"; path = "DataIO/DataModels/MDDataObject+CoreDataProperties.h"; sourceTree = "<group>"; };
+		B0268D211BB96BDD0008AC2E /* MDDataObject+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MDDataObject+CoreDataProperties.m"; path = "DataIO/DataModels/MDDataObject+CoreDataProperties.m"; sourceTree = "<group>"; };
+		B0268D221BB96BDD0008AC2E /* MDDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDDataObject.h; path = DataIO/DataModels/MDDataObject.h; sourceTree = "<group>"; };
+		B0268D231BB96BDD0008AC2E /* MDDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDDataObject.m; path = DataIO/DataModels/MDDataObject.m; sourceTree = "<group>"; };
 		B03680D01BB468FB00A8DA96 /* MDToDoListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDToDoListTableViewCell.h; path = UI/MDToDoListTableViewCell.h; sourceTree = "<group>"; };
 		B03680D11BB468FB00A8DA96 /* MDToDoListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDToDoListTableViewCell.m; path = UI/MDToDoListTableViewCell.m; sourceTree = "<group>"; };
 		B03680D51BB4691700A8DA96 /* MDToDoItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDToDoItemView.h; path = UI/MDToDoItemView.h; sourceTree = "<group>"; };
@@ -138,10 +142,6 @@
 		B03680EA1BB4958900A8DA96 /* Dosis-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Dosis-Medium.ttf"; path = "Resources/Fonts/Dosis-Medium.ttf"; sourceTree = "<group>"; };
 		B06951251BB7226600D2577E /* MDBaseAddBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDBaseAddBtn.h; path = UI/MDBaseAddBtn.h; sourceTree = "<group>"; };
 		B06951261BB7226600D2577E /* MDBaseAddBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDBaseAddBtn.m; path = UI/MDBaseAddBtn.m; sourceTree = "<group>"; };
-		B0730F511BB7EEF300033FD2 /* MDDataObject+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MDDataObject+CoreDataProperties.h"; path = "DataIO/DataModels/MDDataObject+CoreDataProperties.h"; sourceTree = "<group>"; };
-		B0730F521BB7EEF300033FD2 /* MDDataObject+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MDDataObject+CoreDataProperties.m"; path = "DataIO/DataModels/MDDataObject+CoreDataProperties.m"; sourceTree = "<group>"; };
-		B0730F531BB7EEF300033FD2 /* MDDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDDataObject.h; path = DataIO/DataModels/MDDataObject.h; sourceTree = "<group>"; };
-		B0730F541BB7EEF300033FD2 /* MDDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDDataObject.m; path = DataIO/DataModels/MDDataObject.m; sourceTree = "<group>"; };
 		B0730F551BB7EEF300033FD2 /* MDToDoObject+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MDToDoObject+CoreDataProperties.h"; path = "DataIO/DataModels/MDToDoObject+CoreDataProperties.h"; sourceTree = "<group>"; };
 		B0730F561BB7EEF300033FD2 /* MDToDoObject+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MDToDoObject+CoreDataProperties.m"; path = "DataIO/DataModels/MDToDoObject+CoreDataProperties.m"; sourceTree = "<group>"; };
 		B0730F571BB7EEF300033FD2 /* MDToDoObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDToDoObject.h; path = DataIO/DataModels/MDToDoObject.h; sourceTree = "<group>"; };
@@ -331,10 +331,10 @@
 		B0788F701BB2F9150021FC89 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B0730F511BB7EEF300033FD2 /* MDDataObject+CoreDataProperties.h */,
-				B0730F521BB7EEF300033FD2 /* MDDataObject+CoreDataProperties.m */,
-				B0730F531BB7EEF300033FD2 /* MDDataObject.h */,
-				B0730F541BB7EEF300033FD2 /* MDDataObject.m */,
+				B0268D201BB96BDD0008AC2E /* MDDataObject+CoreDataProperties.h */,
+				B0268D211BB96BDD0008AC2E /* MDDataObject+CoreDataProperties.m */,
+				B0268D221BB96BDD0008AC2E /* MDDataObject.h */,
+				B0268D231BB96BDD0008AC2E /* MDDataObject.m */,
 				B0730F551BB7EEF300033FD2 /* MDToDoObject+CoreDataProperties.h */,
 				B0730F561BB7EEF300033FD2 /* MDToDoObject+CoreDataProperties.m */,
 				B0730F571BB7EEF300033FD2 /* MDToDoObject.h */,
@@ -542,14 +542,14 @@
 				B001C06A1BB2D7F300421F81 /* AppDelegate.m in Sources */,
 				B0788FAC1BB367D40021FC89 /* MDUserManager.m in Sources */,
 				B0730F631BB7EEF300033FD2 /* MDToDoObject+CoreDataProperties.m in Sources */,
+				B0268D241BB96BDD0008AC2E /* MDDataObject+CoreDataProperties.m in Sources */,
 				B03680D21BB468FB00A8DA96 /* MDToDoListTableViewCell.m in Sources */,
-				B0730F601BB7EEF300033FD2 /* MDDataObject.m in Sources */,
 				B0788F9A1BB34BE40021FC89 /* MDPopButton.m in Sources */,
 				B0788FA01BB354380021FC89 /* MDAppControl.m in Sources */,
+				B0268D271BB96BDD0008AC2E /* MDDataObject.m in Sources */,
 				B0788F931BB3466A0021FC89 /* MDMiniDoUtils.m in Sources */,
 				B03680E11BB46A5D00A8DA96 /* MDToDoListViewController.m in Sources */,
 				B001C0671BB2D7F300421F81 /* main.m in Sources */,
-				B0730F5D1BB7EEF300033FD2 /* MDDataObject+CoreDataProperties.m in Sources */,
 				B0730F691BB7EEF300033FD2 /* MDUserObject+CoreDataProperties.m in Sources */,
 				B0D162961BB878EA00B8B96B /* MDURLConnection.m in Sources */,
 				B001C0AB1BB2EBC500421F81 /* MDBaseViewController.m in Sources */,
@@ -567,15 +567,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B001C0AC1BB2EBC500421F81 /* MDBaseViewController.m in Sources */,
-				B0730F5E1BB7EEF300033FD2 /* MDDataObject+CoreDataProperties.m in Sources */,
 				B0788FA61BB3594B0021FC89 /* MDBaseHeaderView.m in Sources */,
 				B001C0A11BB2E5F200421F81 /* MDDataIO.m in Sources */,
 				B0D162971BB878EA00B8B96B /* MDURLConnection.m in Sources */,
 				B03680E21BB46A5D00A8DA96 /* MDToDoListViewController.m in Sources */,
-				B0730F611BB7EEF300033FD2 /* MDDataObject.m in Sources */,
 				B0788F9B1BB34BE40021FC89 /* MDPopButton.m in Sources */,
 				B03680D81BB4691700A8DA96 /* MDToDoItemView.m in Sources */,
 				B0788FAD1BB367D40021FC89 /* MDUserManager.m in Sources */,
+				B0268D251BB96BDD0008AC2E /* MDDataObject+CoreDataProperties.m in Sources */,
 				B001C0A61BB2E64000421F81 /* MDViewController.m in Sources */,
 				B03680D31BB468FB00A8DA96 /* MDToDoListTableViewCell.m in Sources */,
 				B0A5A8871BB86C9B00E9B479 /* MDDataCloudAPI.m in Sources */,
@@ -588,6 +587,7 @@
 				B0788F941BB3466A0021FC89 /* MDMiniDoUtils.m in Sources */,
 				B0730F6A1BB7EEF300033FD2 /* MDUserObject+CoreDataProperties.m in Sources */,
 				B0730F641BB7EEF300033FD2 /* MDToDoObject+CoreDataProperties.m in Sources */,
+				B0268D281BB96BDD0008AC2E /* MDDataObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,13 +597,13 @@
 			files = (
 				B0788F951BB3466A0021FC89 /* MDMiniDoUtils.m in Sources */,
 				B03680D41BB468FB00A8DA96 /* MDToDoListTableViewCell.m in Sources */,
-				B0730F5F1BB7EEF300033FD2 /* MDDataObject+CoreDataProperties.m in Sources */,
 				B06951291BB7226600D2577E /* MDBaseAddBtn.m in Sources */,
 				B0D162981BB878EA00B8B96B /* MDURLConnection.m in Sources */,
 				B001C08E1BB2D7F300421F81 /* MiniDoUITests.m in Sources */,
 				B03680E31BB46A5D00A8DA96 /* MDToDoListViewController.m in Sources */,
 				B0730F6E1BB7EEF300033FD2 /* MDUserObject.m in Sources */,
 				B001C0AD1BB2EBC500421F81 /* MDBaseViewController.m in Sources */,
+				B0268D261BB96BDD0008AC2E /* MDDataObject+CoreDataProperties.m in Sources */,
 				B0730F681BB7EEF300033FD2 /* MDToDoObject.m in Sources */,
 				B0788FA71BB3594B0021FC89 /* MDBaseHeaderView.m in Sources */,
 				B0788F9C1BB34BE40021FC89 /* MDPopButton.m in Sources */,
@@ -615,8 +615,8 @@
 				B0788FA21BB354380021FC89 /* MDAppControl.m in Sources */,
 				B0730F6F1BB818C000033FD2 /* MDDataIO.m in Sources */,
 				B001C0A71BB2E64000421F81 /* MDViewController.m in Sources */,
-				B0730F621BB7EEF300033FD2 /* MDDataObject.m in Sources */,
 				B0730F651BB7EEF300033FD2 /* MDToDoObject+CoreDataProperties.m in Sources */,
+				B0268D291BB96BDD0008AC2E /* MDDataObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -737,7 +737,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MD.MiniDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -749,7 +749,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MD.MiniDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
