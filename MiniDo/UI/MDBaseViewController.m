@@ -279,6 +279,16 @@
         return;
     }
     
+    // check if itemView is in editing
+    if (itemView.isEditing == YES) {
+        // then dismiss keyboard
+        [itemView deactivate];
+        if (completionBlock) {
+            completionBlock(NO);
+        }
+        return;
+    }
+    
     // check if todo has no text anymore
     if (todo.text.length == 0) {
         [itemView promptDeletionOfCurrentToDo];
@@ -287,6 +297,7 @@
         }
         return;
     }
+    
     
    
     // calc destination of itemview concerning its parent cell

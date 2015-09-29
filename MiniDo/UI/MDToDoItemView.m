@@ -33,6 +33,7 @@
     if (self) {
         self.userInteractionEnabled = YES;
         _isFocused = NO;
+        _isEditing = NO;
         [self __configureView];
     }
     
@@ -73,7 +74,7 @@
     // In order to keep the app simple, I stick with approach.
     UIView *keyboardDismissBtn = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     keyboardDismissBtn.backgroundColor = [UIColor clearColor];
-    UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeKeyboard:)];
+    UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedKeyboardDismissOverlay:)];
     [keyboardDismissBtn addGestureRecognizer:gr];
     keyboardDismissBtn.userInteractionEnabled = YES;
     self.textField.inputAccessoryView = keyboardDismissBtn;
@@ -124,9 +125,15 @@
     [self __deleteCurrentToDo];
 }
 
--(void)closeKeyboard:(UITapGestureRecognizer*)gr
+-(void)tappedKeyboardDismissOverlay:(UITapGestureRecognizer*)gr
+{
+    [self deactivate];
+}
+
+-(void)deactivate
 {
     [self.textField resignFirstResponder];
+    [__textView resignFirstResponder];
 }
 
 -(void)promptDeletionOfCurrentToDo
@@ -342,6 +349,7 @@
 {
     if (textField.text.length == 0) {
         // we do not have text yet, because it is freshly created. we allow user input.
+        _isEditing = YES;
         return YES;
     } else {
         if (_isFocused == NO) {
@@ -357,16 +365,19 @@
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
+    _isEditing = NO;
     if (textField.text.length == 0) {
         // no todo body. we should destroy the cell
         [[MDAppControl sharedInstance] removeToDoItemWithToDo:self.todo];
         
     } else {
         // save this item as todo
+        
         self.todo.text = textField.text;
         self.todo.creationDate = [NSDate date];
         self.todo.updatedAt = [NSDate date];
         self.todo.isDirty = @(YES);
+        
         [[MDDataIO sharedInstance] saveLocalDBWithCompletionBlock:^(BOOL succeed) {
             [[MDDataIO sharedInstance] storeCurrentStateOnCloudWithComplectionBlock:^(BOOL succeed) {
                 
@@ -382,8 +393,14 @@
 }
 
 #pragma mark - UITextView Delegate -
+-(void)textViewDidBeginEditing:(UITextView *)textView
+{
+    _isEditing = YES;
+}
 -(void)textViewDidEndEditing:(UITextView *)textView
 {
+    _isEditing = NO;
+    
     // user edited todo text in focus mode. update todo data object and entire itemView content
     self.todo.text = textView.text;
     self.todo.isDirty = @(YES);

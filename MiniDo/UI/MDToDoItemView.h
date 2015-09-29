@@ -31,6 +31,17 @@
 @property BOOL isFocused;
 
 /**
+ YES if textView or textField is editing
+ */
+@property (readonly) BOOL isEditing;
+
+/**
+ dismiss keyboard
+ */
+-(void)deactivate;
+
+
+/**
  will prompt text should have a text. this might happen when user removed all text and want to dismiss focused mode. we should prevent it.
  */
 -(void)promptDeletionOfCurrentToDo;
