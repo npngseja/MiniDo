@@ -1,21 +1,21 @@
-Little Wonder - Mini ToDo List App for iPhone and iPad (Universal binary)
+# Little Wonder - Mini ToDo List App for iPhone and iPad (Universal binary)
 
-# What you can do:
+## What you can do:
 - Create a task
 - Re-order tasks
 - List up done tasks
 - Delete a task
 
-# Limitation
+## Limitation
 - User can have only MAX_TODO_COUNT todos (currently set as 200)
 
-# ToDo data model to support re-order in an efficient way:
+## ToDo data model to support re-order in an efficient way:
 - Each Task has 'float' priority
 - re-order a task is done by changing its priority such as new_prio = (last lower prio + next higher prio)/2
 - if a task is re-ordered, we do not need to update other tasks, we can change just the target task, and notify it to the server. In this way, we can save network traffics
 - Comparing with 'linked-list'-based approaches, it is probably more robust against data corruption.
 
-# Resolving conflicts between server and local data objects
+## Resolving conflicts between server and local data objects
 - If a todo is modified by user (text, order, done state changes and deleted) then it will be marked as 'dirty'.
 - This app is only for private use. This means that 'dirty' todos should NOT be overwritten by server, but server should alter its data later with dirty todos.
 - Clean (dirty = false) todos can be overwritten by server data. This might happen in the future, for example, when we provide 'share' functionality
@@ -24,7 +24,7 @@ Little Wonder - Mini ToDo List App for iPhone and iPad (Universal binary)
 - Resolving conflict of todo text is easy: do not modify it.
 - Resolving conflicts of priority and done state are complicated. The app has an algorithm to solve those problems
 
-# Resolving priority and done state conflicts:
+## Resolving priority and done state conflicts:
 1. Fetch all todos, which are not done yet, and store them in an array (sorted by prios ascend.)
 2. Create an empty list for dirty todos
 3. For each todo in the array:
@@ -48,10 +48,10 @@ Little Wonder - Mini ToDo List App for iPhone and iPad (Universal binary)
 - Time complexity: O(N) ~ O(N^2)
 - Space complexity: O(N)
 
-# Misc.
+## Misc.
 - In order to use device's network resources efficiently, we track last network requests and cancel them if necessary.
 
-# Notes:
+## Notes:
 - supporting iOS 9.0 or later
 - open in Xcode 7 to compile the project
 - no external libs. no cocoapods.

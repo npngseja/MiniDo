@@ -28,7 +28,7 @@
 		B0268D271BB96BDD0008AC2E /* MDDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0268D231BB96BDD0008AC2E /* MDDataObject.m */; settings = {ASSET_TAGS = (); }; };
 		B0268D281BB96BDD0008AC2E /* MDDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0268D231BB96BDD0008AC2E /* MDDataObject.m */; settings = {ASSET_TAGS = (); }; };
 		B0268D291BB96BDD0008AC2E /* MDDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B0268D231BB96BDD0008AC2E /* MDDataObject.m */; settings = {ASSET_TAGS = (); }; };
-		B02D2E661BBAED01006EA2A0 /* DISCUSSION.md in Resources */ = {isa = PBXBuildFile; fileRef = B02D2E651BBAED01006EA2A0 /* DISCUSSION.md */; settings = {ASSET_TAGS = (); }; };
+		B02D2E661BBAED01006EA2A0 /* DISCUSSION in Resources */ = {isa = PBXBuildFile; fileRef = B02D2E651BBAED01006EA2A0 /* DISCUSSION */; settings = {ASSET_TAGS = (); }; };
 		B03680D21BB468FB00A8DA96 /* MDToDoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680D11BB468FB00A8DA96 /* MDToDoListTableViewCell.m */; };
 		B03680D31BB468FB00A8DA96 /* MDToDoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680D11BB468FB00A8DA96 /* MDToDoListTableViewCell.m */; };
 		B03680D41BB468FB00A8DA96 /* MDToDoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680D11BB468FB00A8DA96 /* MDToDoListTableViewCell.m */; };
@@ -128,7 +128,7 @@
 		B0268D211BB96BDD0008AC2E /* MDDataObject+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MDDataObject+CoreDataProperties.m"; path = "DataIO/DataModels/MDDataObject+CoreDataProperties.m"; sourceTree = "<group>"; };
 		B0268D221BB96BDD0008AC2E /* MDDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDDataObject.h; path = DataIO/DataModels/MDDataObject.h; sourceTree = "<group>"; };
 		B0268D231BB96BDD0008AC2E /* MDDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDDataObject.m; path = DataIO/DataModels/MDDataObject.m; sourceTree = "<group>"; };
-		B02D2E651BBAED01006EA2A0 /* DISCUSSION.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = DISCUSSION.md; sourceTree = "<group>"; };
+		B02D2E651BBAED01006EA2A0 /* DISCUSSION */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DISCUSSION; sourceTree = "<group>"; };
 		B02D2E671BBAED16006EA2A0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B03680D01BB468FB00A8DA96 /* MDToDoListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDToDoListTableViewCell.h; path = UI/MDToDoListTableViewCell.h; sourceTree = "<group>"; };
 		B03680D11BB468FB00A8DA96 /* MDToDoListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDToDoListTableViewCell.m; path = UI/MDToDoListTableViewCell.m; sourceTree = "<group>"; };
@@ -198,7 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				B02D2E671BBAED16006EA2A0 /* README.md */,
-				B02D2E651BBAED01006EA2A0 /* DISCUSSION.md */,
+				B02D2E651BBAED01006EA2A0 /* DISCUSSION */,
 				B0788F911BB335CD0021FC89 /* LICENSES */,
 				B001C0641BB2D7F300421F81 /* MiniDo */,
 				B001C0811BB2D7F300421F81 /* MiniDoTests */,
@@ -503,7 +503,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B001C0781BB2D7F300421F81 /* LaunchScreen.storyboard in Resources */,
-				B02D2E661BBAED01006EA2A0 /* DISCUSSION.md in Resources */,
+				B02D2E661BBAED01006EA2A0 /* DISCUSSION in Resources */,
 				B03680E61BB4926D00A8DA96 /* Background.jpg in Resources */,
 				B001C0751BB2D7F300421F81 /* Assets.xcassets in Resources */,
 				B0B02C571BBADB2C003E6EDC /* Lato-Light.ttf in Resources */,
