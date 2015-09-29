@@ -178,7 +178,6 @@
 
 -(void)destroyToDo:(MDToDoObject *)todo completionBlock:(void (^)(BOOL))completionBlock
 {
-    //ToDo: consider order change of all
     [[MDDataIO sharedInstance] deleteObject:todo completionBlock:^{
         if (completionBlock) {
             completionBlock(YES);

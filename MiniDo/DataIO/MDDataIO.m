@@ -274,14 +274,14 @@
                 prioUpperBound = upperBoundToDoCandidate.priority.floatValue;
             } else {
                 // traverse oldList until find next NOT DIRTY todo
-                NSInteger currentIndex = indexOfToDoInEntireList;
+                NSInteger currentIndex = indexOfToDoInEntireList+1;
                 while (currentIndex < oldList.count) {
-                    ++currentIndex;
                     MDToDoObject *candidate = oldList[currentIndex];
                     if (candidate.isDirty.boolValue == NO) {
                         prioUpperBound = candidate.priority.floatValue;
                         break;
                     }
+                    ++currentIndex;
                 }
                 // if no NOT DIRTY todo is found, then we use its default.
             }

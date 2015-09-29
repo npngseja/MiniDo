@@ -35,7 +35,7 @@
     // initial layout is the state when ToDo list is visible
     self.todoHeader = [[UILabel alloc] initWithFrame:CGRectMake(px2p(196), 0, px2p(850), px2p(250))];
     self.todoHeader.textAlignment = NSTextAlignmentCenter;
-    NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"YOU CAN DO IT!", nil) attributes:@{NSFontAttributeName: [UIFont fontWithName:DEFAULT_FONT_BOLD size:hdfs2fs(130)], NSForegroundColorAttributeName: DEFAULT_TEXT_COLOR}];
+    NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"YOU CAN DO IT!", nil) attributes:@{NSFontAttributeName: [UIFont fontWithName:DEFAULT_FONT_BOLD size:hdfs2fs(100)], NSForegroundColorAttributeName: DEFAULT_TEXT_COLOR}];
     [s addAttributes:@{NSForegroundColorAttributeName: DEFAULT_KEY_COLOR} range:[s.string rangeOfString:NSLocalizedString(@"CAN", nil)]];
     self.todoHeader.attributedText = s;
     UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedToDoHeader:)];
@@ -45,7 +45,7 @@
     
     self.doneHeader = [[UILabel alloc] initWithFrame:CGRectMake(px2p(1010), 0, px2p(500), px2p(250))];
     self.doneHeader.textAlignment = NSTextAlignmentCenter;
-    s = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"DONE", nil) attributes:@{NSFontAttributeName: [UIFont fontWithName:DEFAULT_FONT_BOLD size:hdfs2fs(130)], NSForegroundColorAttributeName: DEFAULT_KEY_COLOR}];
+    s = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"DONE", nil) attributes:@{NSFontAttributeName: [UIFont fontWithName:DEFAULT_FONT_BOLD size:hdfs2fs(100)], NSForegroundColorAttributeName: DEFAULT_KEY_COLOR}];
     self.doneHeader.attributedText = s;
     self.doneHeader.alpha = 0.3;
     gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedDoneHeader:)];

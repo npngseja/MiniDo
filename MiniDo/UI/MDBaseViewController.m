@@ -13,6 +13,9 @@
 #import "MDToDoItemView.h"
 
 #define CONTENT_VIEW_FRAME_IPAD CGRectMake(100, 68, 815, 632)
+#define CREATION_BUTTON_BG_COLOR_PLUS [UIColor colorWithWhite:1.0 alpha:0.8]
+#define CREATION_BUTTON_BG_COLOR_ARROW [UIColor clearColor]
+
 
 @interface MDBaseViewController ()
 {
@@ -38,6 +41,13 @@
     bg_layer.frame = self.view.bounds;
     bg_layer.contentsGravity = kCAGravityResizeAspectFill;
     [self.view.layer addSublayer:bg_layer];
+    
+    // dimming background image for a better readable app
+    CALayer *overlay = [CALayer layer];
+    overlay.frame = bg_layer.bounds;
+    overlay.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.2].CGColor;
+    [bg_layer addSublayer:overlay];
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSString *bgImgPath = [[NSBundle mainBundle] pathForResource:@"Background" ofType:@"jpg"];
         UIImage *bgImg = [UIImage imageWithContentsOfFile:bgImgPath];
@@ -88,30 +98,30 @@
     [self.scroller addSubview:self.doneListViewController.view];
     
     // add button
-    self.addBtn = [[MDBaseAddBtn alloc] initWithFrame:CGRectMake(0, 0, px2p(300), px2p(300))];
+    self.addBtn = [[MDBaseAddBtn alloc] initWithFrame:CGRectMake(0, 0, px2p(256), px2p(256))];
     self.addBtn.translatesAutoresizingMaskIntoConstraints = NO;
     [self.addBtn addTarget:self action:@selector(pressedAddBtn:) forControlEvents:UIControlEventTouchUpInside];
     self.addBtn.tintColor = DEFAULT_KEY_COLOR;
-    self.addBtn.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3];
-    self.addBtn.layer.cornerRadius = px2p(300)/2;
+    self.addBtn.layer.cornerRadius = CGRectGetHeight(self.addBtn.bounds)/2;
+    self.addBtn.backgroundColor = CREATION_BUTTON_BG_COLOR_PLUS;
     self.addBtn.clipsToBounds = YES;
     [self.view addSubview:self.addBtn];
     [self.view addConstraints:@[[NSLayoutConstraint constraintWithItem:self.addBtn
                                                              attribute:NSLayoutAttributeWidth
                                                              relatedBy:NSLayoutRelationEqual
                                                                 toItem:nil
-                                                             attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:px2p(300)],
+                                                             attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:px2p(256)],
                                 [NSLayoutConstraint constraintWithItem:self.addBtn
                                                              attribute:NSLayoutAttributeHeight
                                                              relatedBy:NSLayoutRelationEqual
                                                                 toItem:nil
-                                                             attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:px2p(300)],
+                                                             attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:px2p(256)],
                                 [NSLayoutConstraint constraintWithItem:self.addBtn
                                                           attribute:NSLayoutAttributeBottom
                                                           relatedBy:NSLayoutRelationEqual
                                                              toItem:self.view
                                                           attribute:NSLayoutAttributeBottom
-                                                         multiplier:1.0 constant:-px2p(64)],
+                                                         multiplier:1.0 constant:-px2p(56)],
                                 [NSLayoutConstraint constraintWithItem:self.addBtn
                                                              attribute:NSLayoutAttributeCenterX
                                                              relatedBy:NSLayoutRelationEqual
@@ -243,7 +253,7 @@
         __layerInvisibleDismissFocusedToDo.alpha = 1.0;
         
         // change add button's bg color
-        self.addBtn.backgroundColor = [UIColor clearColor];
+        self.addBtn.backgroundColor = CREATION_BUTTON_BG_COLOR_ARROW;
     } completion:^(BOOL finished) {
         if (completionBlock) {
             completionBlock(YES);
@@ -311,7 +321,7 @@
         [self __makeContentViewNormal];
         
         // make add button bg color normal
-        self.addBtn.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3];
+        self.addBtn.backgroundColor = CREATION_BUTTON_BG_COLOR_PLUS;
     } completion:^(BOOL finished) {
         [__layerInvisibleDismissFocusedToDo removeFromSuperview];
         __layerInvisibleDismissFocusedToDo = nil;
@@ -332,7 +342,7 @@
         [self __makeContentViewNormal];
         
         // make add button bg color normal
-        self.addBtn.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3];
+        self.addBtn.backgroundColor = CREATION_BUTTON_BG_COLOR_PLUS;
     } completion:^(BOOL finished) {
         [__layerInvisibleDismissFocusedToDo removeFromSuperview];
         __layerInvisibleDismissFocusedToDo = nil;

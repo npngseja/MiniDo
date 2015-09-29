@@ -27,6 +27,11 @@
  */
 -(void)getAllToDosFromServerWithComplectionBlock:(nonnull void (^)(BOOL succeed, id _Nullable response, NSError * _Nullable error))completionBlock;
 /**
+ we exposure this method for unit testing
+ */
+-(void)getAllToDosInJSONFromServerWithComplectionBlock:(nullable void (^)(BOOL succeed, id _Nullable response))completionBlock;
+
+/**
  POST(store) dirty data onto server
  */
 -(void)postDataArray:(nonnull NSArray<MDDataObject*>*)array ontoServerWithCompletionBlock:(nonnull void (^)(BOOL succeed, NSError * _Nullable error))completionBlock;

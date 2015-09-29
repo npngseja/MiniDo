@@ -19,6 +19,7 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.tintColor = DEFAULT_TEXT_COLOR;
     }
     
     return self;

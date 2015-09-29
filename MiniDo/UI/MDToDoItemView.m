@@ -173,7 +173,7 @@
         
         // full text
         if (__textView == nil) {
-            __textView = [[UITextView alloc] initWithFrame:CGRectMake(self.textField.frame.origin.x-5, px2p(64), CGRectGetWidth(self.textField.bounds), px2p(400))];
+            __textView = [[UITextView alloc] initWithFrame:CGRectMake(self.textField.frame.origin.x-5, px2p(70), CGRectGetWidth(self.textField.bounds), px2p(400))];
             __textView.font = self.textField.font;
             __textView.textColor = self.textField.textColor;
             __textView.text = self.textField.text;

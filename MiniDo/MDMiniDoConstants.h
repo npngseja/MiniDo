@@ -19,9 +19,9 @@
 #define DEFAULT_BG_COLOR [UIColor whiteColor]
 #define DEFAULT_TEXT_COLOR DEFAULT_COLOR_WHITE
 
-#define DEFAULT_FONT_REGULAR @"Dosis-Book"
-#define DEFAULT_FONT_BOLD @"Dosis-Medium"
-#define DEFAULT_FONT_LIGHT @"Dosis-ExtraLight"
+#define DEFAULT_FONT_REGULAR @"Lato-Light"
+#define DEFAULT_FONT_BOLD @"Lato-Light"
+#define DEFAULT_FONT_LIGHT @"Lato-Light"
 
 #define TODO_CELL_HEIGHT px2p(300)
 

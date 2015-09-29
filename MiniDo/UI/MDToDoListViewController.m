@@ -65,7 +65,7 @@
             __msgForEmptyList.numberOfLines = 10;
             if (self.listType == MDActiveListTypeToDo) {
                 NSMutableAttributedString *atr = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"TAP\n+\nTO CREATE A TASK", nil) attributes:@{NSFontAttributeName: [UIFont fontWithName:DEFAULT_FONT_LIGHT size:hdfs2fs(100)], NSForegroundColorAttributeName: DEFAULT_TEXT_COLOR}];
-                [atr addAttributes:@{NSForegroundColorAttributeName: DEFAULT_KEY_COLOR, NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:hdfs2fs(130)]} range:[atr.string rangeOfString:@"+"]];
+                [atr addAttributes:@{NSForegroundColorAttributeName: DEFAULT_KEY_COLOR, NSFontAttributeName: [UIFont fontWithName:DEFAULT_FONT_BOLD size:hdfs2fs(140)]} range:[atr.string rangeOfString:@"+"]];
                 __msgForEmptyList.attributedText = atr;
             } else {
                 NSMutableAttributedString *atr = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"HERE YOU FIND\n\nWHAT YOU'VE DONE", nil) attributes:@{NSFontAttributeName: [UIFont fontWithName:DEFAULT_FONT_LIGHT size:hdfs2fs(100)], NSForegroundColorAttributeName: DEFAULT_TEXT_COLOR}];

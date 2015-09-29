@@ -29,14 +29,16 @@
 
 -(void)__configureView
 {
+    self.backgroundColor = [UIColor colorWithWhite:1.0 alpha:1.0];
+    
     __transformingBar = [CAShapeLayer layer];
     UIBezierPath *path = [UIBezierPath bezierPath];
     [path moveToPoint:CGPointMake(CGRectGetWidth(self.bounds)/2, px2p(50))];
     [path addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds)/2, CGRectGetHeight(self.bounds)/2)];
     [path addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds)/2, CGRectGetHeight(self.bounds)-px2p(50))];
     __transformingBar.path = path.CGPath;
-    __transformingBar.lineCap = kCALineCapRound;
-    __transformingBar.lineWidth = 5.0;
+    __transformingBar.lineCap = kCALineCapSquare;
+    __transformingBar.lineWidth = 3.0;
     __transformingBar.fillColor = [UIColor clearColor].CGColor;
     __transformingBar.strokeColor = DEFAULT_KEY_COLOR.CGColor;
     [self.layer addSublayer:__transformingBar];
@@ -46,8 +48,8 @@
     [path moveToPoint:CGPointMake(px2p(50), CGRectGetHeight(self.bounds)/2)];
     [path addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds)-px2p(50), CGRectGetHeight(self.bounds)/2)];
     __fixedBar.path = path.CGPath;
-    __fixedBar.lineCap = kCALineCapRound;
-    __fixedBar.lineWidth = 5.0;
+    __fixedBar.lineCap = kCALineCapSquare;
+    __fixedBar.lineWidth = 3.0;
     __fixedBar.fillColor = [UIColor clearColor].CGColor;
     __fixedBar.strokeColor = DEFAULT_KEY_COLOR.CGColor;
     [self.layer addSublayer:__fixedBar];
@@ -89,7 +91,7 @@
     
     UIBezierPath *tpath = [UIBezierPath bezierPath];
     [tpath moveToPoint:CGPointMake(CGRectGetWidth(self.bounds)/2, px2p(50))];
-    [tpath addLineToPoint:CGPointMake(px2p(50), CGRectGetHeight(self.bounds)/2)];
+    [tpath addLineToPoint:CGPointMake(px2p(46), CGRectGetHeight(self.bounds)/2)];   // not 50 but 46 to cover the left end of fixed bar with the corner.
     [tpath addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds)/2, CGRectGetHeight(self.bounds)-px2p(50))];
     
     CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"path"];

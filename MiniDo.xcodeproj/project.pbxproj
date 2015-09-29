@@ -39,12 +39,6 @@
 		B03680E31BB46A5D00A8DA96 /* MDToDoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B03680E01BB46A5D00A8DA96 /* MDToDoListViewController.m */; };
 		B03680E61BB4926D00A8DA96 /* Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B03680E51BB4926D00A8DA96 /* Background.jpg */; };
 		B03680E71BB4927200A8DA96 /* Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B03680E51BB4926D00A8DA96 /* Background.jpg */; };
-		B03680EB1BB4958900A8DA96 /* Dosis-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B03680E81BB4958900A8DA96 /* Dosis-Book.ttf */; };
-		B03680EC1BB4958900A8DA96 /* Dosis-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B03680E81BB4958900A8DA96 /* Dosis-Book.ttf */; };
-		B03680ED1BB4958900A8DA96 /* Dosis-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B03680E91BB4958900A8DA96 /* Dosis-ExtraLight.ttf */; };
-		B03680EE1BB4958900A8DA96 /* Dosis-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B03680E91BB4958900A8DA96 /* Dosis-ExtraLight.ttf */; };
-		B03680EF1BB4958900A8DA96 /* Dosis-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B03680EA1BB4958900A8DA96 /* Dosis-Medium.ttf */; };
-		B03680F01BB4958900A8DA96 /* Dosis-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B03680EA1BB4958900A8DA96 /* Dosis-Medium.ttf */; };
 		B06951271BB7226600D2577E /* MDBaseAddBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = B06951261BB7226600D2577E /* MDBaseAddBtn.m */; };
 		B06951281BB7226600D2577E /* MDBaseAddBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = B06951261BB7226600D2577E /* MDBaseAddBtn.m */; };
 		B06951291BB7226600D2577E /* MDBaseAddBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = B06951261BB7226600D2577E /* MDBaseAddBtn.m */; };
@@ -79,6 +73,9 @@
 		B0A5A8861BB86C9B00E9B479 /* MDDataCloudAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A5A8851BB86C9B00E9B479 /* MDDataCloudAPI.m */; };
 		B0A5A8871BB86C9B00E9B479 /* MDDataCloudAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A5A8851BB86C9B00E9B479 /* MDDataCloudAPI.m */; };
 		B0A5A8881BB86C9B00E9B479 /* MDDataCloudAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A5A8851BB86C9B00E9B479 /* MDDataCloudAPI.m */; };
+		B0B02C551BBA8AB2003E6EDC /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B02C541BBA8AB2003E6EDC /* libOCMock.a */; settings = {ASSET_TAGS = (); }; };
+		B0B02C571BBADB2C003E6EDC /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0B02C561BBADB2C003E6EDC /* Lato-Light.ttf */; settings = {ASSET_TAGS = (); }; };
+		B0B02C581BBADB2C003E6EDC /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0B02C561BBADB2C003E6EDC /* Lato-Light.ttf */; settings = {ASSET_TAGS = (); }; };
 		B0D162911BB8743900B8B96B /* MDDataCloudNetworkRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D162901BB8743900B8B96B /* MDDataCloudNetworkRequestManager.m */; settings = {ASSET_TAGS = (); }; };
 		B0D162921BB8743E00B8B96B /* MDDataCloudNetworkRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D162901BB8743900B8B96B /* MDDataCloudNetworkRequestManager.m */; settings = {ASSET_TAGS = (); }; };
 		B0D162931BB8743E00B8B96B /* MDDataCloudNetworkRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D162901BB8743900B8B96B /* MDDataCloudNetworkRequestManager.m */; settings = {ASSET_TAGS = (); }; };
@@ -137,9 +134,6 @@
 		B03680DF1BB46A5D00A8DA96 /* MDToDoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDToDoListViewController.h; path = UI/MDToDoListViewController.h; sourceTree = "<group>"; };
 		B03680E01BB46A5D00A8DA96 /* MDToDoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDToDoListViewController.m; path = UI/MDToDoListViewController.m; sourceTree = "<group>"; };
 		B03680E51BB4926D00A8DA96 /* Background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Background.jpg; path = Resources/Images/Background.jpg; sourceTree = "<group>"; };
-		B03680E81BB4958900A8DA96 /* Dosis-Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Dosis-Book.ttf"; path = "Resources/Fonts/Dosis-Book.ttf"; sourceTree = "<group>"; };
-		B03680E91BB4958900A8DA96 /* Dosis-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Dosis-ExtraLight.ttf"; path = "Resources/Fonts/Dosis-ExtraLight.ttf"; sourceTree = "<group>"; };
-		B03680EA1BB4958900A8DA96 /* Dosis-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Dosis-Medium.ttf"; path = "Resources/Fonts/Dosis-Medium.ttf"; sourceTree = "<group>"; };
 		B06951251BB7226600D2577E /* MDBaseAddBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDBaseAddBtn.h; path = UI/MDBaseAddBtn.h; sourceTree = "<group>"; };
 		B06951261BB7226600D2577E /* MDBaseAddBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDBaseAddBtn.m; path = UI/MDBaseAddBtn.m; sourceTree = "<group>"; };
 		B0730F551BB7EEF300033FD2 /* MDToDoObject+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MDToDoObject+CoreDataProperties.h"; path = "DataIO/DataModels/MDToDoObject+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -163,6 +157,8 @@
 		B0788FAB1BB367D40021FC89 /* MDUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDUserManager.m; path = Managers/MDUserManager.m; sourceTree = "<group>"; };
 		B0A5A8841BB86C9B00E9B479 /* MDDataCloudAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDDataCloudAPI.h; path = DataIO/MDDataCloudAPI.h; sourceTree = "<group>"; };
 		B0A5A8851BB86C9B00E9B479 /* MDDataCloudAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDDataCloudAPI.m; path = DataIO/MDDataCloudAPI.m; sourceTree = "<group>"; };
+		B0B02C541BBA8AB2003E6EDC /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = "OCMock-iOS/libOCMock.a"; sourceTree = "<group>"; };
+		B0B02C561BBADB2C003E6EDC /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Light.ttf"; path = "Resources/Fonts/Lato-Light.ttf"; sourceTree = "<group>"; };
 		B0D1628F1BB8743900B8B96B /* MDDataCloudNetworkRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDDataCloudNetworkRequestManager.h; path = DataIO/MDDataCloudNetworkRequestManager.h; sourceTree = "<group>"; };
 		B0D162901BB8743900B8B96B /* MDDataCloudNetworkRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDDataCloudNetworkRequestManager.m; path = DataIO/MDDataCloudNetworkRequestManager.m; sourceTree = "<group>"; };
 		B0D162941BB878EA00B8B96B /* MDURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDURLConnection.h; path = DataIO/MDURLConnection.h; sourceTree = "<group>"; };
@@ -181,6 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0B02C551BBA8AB2003E6EDC /* libOCMock.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +241,7 @@
 		B001C0811BB2D7F300421F81 /* MiniDoTests */ = {
 			isa = PBXGroup;
 			children = (
+				B0B02C541BBA8AB2003E6EDC /* libOCMock.a */,
 				B001C0821BB2D7F300421F81 /* MiniDoTests.m */,
 				B001C0841BB2D7F300421F81 /* Info.plist */,
 			);
@@ -359,9 +357,7 @@
 		B0788F8A1BB335740021FC89 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				B03680E81BB4958900A8DA96 /* Dosis-Book.ttf */,
-				B03680E91BB4958900A8DA96 /* Dosis-ExtraLight.ttf */,
-				B03680EA1BB4958900A8DA96 /* Dosis-Medium.ttf */,
+				B0B02C561BBADB2C003E6EDC /* Lato-Light.ttf */,
 			);
 			name = Fonts;
 			sourceTree = "<group>";
@@ -501,12 +497,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B03680ED1BB4958900A8DA96 /* Dosis-ExtraLight.ttf in Resources */,
-				B03680EB1BB4958900A8DA96 /* Dosis-Book.ttf in Resources */,
-				B03680EF1BB4958900A8DA96 /* Dosis-Medium.ttf in Resources */,
 				B001C0781BB2D7F300421F81 /* LaunchScreen.storyboard in Resources */,
 				B03680E61BB4926D00A8DA96 /* Background.jpg in Resources */,
 				B001C0751BB2D7F300421F81 /* Assets.xcassets in Resources */,
+				B0B02C571BBADB2C003E6EDC /* Lato-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,10 +515,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B03680F01BB4958900A8DA96 /* Dosis-Medium.ttf in Resources */,
-				B03680EC1BB4958900A8DA96 /* Dosis-Book.ttf in Resources */,
+				B0B02C581BBADB2C003E6EDC /* Lato-Light.ttf in Resources */,
 				B03680E71BB4927200A8DA96 /* Background.jpg in Resources */,
-				B03680EE1BB4958900A8DA96 /* Dosis-ExtraLight.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -757,8 +749,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/MiniDoTests/OCMock-iOS";
 				INFOPLIST_FILE = MiniDoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MiniDoTests/OCMock-iOS",
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = MD.MiniDoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MiniDo.app/MiniDo";
@@ -769,8 +767,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/MiniDoTests/OCMock-iOS";
 				INFOPLIST_FILE = MiniDoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MiniDoTests/OCMock-iOS",
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = MD.MiniDoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MiniDo.app/MiniDo";
