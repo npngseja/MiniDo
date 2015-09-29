@@ -48,6 +48,9 @@ Little Wonder - Mini ToDo List App for iPhone and iPad (Universal binary)
 - Time complexity: O(N) ~ O(N^2)
 - Space complexity: O(N)
 
+# Misc.
+- In order to use device's network resources efficiently, we track last network requests and cancel them if necessary.
+
 # Notes:
 - supporting iOS 9.0 or later
 - open in Xcode 7 to compile the project
