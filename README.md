@@ -54,5 +54,5 @@
 ## Notes:
 - supporting iOS 9.0 or later
 - open in Xcode 7 to compile the project
-- no external libs. no cocoapods.
+- no external libs, no cocoapods for the app. OCMock as mocking framework.
 
