@@ -1,3 +1,20 @@
-Mini ToDo for iOS
+Little Wonder - Mini ToDo List App
 
-- support iOS 9.0 or later
+# What you can do:
+- Create a task
+- Re-order tasks
+- List up done tasks
+- Delete a task
+
+# ToDo data model to support re-order in an efficient way:
+- Each Task has 'float' priority
+- re-order a task is done by changing its priority such as new_prio = (last lower prio + next higher prio)/2
+- if a task is re-ordered, we do not need to update other tasks, we can change just the target task, and notify it to the server. In this way, we can save network traffics
+- Comparing with 'linked-list'-based approaches, it is probably more robust against data corruption.
+
+
+# Notes:
+- supporting iOS 9.0 or later
+- open in Xcode 7 to compile the project
+- no external libs. no cocoapods.
+
