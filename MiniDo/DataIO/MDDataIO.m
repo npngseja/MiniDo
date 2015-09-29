@@ -335,7 +335,8 @@
         3) set todo's prio with avg. of both todos.
             - remove from server response
      5. For a list of done todos: Do 1-4 with remaining server response
-     6. Done.
+     6. Remaining todos in server response dictionary are new todos. Add them into local DB.
+     7. Done
      */
     
     NSMutableDictionary *mutableMapId2Data = [mapId2Data mutableCopy];

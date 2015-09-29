@@ -990,8 +990,8 @@
                     [invocation getArgument:&completionBlock atIndex:2];
                     // we mock server response here!
                     NSDictionary *d = @{t4.uniqueId:@{@"text": @"4", @"isCompleted": @NO, @"priority": @(5)},
-                                        t3.uniqueId:@{@"text": @"3", @"isCompleted": @NO, @"priority": @(4)},
-                                        t2.uniqueId:@{@"text": @"2", @"isCompleted": @NO, @"priority": @(2.5)},
+                                        t2.uniqueId:@{@"text": @"3", @"isCompleted": @NO, @"priority": @(4)},
+                                        t3.uniqueId:@{@"text": @"2", @"isCompleted": @NO, @"priority": @(2.5)},
                                         t1.uniqueId:@{@"text": @"1", @"isCompleted": @NO, @"priority": @(2)}};
                     
                     completionBlock(YES, d);

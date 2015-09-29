@@ -41,7 +41,7 @@
 -(nullable MDToDoItemView*)todoItemViewForToDoObject:(nonnull MDToDoObject*)todo;
 
 /**
- put back destination of item view on table view. the coordination is in table view coordinate space. it should be converted to be used on other views.
+ put back destination of item view on table view. the coordination is in table view coordinate space. it should be converted to be used in other views.
  @return CGPoint wrapped with NSValue. if error occured, it will be nil
  */
 -(nullable NSValue*)putBackDestinationCenterOfTodoItemViewOnTableView:(nonnull MDToDoItemView*)itemView;
