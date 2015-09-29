@@ -193,7 +193,7 @@
         
         // date label
         if (__dateLabel == nil) {
-            __dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.textField.frame.origin.x+1, CGRectGetMaxY(__textView.frame), px2p(600), px2p(150))];
+            __dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.textField.frame.origin.x+1, CGRectGetMaxY(__textView.frame), px2p(650), px2p(150))];
             [self addSubview:__dateLabel];
         }
         __dateLabel.alpha = 0.0;
