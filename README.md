@@ -7,7 +7,7 @@
 - Delete a task
 
 ## Limitation
-- User can have only MAX_TODO_COUNT todos (currently set as 200)
+- User can have MAX_TODO_COUNT todos only (currently set to 200)
 
 ## ToDo data model to support re-order in an efficient way:
 - Each Task has 'float' priority
